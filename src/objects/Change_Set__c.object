@@ -93,13 +93,13 @@
     </fields>
     <fields>
         <fullName>Origin__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>Origin</label>
         <referenceTo>Environment__c</referenceTo>
         <relationshipLabel>Change Sets (Outbound)</relationshipLabel>
         <relationshipName>Change_Sets</relationshipName>
-        <required>false</required>
+        <required>true</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -116,6 +116,10 @@
     <label>Change Set</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Origin__c</columns>
+        <columns>Destination__c</columns>
+        <columns>Num_Changes__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -124,6 +128,8 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Change Sets</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>Origin__c</customTabListAdditionalFields>
+    </searchLayouts>
     <sharingModel>Read</sharingModel>
 </CustomObject>
