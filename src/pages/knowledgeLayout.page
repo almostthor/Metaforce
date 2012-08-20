@@ -1,0 +1,103 @@
+<apex:page controller="KnowledgeController" standardStylesheets="false" cache="true" expires="{!cacheMaxAge}" >
+    <html>
+    <head>
+    <apex:stylesheet value="{!$Resource.pkb_css_reset}" />
+    <apex:stylesheet value="{!$Page.knowledgeCss}" />
+    <apex:includeScript value="{!$Resource.pkb_js_prototype}" />
+    <apex:includeScript value="{!$Resource.pkb_js_base}" />
+
+    <apex:variable var="currentCategoryVar" value="{!currentCategory}" />
+    <apex:variable var="categoryGroupNameVar" value="{!categoryGroupName}" />
+    <title>Public Knowledge Base
+        {! IF(isHomePage, ' - Home', IF(isProductPage, ' - Product', IF(isSearchPage, ' - Search', ''))) }
+    </title>
+    </head>
+    <body class="default" onLoad="if (this.bodyOnLoad) bodyOnLoad();" onBeforeUnload="if (this.bodyOnBeforeUnload) bodyOnBeforeUnload();" onUnload="if (this.bodyOnUnload) bodyOnUnload();" onFocus="if (this.bodyOnFocus) bodyOnFocus();" >
+
+        <apex:variable var="securityOK" value="false" />
+
+        <apex:outputPanel styleClass="pkbPage" layout="block" rendered="{!canUserSeeKnowledge}"  >
+            <knowledge:categoryList categoryGroup="{!categoryGroupName}" ancestorsOf="{!currentCategoryVar}" rootCategory="{!rootCategoryName}" categoryVar="ancestor" >
+                <apex:variable var="securityOK" value="true" rendered="{!ancestor.name = rootCategoryName}" />
+            </knowledge:categoryList>
+
+            <apex:outputPanel styleClass="pkbPage" layout="block" rendered="{!securityOK!='true'}" style="text-align:center;" >
+                <span style="color:red; font-size:16px; font-weight:bold" >Error: The PKB Site Setup is not configured correctly. Please verify that the category group name is correct and that the group is active.</span>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:outputPanel styleClass="pkbPage" layout="block" rendered="{!!canUserSeeKnowledge}" style="text-align:center;" >
+            <span style="color:red; font-size:16px; font-weight:bold" >Configuration ERROR<br />Your user is not allowed to view knowledge</span>
+        </apex:outputPanel>
+
+        <apex:outputPanel styleClass="pkbPage" layout="block" >
+            <!--   Uncomment in development mode...
+               <apex:messages styleClass="pkbErrorMessages" />
+            -->
+
+            <c:knowledgeHeader />
+            <apex:outputPanel styleClass="pkbSearchBox" layout="block" rendered="{!!isExternalPage}" >
+            <apex:outputPanel styleClass="pkbSearchBoxText" layout="block">
+                <apex:form id="searchBox">
+                <apex:inputText value="{!currentCategory}" styleClass="categoryHiddenInputField"/>
+                Search Support&nbsp;
+                <select id="categorySelect" name="searchCategory"  size="1"  >
+                <apex:outputPanel layout="none" rendered="{!securityOK}" >
+                    <apex:outputPanel layout="none" rendered="{!currentCategoryVar=rootCategoryName}" >
+                        <option value="{!rootCategoryName}" selected="selected">-- No filter --</option>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!currentCategoryVar!=rootCategoryName}" >
+                        <option value="{!rootCategoryName}">-- No filter --</option>
+                    </apex:outputPanel>
+                    <knowledge:categoryList categoryGroup="{!categoryGroupNameVar}" rootCategory="{!rootCategoryName}" categoryVar="category" level="-1" >
+                        <apex:outputPanel layout="none" rendered="{!currentCategoryVar=category.name}" >
+                            <option value="{!category.name}" selected="selected">
+                                <apex:outputText escape="false" value="{!IF(category.depth=1, '', IF(category.depth=2, '&nbsp;&nbsp;', IF(category.depth=3, '&nbsp;&nbsp;&nbsp;&nbsp;', IF(category.depth=4, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'))))}" />
+                                {!category.label}
+                            </option>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!currentCategoryVar!=category.name}">
+                            <option value="{!category.name}">
+                                <apex:outputText escape="false" value="{!IF(category.depth=1, '', IF(category.depth=2, '&nbsp;&nbsp;', IF(category.depth=3, '&nbsp;&nbsp;&nbsp;&nbsp;', IF(category.depth=4, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'))))}" />
+                                {!category.label}
+                            </option>
+                        </apex:outputPanel>
+                    </knowledge:categoryList>
+                    </apex:outputPanel>
+                </select>
+                &nbsp;
+                <apex:actionFunction name="searchJs" action="{!doSearch}" />
+                <apex:inputText styleClass="keywordField" value="{!currentKeyword}" size="25" onkeypress="return submitEnter(event)" />
+                <!--
+                &nbsp;
+                <apex:commandButton action="{!cleanKeyword}" value="Clean" onclick="clearKeyword()" id="cleanButton" />
+                -->
+                &nbsp;
+                <apex:commandButton action="{!doSearch}" value="Search" onclick="return updateCategoryField()" id="searchButton" />
+                </apex:form>
+            </apex:outputPanel>
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!AND(isExternalPage, securityOK='true')}" layout="none">
+                <apex:outputPanel styleClass="pkbFullWidthPanel" layout="block">
+                    <apex:outputPanel styleClass="pkbFullWidthTop" layout="block" />
+                    <apex:outputPanel styleClass="pkbFullWidthInner" layout="block">
+                        <apex:insert name="body" />
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!AND(!isExternalPage , securityOK='true')}" layout="none">
+                <apex:insert name="content" />
+            </apex:outputPanel>
+
+            <br class="clear" />
+        </apex:outputPanel>
+
+        <apex:outputPanel styleClass="pkbPageBottom" layout="block">&nbsp;</apex:outputPanel>
+        <c:knowledgeFooter />
+        <!-- <site:googleAnalyticsTracking />  -->
+
+    </body>
+    </html>
+</apex:page>

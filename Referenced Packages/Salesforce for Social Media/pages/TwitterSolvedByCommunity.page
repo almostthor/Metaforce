@@ -1,0 +1,9 @@
+<apex:page controller="sf4twitter.TwitterSolvedByCommunityController" action="{!solve}" showHeader="{!!console}" sidebar="{!!console}" >
+
+<c:TwitterStyles />
+
+<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}" rendered="{!NOT(mass)}"/>
+
+<c:TwitterResultBlock title="{!$Label.Create_Case_Results}" resultList="{!results}" retUrl="{!retUrl}" rendered="{!mass}"/>
+
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:component controller="IdeaSiteLoginController">
+	<apex:form styleClass="ibtSiteLoginForm" forceSSL="true">
+	    <apex:outputPanel layout="block">
+			<apex:outputLabel for="ibtUserName" value="Email" />
+			<apex:inputText id="ibtUserName" value="{!username}" />
+		</apex:outputPanel>
+
+        <apex:outputPanel layout="block">
+	        <apex:outputLabel for="ibtPassword" value="Password" />
+            <apex:inputSecret id="ibtPassword" value="{!password}" />
+        </apex:outputPanel>
+        
+        <apex:outputPanel layout="block" styleClass="ibtLoginRedirect">
+            <apex:outputLink value="{!forgotPasswordPage}">Forgot Password?</apex:outputLink>
+            <apex:outputLink value="{!registerPage}">New User?</apex:outputLink>
+        </apex:outputPanel> 
+
+        <apex:outputPanel layout="block" styleClass="ibtButtons">
+            <apex:commandButton styleClass="ibtButton ibtLoginButton" action="{!login}" title="Login"/>
+        </apex:outputPanel>
+	</apex:form>
+</apex:component>

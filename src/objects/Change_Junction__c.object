@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Change_Set__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Set</label>
+        <referenceTo>Change_Set__c</referenceTo>
+        <relationshipLabel>Changes</relationshipLabel>
+        <relationshipName>Change_Junctions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Change</label>
+        <referenceTo>Change__c</referenceTo>
+        <relationshipLabel>Change Sets</relationshipLabel>
+        <relationshipName>Change_Junctions</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Deployed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Deployed</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Change Junction</label>
+    <nameField>
+        <displayFormat>MCJ-{00000}</displayFormat>
+        <label>Change Junction Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Change Junctions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Add_Change</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Add Change</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ChangeList?csId={!Change_Set__c.Id}&amp;csEnv={! Change_Set__c.OriginId__c }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mark_Deployed</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mark Deployed</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT 
+(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+
+var records = {!GETRECORDIDS($ObjectType.Change_Junction__c)}; 
+var newRecords = []; 
+
+if (records[0] == null) 
+{ 
+alert(&quot;Please select at least one row&quot;) 
+} 
+else 
+{ 
+for (var n=0; n&lt;records.length; n++) { 
+var cj = new sforce.SObject(&quot;Change_Junction__c&quot;); 
+cj.id = records[n]; 
+cj.Deployed__c = true; 
+newRecords.push(cj); 
+} 
+
+result = sforce.connection.update(newRecords); 
+
+window.location.reload(); 
+}</url>
+    </webLinks>
+</CustomObject>

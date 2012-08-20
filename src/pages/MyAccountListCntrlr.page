@@ -1,0 +1,35 @@
+<apex:page controller="MyAccountListCntrlr" tabStyle="Account">
+   <apex:form >
+      <apex:pageBlock title="Account List">
+         <apex:pageBlockButtons >
+            <apex:commandButton value="Show Selected Accounts" 
+               action="{!displaySelectedAccountNumbers}"/>
+         </apex:pageBlockButtons>
+
+         <!-- ACCOUNT LIST -->
+         <apex:pageBlockTable value="{!acctList}" 
+           var="acctWrapper">
+            <apex:column >
+               <apex:inputCheckbox value="{!acctWrapper.isSelected}"/>
+            </apex:column> 
+            <apex:column value="{!acctWrapper.cAccount.AccountNumber}"/>
+            <apex:column value="{!acctWrapper.cAccount.Name}"/>
+         </apex:pageBlockTable>
+
+         <!-- SELECTED ACCOUNT INFO -->
+         <apex:pageBlockSection >
+            <apex:outputPanel layout="block" 
+              rendered="{!hasSelAcct}">
+               <apex:outputText value="Below are the selected account:"/>
+               <br/>
+               <apex:outputText value="{!selAccountNames}"/>
+             </apex:outputPanel>
+             <apex:outputPanel layout="block" 
+               rendered="{!NOT(hasSelAcct)}">
+                <br/>
+                <apex:outputText value="No account selected."/>
+             </apex:outputPanel>
+         </apex:pageBlockSection>
+      </apex:pageBlock>
+   </apex:form>
+</apex:page>

@@ -1,0 +1,138 @@
+<apex:page >
+	<style type="text/css">
+		/* Prevent the text contents of draggable elements from being selectable. */
+		*[draggable=true] {
+			cursor: move;
+			-khtml-user-drag: element;
+			user-select: none;
+			-moz-user-select:none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+		}
+		*:-khtml-drag {
+			background-color: rgba(238,238,238, 0.5);
+		}
+		.cell {
+			float: left;
+			text-align: center;
+		}
+		.container {
+			width: 99%;
+		}
+		div.hoverActive {
+			background: grey;
+		}
+		.draggable {
+			background: -webkit-gradient(linear, 0 0, 0 100%, from(#fefbb0), to(#fff955));
+			background-color: yellow;  
+			border: 2px solid #666666;
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+ 			box-shadow: inset 0 0 3px #000;
+ 			-webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+			-webkit-box-shadow: inset 0 0 3px #000;
+			cursor: move;
+			Xfont-family:"Reenie Beanie",arial,sans-serif;  
+			Xfont-size:180%;
+			font-size: small;
+			margin: 1px;
+			text-align: center;
+			overflow: hidden;
+			padding: 2px;
+			z-index: 3;
+		}
+		.dropArea {
+			Xbackground-color: #F0F0F0;
+			Xborder-radius: 3px;
+			X-moz-border-radius: 3px;
+			X-webkit-border-radius: 3px;
+			margin: 1px;
+			min-height: 58px;
+			overflow: hidden;
+			padding-left: 4px;
+			padding-right: 2px;
+			padding-bottom: 4px;
+		}
+		.dropAreaTask {
+			width: 23%;
+			border-left-color: black;
+			border-left-width: 1px;
+			border-left-style: solid;
+		}
+		.dropAreaUserStory {
+			width: 74%;
+		}
+		.headerCell {
+			width: 100%;
+		}
+		.headerRow {
+			background-color: light-grey;
+			clear: left;
+			width: 100%;
+		}
+		#headerStatuses {
+			overflow: auto;
+			width: 90%;
+		}
+		#headerUserStory {
+			width: 10%;
+		}
+		.hidden {
+			display: none;
+		}
+		.row {
+			border: 2px solid #666666;
+			border-radius: 10px;
+			clear: left;
+			margin: 1px;
+			min-height: 60px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			Xpadding: 2px;
+		}
+		.taskStatuses {
+			overflow: hidden;
+			width: 90%;
+		}
+		.taskInfo {
+			width: 10%;
+		}
+		.taskTitle {
+			height: 75%;
+			overflow: hidden;
+		}
+		.taskOwner {
+			float: left;
+		}
+		.taskLink {
+			float: left;
+			Xfont-size: x-small;
+			margin-left: 5px;
+		}
+		.taskRemainingHours {
+			float: right;
+		}
+		.task {
+			width: 45%;
+			float: left;
+		}
+		.task:hover {
+			box-shadow: 10px 10px 5px #888888;
+			-webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
+			transform: rotate(3deg);
+			-ms-transform: rotate(3deg); /* IE 9 */
+			-webkit-transform: rotate(3deg); /* Safari and Chrome */
+			-o-transform: rotate(3deg); /* Opera */
+			-moz-transform: rotate(3deg); /* Firefox */
+			-moz-transition:-moz-transform .15s linear;
+			-o-transition:-o-transform .15s linear;
+			-webkit-transition:-webkit-transform .15s linear; 
+			z-index: 10;
+		}
+		.userStory {
+			width: 99%;
+		}
+	</style>
+</apex:page>

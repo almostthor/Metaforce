@@ -1,0 +1,22 @@
+<apex:page standardController="Change__c" 
+    tabStyle="Change__c" 
+    action="{!urlFor($Action.Environment__c.View, Change__c.Environment__r.Id, null)}"
+>
+    <!--
+         Since all the data for this object is displayed in a related list on
+         the Environments page, this page overrides the view of Changes, to
+         help drive the user back to the Environments page vs. leaving them on
+         a record where they have to click back to the Environments
+         record via related link.
+    -->
+    
+    <!--
+        Query the fields we use in the if statement above, so we don't get
+        SOQL query errors
+    -->
+    
+    <apex:outputPanel rendered="false">
+        {!Change__c.Environment__r.Id}
+    </apex:outputPanel>
+    
+</apex:page>

@@ -1,0 +1,45 @@
+<apex:page showHeader="false" sideBar="false" controller="IdeaAccountDetailsController" title="Account Details" action="{!redirectIfNotLoggedIn}">
+
+	<apex:composition template="ideaProfileLayout">
+		<apex:define name="profileContent">
+			<h2><apex:outputText value="Edit Account Details" /></h2>
+
+
+			<apex:form styleClass="ibtAccountDetailsForm">
+				<apex:outputPanel styleClass="ibtAccountChangePassword" layout="block">
+					<apex:outputPanel layout="block">
+						<apex:outputLabel for="ibtAccountOldPassword" value="Old Password" />
+						<apex:inputSecret id="ibtAccountOldPassword" value="{!oldPassword}" />
+					</apex:outputPanel>
+
+					<apex:outputPanel layout="block">
+						<apex:outputLabel for="ibtAccountNewPassword" value="New Password" />
+						<apex:inputSecret id="ibtAccountNewPassword" value="{!newPassword}" />
+					</apex:outputPanel>
+
+					<apex:outputPanel layout="block">
+						<apex:outputLabel for="ibtAccountNewPasswordConfirm" value="Confirm Password" />
+						<apex:inputSecret id="ibtAccountNewPasswordConfirm" value="{!confirmPassword}" />
+					</apex:outputPanel>
+
+					<apex:outputPanel layout="block" styleClass="ibtButtons">
+						<apex:commandButton styleClass="ibtButton ibtChangePassword" action="{!changePassword}" title="Change Password" />
+					</apex:outputPanel>
+				</apex:outputPanel>
+
+				<apex:outputPanel styleClass="ibtAccountChangeEmail" layout="block">
+					<apex:outputPanel layout="block">
+						<apex:outputLabel for="ibtAccountEmail" value="Email Address" />
+						<apex:inputText id="ibtAccountEmail" value="{!currentUser.email}" />
+					</apex:outputPanel>
+
+					<apex:outputPanel layout="block" styleClass="ibtButtons">
+						<apex:commandButton styleClass="ibtButton ibtChangeEmail" action="{!changeEmail}" title="Change Email" />
+					</apex:outputPanel>
+				</apex:outputPanel>
+			</apex:form>
+
+		</apex:define>
+	</apex:composition>
+
+</apex:page>

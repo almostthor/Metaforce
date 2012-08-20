@@ -1,0 +1,21 @@
+<apex:page >
+	<apex:composition template="ideaLayoutWrapper">
+		<apex:define name="content">
+			<apex:outputPanel layout="block" styleclass="ibtLargeContentContainer">
+				<apex:outputPanel layout="block" styleclass="ibtLargeContentTop" />
+				<apex:outputPanel layout="block" styleclass="ibtLargeContentInner">
+
+					<apex:outputPanel layout="block" styleclass="ibtProfileSidebar">
+						<c:ideaUserProfile />
+					</apex:outputPanel>
+
+					<apex:outputPanel layout="block" styleClass="ibtProfileIdeaList">
+						<apex:insert name="profileContent" />
+					</apex:outputPanel>
+
+				</apex:outputPanel>
+			</apex:outputPanel>
+			<apex:insert name="profileContentFeed" />
+		</apex:define>
+	</apex:composition>
+</apex:page>

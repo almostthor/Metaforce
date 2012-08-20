@@ -1,0 +1,44 @@
+<apex:page controller="IdeaLayoutController" standardStylesheets="false" showHeader="false" cache="{!doCache}" expires="{!cacheMaxAge}">
+
+	<apex:stylesheet value="{!$Resource.css_reset}" />
+	<apex:stylesheet value="{!$Page.ideaCss}" />
+	<apex:stylesheet value="{!customCssUrl}" />
+	<apex:includeScript value="{!$Resource.js_prototype}" />
+	<apex:includeScript value="{!$Resource.js_effects}" />
+	<apex:includeScript value="{!$Resource.js_vote}" />
+	<apex:includeScript value="{!$Resource.js_base}" />
+
+	<body class="default">
+	<apex:outputPanel styleClass="ibtPage" layout="block">
+		<apex:outputPanel styleClass="ibtHeader" layout="block">
+			<c:ideaHeader />
+		</apex:outputPanel>
+
+		<apex:outputPanel styleClass="ibtSecondary" layout="block">
+			<c:ideaSecondary />
+		</apex:outputPanel>
+
+		<apex:outputPanel styleClass="ibtPrimary" layout="block">
+			<apex:pageMessages id="error" />
+			<apex:insert name="content" />
+		</apex:outputPanel>
+
+		<br class="clear" />
+
+		<apex:outputPanel layout="block" style="display:none">
+			<apex:outputText style="display:none" value="{!currentPageUrl}" />
+			<apex:outputText style="display:none" value="{!currentPageString}" />
+			<apex:outputText style="display:none" value="{!doCacheThisPage}" />
+			<apex:outputText style="display:none" value="{!doCache}" />
+			<apex:outputText style="display:none" value="{!cacheMaxAge}" />
+		</apex:outputPanel>
+
+	</apex:outputPanel>
+
+	<apex:outputPanel styleClass="ibtPageBottom" layout="block">&nbsp;</apex:outputPanel>
+	<apex:outputPanel styleClass="ibtFooter" layout="block">
+		<c:ideaFooter />
+	</apex:outputPanel>
+	</body>
+
+</apex:page>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <fullName>Send_Twitter_Message</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send a Tweet</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>var s1 = window.location.href;
+var id = s1.replace(/.*\.salesforce\.com\//g,&apos;&apos;).split(&apos;?&apos;)[0];
+window.location =  &quot;/apex/sf4twitter__TwitterMessage?id=&quot;+id+&quot;&amp;retURL=&quot; + encodeURIComponent(window.location);</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,52 @@
+<apex:component controller="IdeaProfileController">
+
+    <apex:outputPanel rendered="{!isRecentActivityPage}" styleClass="ibtIdeaProfileSidebarItem ibtIdeaProfileSidebarItemCurrent" layout="block">
+      <apex:outputText value="Recent Activity" escape="false" title="Recent Activity"/>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!!isRecentActivityPage}" styleClass="ibtIdeaProfileSidebarItem" layout="block">
+      <span>
+      <apex:outputLink value="{!userUrl}">Recent Activity
+        <apex:param name="{!userParamName}" value="{!userParam}"/>
+      </apex:outputLink>
+      </span>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!isSubmittedIdeasPage}" styleClass="ibtIdeaProfileSidebarItem ibtIdeaProfileSidebarItemCurrent" layout="block">
+      <apex:outputText value="Ideas Submitted" escape="false" title="Ideas Submitted"/>
+    </apex:outputPanel>    
+    <apex:outputPanel rendered="{!!isSubmittedIdeasPage}" styleClass="ibtIdeaProfileSidebarItem" layout="block"> 
+      <ideas:profileListOutputLink communityId="{!communityId}" page="{!ideaProfileListPage}" sort="ideas">
+      	Ideas Submitted
+      </ideas:profileListOutputLink>      
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!isVotedIdeasPage}" styleClass="ibtIdeaProfileSidebarItem ibtIdeaProfileSidebarItemCurrent" layout="block">
+      <apex:outputText value="Ideas Voted On" escape="false" title="Ideas Voted On"/>
+    </apex:outputPanel>    
+    <apex:outputPanel rendered="{!!isVotedIdeasPage}" styleClass="ibtIdeaProfileSidebarItem" layout="block">
+      <ideas:profileListOutputLink communityId="{!communityId}" page="{!ideaProfileListPage}" sort="votes">
+      	Ideas Voted On
+      </ideas:profileListOutputLink>      
+    </apex:outputPanel>
+
+	<apex:outputPanel rendered="{!isProfileUserLoggedIn}" >	    
+	    <apex:outputPanel rendered="{!isRecentRepliesPage}" styleClass="ibtIdeaProfileSidebarItem ibtIdeaProfileSidebarItemCurrent" layout="block">
+	      <apex:outputText value="Recent Replies" escape="false" title="Recent Replies"/>
+	    </apex:outputPanel>
+	    <apex:outputPanel rendered="{!!isRecentRepliesPage}" styleClass="ibtIdeaProfileSidebarItem" layout="block">
+	      <ideas:profileListOutputLink communityId="{!communityId}" page="{!ideaProfileListPage}" sort="recentReplies">
+	      	Recent Replies
+	      </ideas:profileListOutputLink>      
+	    </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!isAccountDetailsPage}" styleClass="ibtIdeaProfileSidebarItem ibtIdeaProfileSidebarItemCurrent" layout="block">
+          <apex:outputText value="Account Details" escape="false" title="Account Details"/>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!!isAccountDetailsPage}" styleClass="ibtIdeaProfileSidebarItem" layout="block">
+          <apex:outputLink value="{!accountDetailsUrl}">
+            Account Details
+          </apex:outputLink>      
+        </apex:outputPanel>
+	</apex:outputPanel>
+
+</apex:component>

@@ -1,0 +1,85 @@
+<apex:page controller="sf4twitter.TwitterSchedulerController" title="{!$Label.TWITTER_SCHEDULER_PAGE_TITLE}" showHeader="true" sidebar="true" cache="false" >
+
+    <apex:sectionHeader title="{!HTMLENCODE($Label.TWITTER_SCHEDULER_PAGE_TITLE)}" />
+
+    <apex:form >
+        <apex:outputPanel id="mainPanel">
+            <apex:pageMessage summary="{!msgError}" severity="{!msgSeverity}" rendered="{!IF(msgError != null && msgError != '',true,false)}" />
+
+            <p>
+            <apex:outputText value="{!$Label.TWITTER_SCHEDULER_USED_TASKS}">
+                <apex:param value="{!limitScheduler}" />
+            </apex:outputText>
+            </p>
+            <apex:pageBlock title="" mode="edit">
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!URLFOR($Action.Twitter_Search__c.New)}" value="{!$Label.TWITTER_NEW_TWITTER_SEARCH}" id="btnNewS"/>
+                    <apex:commandButton action="{!URLFOR($Action.Twitter_Account__c.New)}" value="{!$Label.TWITTER_NEW_TWITTER_ACCOUNT}" id="btnNewA"/>
+                </apex:pageBlockButtons>
+            
+                <apex:pageBlockTable value="{!SchedulerList}" var="Scheduler" id="theTable">
+                    <apex:column >
+                            <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_NAME}</apex:facet>
+                            <apex:outputText value="{!Scheduler.SchName}"/>
+                    </apex:column>
+                    <apex:column >
+                            <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_SEARCH_TERM}</apex:facet>
+                            <apex:outputText value="{!Scheduler.SchSearch}"/>
+                    </apex:column>
+                    <apex:column >
+                            <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_REQUESTS_USED}</apex:facet>
+                            <apex:outputText value="{!Scheduler.SchRequestUsed}"/>
+                    </apex:column>
+                    <apex:column >
+                            <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_TIME_INTERVAL}</apex:facet>
+                            <apex:selectList value="{!Scheduler.SchTime}" multiselect="false" size="1"> 
+                                <apex:selectOptions value="{!OptionsPeriodTime}" />
+                            </apex:selectList>
+                    </apex:column>
+                    <apex:column >
+                            <apex:facet name="header"></apex:facet>
+                            <apex:inputHidden value="{!Scheduler.SchActive}" />
+                            <apex:commandButton onclick="goUpdate('{!Scheduler.IdCls}')" rerender="goUpdate" value="{!IF(Scheduler.SchActive == false,$Label.TWITTER_SCHEDULER_PAGE_ACTIVATE,$Label.TWITTER_SCHEDULER_PAGE_DEACTIVATE)}" />
+                    </apex:column>
+                </apex:pageBlockTable> 
+                
+                <apex:actionFunction action="{!SaveScheduler}" name="goUpdate" rerender="mainPanel" >
+                    <apex:param name="SelectedPosition" assignTo="{!SelectedPosition}" value="" />
+                </apex:actionFunction>
+                
+            </apex:pageBlock>
+            
+           <apex:pageBlock mode="edit" >
+               <apex:pageBlockTable value="{!IgnoreScheduler}" var="IgnSch" id="IgnoreScheduler">
+                   <apex:column >
+                       <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_NAME}</apex:facet>
+                       <apex:outputText value="{!IgnSch.SchName}"/>
+                   </apex:column>
+                   <apex:column >
+                       <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_REQUESTS_USED}</apex:facet>
+                       <apex:outputText value="{!IgnSch.SchRequestUsed}"/>
+                   </apex:column>
+                   <apex:column >
+                       <apex:facet name="header">{!$Label.TWITTER_SCHEDULER_PAGE_COLUMN_TIME_INTERVAL}</apex:facet>
+                       <apex:selectList value="{!IgnSch.SchTime}" multiselect="false" size="1"> 
+                           <apex:selectOptions value="{!OptionsPeriodTime}" />
+                       </apex:selectList>
+                   </apex:column>
+                   <apex:column >
+                           <apex:facet name="header"></apex:facet>
+                           <apex:inputHidden value="{!IgnSch.SchActive}" />
+                           <apex:commandButton onclick="goIgnore()" rerender="goIgnore" value="{!IF(IgnSch.SchActive == false,$Label.TWITTER_SCHEDULER_PAGE_ACTIVATE,$Label.TWITTER_SCHEDULER_PAGE_DEACTIVATE)}" id="btnSvIgn"/>
+                   </apex:column>
+               </apex:pageBlockTable>
+               
+                <apex:actionFunction action="{!DeleteIgnoreScheduler}" name="goIgnore" rerender="mainPanel" >
+                </apex:actionFunction>
+               
+           </apex:pageBlock>            
+            
+            
+        </apex:outputPanel>
+    </apex:form>
+
+
+</apex:page>

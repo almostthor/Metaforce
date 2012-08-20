@@ -1,0 +1,13 @@
+<apex:page controller="sf4twitter.TwitterOAuthController" action="{!validateAndLinkAccount}">
+<!-- 
+<apex:form >
+<apex:outputPanel id="rerenderthis" layout="block" rendered="true">
+	<apex:outputText value="{!linkToAuthorize}"/>
+	<apex:outputText value="{!output}"/>
+</apex:outputPanel>
+</apex:form>
+ -->
+ 
+<c:TwitterErrorMessage msgTitle="{!$Label.TWITTER_ERROR}" msg="{!output}" retUrl="{!retUrl}" rendered="{!actionResult == 'Error'}" />
+ 
+</apex:page>

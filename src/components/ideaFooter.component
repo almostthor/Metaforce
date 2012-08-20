@@ -1,0 +1,17 @@
+<apex:component controller="IdeaController">
+
+    <apex:outputPanel styleClass="ibtPoweredBySFDC">
+        <a href="http://www.salesforce.com" title="CRM" alt="CRM"><apex:outputPanel styleClass="ibtPoweredBySFDCText">salesforce.com</apex:outputPanel></a>
+    </apex:outputPanel>
+    
+    <apex:outputText escape="false" value="{!footerText}" styleClass="ibtFooterText"/>
+    
+    <apex:outputPanel styleClass="ibtFooterNavigation">
+        <apex:outputLink value="{!homeUrl}">Home</apex:outputLink>&nbsp;|&nbsp; 
+        <ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" stickyAttributes="false">Ideas</ideas:listOutputLink>&nbsp;|&nbsp;
+        <apex:outputLink value="{!aboutPage}">About This Site</apex:outputLink>
+    </apex:outputPanel>
+        
+    <br class="ibtClearfloat"/>
+
+</apex:component>

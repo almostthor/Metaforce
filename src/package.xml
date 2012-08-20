@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>AccountWrapperCls</members>
+        <members>MyAccountListCntrlr</members>
+        <members>MyChangeListCntrlr</members>
+        <members>NewHelloWorld</members>
+        <members>apexWorkbook</members>
+        <members>metaforceChangeController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AccountList</members>
+        <members>ChangeList</members>
+        <members>MyAccountListCntrlr</members>
+        <members>metaforceChangesList</members>
+        <members>vf</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>createChangesAtDestination</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Metaforce</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Change_Junction__c</members>
+        <members>Change_Set__c</members>
+        <members>Change__c</members>
+        <members>Environment__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Change_Junction__c-Change Junction Layout</members>
+        <members>Change_Set__c-Release Layout</members>
+        <members>Change__c-Change Layout</members>
+        <members>Environment__c-Environment Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>25.0</version>
+</Package>
+

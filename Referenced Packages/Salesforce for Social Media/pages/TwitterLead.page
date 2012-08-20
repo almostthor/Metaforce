@@ -1,0 +1,10 @@
+<apex:page controller="sf4twitter.TwitterLeadController" action="{!createLead}" title="{!$Label.Create_Leads}" showHeader="{!!console}" sidebar="{!!console}" >
+
+<c:TwitterStyles /> 
+
+<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}" rendered="{!IF(msg != null && msg != '',true,false)}"/>
+
+<c:TwitterResultBlock title="{!$Label.Create_Lead_Results}" resultList="{!resultsIteration}" retUrl="{!retUrl}" rendered="{!IF(msg != null && msg != '',false,true)}"/>
+
+
+</apex:page>

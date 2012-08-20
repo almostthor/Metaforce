@@ -1,0 +1,12 @@
+<apex:page showHeader="false" sidebar="false" contentType="text/html" controller="sf4twitter.TwitterAjaxSearch" action="{!PageAction}">
+<head>
+</head>
+
+<body>
+    <apex:outputText escape="false" value="{!jsOutput}" />
+    <div id ="xml">
+    <h3> xml </h3>
+    <apex:outputText value="{!xmlret}" />
+    </div> 
+</body>
+</apex:page>

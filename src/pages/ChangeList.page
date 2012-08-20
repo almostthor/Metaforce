@@ -1,0 +1,38 @@
+<apex:page controller="MyChangeListCntrlr" tabStyle="Change__c">
+   <apex:form >
+      <apex:pageBlock title="Change List">
+         <apex:pageBlockButtons >
+            <apex:commandButton value="Show Selected Changes" 
+               action="{!displaySelectedChangeNames}"/>
+             <apex:commandButton value="Create Change Junctions"
+                action="{!createChangeJunctions}"/>
+         </apex:pageBlockButtons>
+
+         <!-- ACCOUNT LIST -->
+         <apex:pageBlockTable value="{!chgList}" 
+           var="chgWrapper">
+            <apex:column >
+               <apex:inputCheckbox value="{!chgWrapper.isSelected}"/>
+            </apex:column> 
+            <apex:column value="{!chgWrapper.cChange.Metadata__c}"/>
+            <apex:column value="{!chgWrapper.cChange.Name__c}"/>
+            <apex:column value="{!chgWrapper.cChange.CreatedDate}"/>
+         </apex:pageBlockTable>
+
+         <!-- SELECTED ACCOUNT INFO -->
+         <apex:pageBlockSection >
+            <apex:outputPanel layout="block" 
+              rendered="{!hasSelChg}">
+               <apex:outputText value="Below are the selected change"/>
+               <br/>
+               <apex:outputText value="{!selChangeNames}"/>
+             </apex:outputPanel>
+             <apex:outputPanel layout="block" 
+               rendered="{!NOT(hasSelChg)}">
+                <br/>
+                <apex:outputText value="No change selected."/>
+             </apex:outputPanel>
+         </apex:pageBlockSection>
+      </apex:pageBlock>
+   </apex:form>
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page controller="sf4twitter.TwitterUpdateTwitterInfoController" action="{!updateFollow}" title="{!$Label.Get_Author_Info}" showHeader="{!!console}" sidebar="{!!console}">
+
+<c:TwitterStyles />
+
+<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!error}" retUrl="{!retUrl}"/>
+        
+</apex:page>

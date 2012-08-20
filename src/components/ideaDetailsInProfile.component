@@ -1,0 +1,81 @@
+<apex:component allowDML="true" controller="IdeaDetailsController">
+  <apex:attribute name="idea" type="Idea" assignTo="{!conIdea}" required="true" description="The idea whose details are to be displayed (must include Id, Title, Body, NumComments, CreatedBy.Id, CreatedDate, Categories, and IsLocked)."/>
+  <apex:attribute name="howUserVoted" type="String" required="true" description="Identifies how the user voted on the idea. If Up, the user promoted the idea. If Down, the user demoted the idea.  If None, the user has not voted on the idea."/>
+  <apex:attribute name="listType" type="String" required="true" description="Determines the appearance of the UI. If it is 'Voted On' Page, display the Vote icons as per howUserVoted."/>  
+  <apex:attribute name="vote" type="Vote" required="false" description="The Vote object associated with the Idea. This will be used only if it is a 'Voted On' page."/>
+
+    <apex:outputPanel rendered="{!(listType != 'Recent Replies')}" layout="block" styleClass="ibtIdeaSection">
+        <apex:outputPanel styleClass="ibtIdeaSide" layout="block">
+            <apex:outputPanel styleClass="ibtProfileVoteContainer" layout="block">
+                <apex:outputPanel layout="block" rendered="{!(listType == 'Ideas Voted On')}" styleClass="{!IF(howUserVoted == 'Up','ibtProfileVotedUpButton','ibtProfileVotedDownButton')}">
+                    <apex:outputPanel layout="block" styleClass="{!IF(howUserVoted == 'Up','ibtProfileVoteUp','ibtProfileVoteDown')}">
+                        <apex:outputPanel styleClass="ibtProfileVoteButtonText">{!IF(howUserVoted == 'Up','Promoted','Demoted')}</apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+
+                <apex:outputPanel styleClass="ibtProfileVoteStatusBlock" layout="block">
+                    <apex:outputPanel id="ScoreBox" layout="block" styleClass="{!IF(isMerged,'ibtIdeaMerged','ibtProfileVoteTotal')}">
+                       <apex:outputText value="{!IF(isMerged,'Merged',UpdatedVoteTotal)}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="PointBox" layout="block" styleClass="ibtProfileVoteTotalLabel" rendered="{!!isMerged}">
+                        <apex:outputText value="Points" />
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:outputPanel layout="block" styleClass="ibtIdeaContentWidth ibtIdeaContent">
+            <div class="ibtIdeaTitle ibtIdeaContentWidth">
+                <ideas:detailOutputLink id="linkTitle" ideaId="{!idea.id}" page="{!viewUrl}">
+                    {!idea.title}
+                </ideas:detailOutputLink>
+                <apex:outputPanel layout="inline" rendered="{!(idea.status != null)}">
+                &nbsp;<apex:outputText styleClass="ibtIdeaStatus" value="{!idea.status}" escape="true"/>
+                </apex:outputPanel>                
+            </div>
+        
+            <apex:outputPanel id="body" layout="block" styleClass="ibtUserContent ibtIdeaBody ibtIdeaContentWidth">
+                <apex:outputText value="{!idea.body}" escape="false"/>
+            </apex:outputPanel>
+        
+            <div class="ibtIdeaContentWidth ibtIdeaFooter">
+                <apex:outputPanel layout="inline" styleClass="ibtIdeaDetailCommentNumber">
+                    <apex:outputPanel layout="none">
+                        <ideas:detailOutputLink id="linkComments" styleClass="ibtIdeaDetailCommentNumberLink" ideaId="{!idea.id}" page="{!ideaViewPageComments}">
+                            {!round(idea.numComments, 0)} {!IF(idea.numComments == 1, 'Comment','Comments')} »
+                        </ideas:detailOutputLink>                       
+                        &nbsp;
+                    </apex:outputPanel>
+                </apex:outputPanel>
+    
+                <apex:outputPanel layout="none" rendered="{!hasCategories}">
+                    <apex:outputPanel layout="inline" styleClass="ibtByline">Posted to</apex:outputPanel>&nbsp;
+                    <apex:repeat value="{!splitCategories}" var="c">
+                        <ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" category="{!c}" styleClass="ibtBylineCategories">{!c}</ideas:listOutputLink>
+                        <apex:outputPanel layout="none" rendered="{!c!=lastCategory}">,&nbsp;</apex:outputPanel>
+                    </apex:repeat>&nbsp;
+                </apex:outputPanel>
+    
+                <apex:outputPanel layout="none" rendered="{!!hasCategories}">
+                    <span class="ibtByline">Posted </span>
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="inline" styleClass="ibtByline" id="createdDate" >
+                    on&nbsp;
+                    <apex:outputPanel rendered="{!(listType == 'Ideas Submitted')}"> 
+                        <c:ideaDateFormat idea="{!idea}" format="MM/dd/yy hh:mm a"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!(listType == 'Ideas Voted On')}"> 
+                        <c:ideaDateFormat vote="{!vote}" format="MM/dd/yy hh:mm a"/>
+                    </apex:outputPanel>                            
+                </apex:outputPanel>
+            </div>
+        </apex:outputPanel>
+    </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!(listType == 'Recent Replies')}" layout="block" styleClass="ibtCommentList">
+            <c:ideaCommentDetails idea="{!idea}" comment="{!idea.lastComment}" showCategories="false" showCommunityNickName="{!!CONTAINS(idea.lastComment.createdBy.Id,$User.Id)}"/>
+        </apex:outputPanel>       
+        
+
+</apex:component>

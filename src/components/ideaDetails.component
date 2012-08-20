@@ -1,0 +1,51 @@
+<apex:component allowDML="true" controller="IdeaDetailsController">
+    <apex:attribute name="idea" type="Idea" assignTo="{!conIdea}" required="true" description="The idea whose details are to be displayed (must include Id, Title, Body, NumComments, CreatedBy.Id, CreatedDate, Categories, and IsLocked)."/>
+    <apex:attribute name="howUserVoted" type="String" required="true" description="Identifies how the user voted on the idea. If Up, the user promoted the idea. If Down, the user demoted the idea.  If None, the user has not voted on the idea."/>
+    <apex:attribute name="isViewPage" type="Boolean" required="false" default="false" description="True if this detail will be displayed on the view page and not the list page."/>
+    <apex:attribute name="returnUrl" type="String" assignTo="{!returnUrlParam}" required="false" description="Provides the return url path from the current idea Detail page."/>
+
+    <!-- this is because Apex spidering isn't catching fields used inside controller so they're not getting added to the retrieved SObject -->
+    <apex:outputPanel rendered="false">{!idea.createdBy.communityNickname} {!idea.voteTotal} {!idea.createdDate}</apex:outputPanel>
+
+    <apex:outputPanel layout="block" styleClass="ibtIdeaSection">
+        <apex:outputPanel styleClass="ibtIdeaSide" layout="block">
+            <c:ideaVote idea="{!idea}" howUserVoted="{!howUserVoted}"/>
+        </apex:outputPanel>
+
+        <apex:outputPanel layout="block" styleClass="ibtIdeaDescription">
+            <apex:outputPanel layout="block" styleClass="ibtIdeaTitle ibtUserContent">
+                <ideas:detailOutputLink page="{!ideaViewPage}" ideaId="{!idea.id}">
+                    {!idea.title}
+                </ideas:detailOutputLink>
+                <apex:outputPanel layout="inline" rendered="{!(idea.status != null)}">
+                    <apex:outputText styleClass="ibtIdeaStatus" value="{!idea.status}" escape="true"/>
+                </apex:outputPanel>                
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="body" layout="block" styleClass="ibtUserContent ibtIdeaBody">
+                <apex:outputText value="{!idea.body}" escape="false" />
+            </apex:outputPanel>
+            
+            <apex:outputPanel layout="block" styleClass="ibtIdeaFooter">
+                <apex:outputPanel layout="inline" styleClass="ibtIdeaDetailCommentNumber">
+                        <ideas:detailOutputLink id="linkComments" styleClass="ibtIdeaDetailCommentNumberLink" ideaId="{!idea.id}" page="{!ideaViewPageComments}">
+                            {!round(idea.numComments, 0)} {!IF(idea.numComments == 1, 'Comment','Comments')} »
+                        </ideas:detailOutputLink>                       
+                        &nbsp;
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="inline" styleClass="ibtByline">Posted&nbsp;by&nbsp;</apex:outputPanel>
+                <apex:outputPanel styleClass="ibtInlineBlock"><c:ideaUserLink userId="{!idea.createdBy.Id}" communityNickname="{!createdByCommunityNickname}"/>&nbsp;</apex:outputPanel>
+                <apex:outputPanel layout="none" rendered="{!hasCategories}">
+                    <apex:outputPanel layout="inline" styleClass="ibtByline">to</apex:outputPanel>&nbsp;
+                    <apex:repeat value="{!splitCategories}" var="c">
+                        <ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" category="{!c}" styleClass="ibtBylineCategories">{!c}</ideas:listOutputLink>
+                        <apex:outputPanel layout="none" rendered="{!c!=lastCategory}">,&nbsp;</apex:outputPanel>
+                    </apex:repeat>&nbsp;
+                </apex:outputPanel>
+                <apex:outputPanel layout="inline" styleClass="ibtByline"><c:ideaDateFormat idea="{!idea}"/></apex:outputPanel>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+
+</apex:component>

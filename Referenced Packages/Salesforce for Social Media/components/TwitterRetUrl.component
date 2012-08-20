@@ -1,0 +1,10 @@
+<apex:component >
+
+<apex:attribute name="retUrl" description="The previous url to return to" type="String" required="true"/>
+
+<apex:outputLink value="{!retUrl}" rendered="{!NOT(ISBLANK(retURL))}"
+    styleClass="returnLink" style="margin-top:20px;display:block">
+    {!$Label.TWITTER_RETURN}
+</apex:outputLink>
+
+</apex:component>

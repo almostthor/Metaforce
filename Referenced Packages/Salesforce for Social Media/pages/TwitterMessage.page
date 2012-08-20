@@ -1,0 +1,7 @@
+<apex:page controller="sf4twitter.TwitterOutboundTweetsController" title="{!$Label.Send_a_Tweet}" showHeader="{!!console}" sidebar="{!!console}" >
+    
+    <apex:sectionHeader title="{!HTMLENCODE($Label.Send_a_Tweet)}" />
+    
+    <c:TwitterOutboundTweets /> 
+    
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page controller="sf4twitter.TwitterContactController" action="{!createContact}" title="{!$Label.Create_Contacts}" showHeader="{!!console}" sidebar="{!!console}" >
+
+<c:TwitterStyles />
+
+<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}" rendered="{!NOT(ISBLANK(msg))}"/>
+
+<c:TwitterResultBlock title="{!$Label.Create_Contact_Results}" resultList="{!resultsIteration}" retUrl="{!retUrl}" rendered="{!IF(tcList != null && tcList != '',true,false)}"/>
+
+</apex:page>

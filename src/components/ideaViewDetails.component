@@ -1,0 +1,42 @@
+<apex:component allowDML="true" controller="IdeaDetailsController">
+    <apex:attribute name="idea" type="Idea" assignTo="{!conIdea}" required="true" description="The idea whose details are to be displayed (must include Id, Title, Body, NumComments, CreatedBy.Id, CreatedDate, Categories, and IsLocked)."/>
+    <apex:attribute name="howUserVoted" type="String" required="true" description="Identifies how the user voted on the idea. If Up, the user promoted the idea. If Down, the user demoted the idea.  If None, the user has not voted on the idea."/>
+
+    <!-- this is because Apex spidering isn't catching fields used inside controller so they're not getting added to the retrieved SObject -->
+    <apex:outputPanel rendered="false">{!idea.createdBy.communityNickname} {!idea.voteTotal} {!idea.createdDate} {!idea.categories}</apex:outputPanel>
+
+    <h2>
+      <apex:outputText value="{!idea.title}" escape="true"/>
+      <apex:outputPanel layout="inline" rendered="{!idea.status != ''}" styleClass="ibtIdeaStatus">{!idea.status}</apex:outputPanel>
+    </h2>	
+
+	<ul class="ibtIdeaViewMulticolumn">
+	  <li class="ibtVote">
+            <c:ideaVote idea="{!idea}" howUserVoted="{!howUserVoted}"/>
+	  </li>
+	  <li class="ibtBody">
+            <apex:outputPanel layout="block" styleclass="ideaBodyInner">
+              <apex:outputText value="{!idea.body}" escape="false" styleClass="ibtUserContent ibtIdeaBody"/>
+              <apex:outputPanel layout="inline" styleClass="ibtByline">Posted&nbsp;by&nbsp;</apex:outputPanel>&nbsp;<c:ideaUserLink userId="{!idea.createdBy.Id}" communityNickname="{!idea.createdBy.CommunityNickname}"/>&nbsp;
+              <apex:outputPanel layout="none" rendered="{!hasCategories}">
+		<apex:outputPanel layout="inline" styleClass="ibtByline">to</apex:outputPanel>&nbsp;
+		<apex:repeat value="{!splitCategories}" var="c">
+		  <ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" category="{!c}" styleClass="ibtBylineCategories">{!c}</ideas:listOutputLink>
+		  <apex:outputPanel layout="none" rendered="{!c!=lastCategory}">,&nbsp;</apex:outputPanel>
+		</apex:repeat>&nbsp;
+              </apex:outputPanel>
+              <apex:outputPanel layout="inline" styleClass="ibtByline"><c:ideaDateFormat idea="{!idea}" /></apex:outputPanel>
+            </apex:outputPanel>
+      </li>        
+	</ul>
+
+            <!-- child ideas -->
+            <apex:outputPanel layout="block" styleClass="ibtMergedIdeaBlock" rendered="{!numChildIdeas > 0}">
+                <apex:outputPanel layout="inline" styleClass="ibtMergedIdeasTitle">Merged Ideas ({!numChildIdeas})</apex:outputPanel>
+                <dl class="ibtMergedIdeasList">
+                    <apex:repeat value="{!childIdeas}" var="childIdea">
+                        <c:ideaChildDetails childIdea="{!childIdea}" />
+                    </apex:repeat>
+                </dl>                
+            </apex:outputPanel>
+</apex:component>

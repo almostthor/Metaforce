@@ -1,0 +1,44 @@
+<apex:page controller="IdeaProfileController" tabStyle="IdeaComment" showHeader="false" sidebar="false">
+	<apex:composition template="ideaProfileLayout">
+		<apex:define name="profileContent">
+			<apex:outputPanel id="activityFeed" styleClass="ibtActivityFeed">
+				<h2><apex:outputText value="Profile: Recent Activity" /></h2>
+
+				<apex:outputPanel styleClass="ibtProfileActivityBlock" layout="block">
+					<apex:outputPanel rendered="{!!hasActivities}" layout="block" styleClass="ibtNoItemMessage">
+						<apex:outputText value="No Recent Activity" />
+					</apex:outputPanel>
+
+					<apex:dataList value="{!activitiesByDay}" var="byDay" id="activitiesByDay" type="none" styleClass="ibtActivitiesByDay" rendered="{!hasActivities}">
+						<apex:outputPanel layout="block" styleClass="ibtActivitySection">
+							<apex:outputText value="{!byDay.sectionName}" />
+						</apex:outputPanel>
+
+						<apex:dataList value="{!byDay.activities}" var="activity" id="activityList">
+							<apex:outputPanel styleClass="{!IF(activity.isLastActivityInList,'ibtActivitySingleElement','ibtActivity')}">
+								<apex:outputPanel styleClass="ibtActivityFirstLine {!IF(activity.typeCode == 'CommentGroup', 'ibtCommentActivity', IF(activity.typeCode == 'promoted', 'ibtPromotedActivity', IF(activity.typeCode == 'demoted' ,'ibtDemotedActivity' , 'ibtSubmittedActivity')))}" layout="block">
+									<apex:outputPanel rendered="{!!CONTAINS(activity.activityCreatorId,$User.Id)}">
+										<c:ideaUserLink userId="{!activity.activityCreatorId}" communityNickname="{!activity.activityCreatorCommunityNickname}" />
+									</apex:outputPanel>
+									<apex:outputPanel rendered="{!CONTAINS(activity.activityCreatorId,$User.Id)}">
+                                        You
+                                    </apex:outputPanel>
+									<apex:outputText value="{!activity.firstLineHtml}" escape="false" />
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!activity.shouldShowSecondLineHtml}" styleClass="ibtActivitySecondLine ibtActivityCommentSnippet" layout="block">
+									<blockquote><apex:outputText value="{!activity.secondLineHtml}" escape="false" /> <apex:outputText styleClass="ibtClosingQuote" value=" " /></blockquote>
+								</apex:outputPanel>
+							</apex:outputPanel>
+						</apex:dataList>
+						<apex:outputPanel layout="block" styleClass="activitySpacer">&nbsp;</apex:outputPanel>
+					</apex:dataList>
+				</apex:outputPanel>
+			</apex:outputPanel>
+		</apex:define>
+		<apex:define name="profileContentFeed">
+			<apex:outputPanel layout="block">
+				<c:ideaFeed feedName="MyComments" userId="{!userFromParam.id}" />
+			</apex:outputPanel>
+		</apex:define>
+	</apex:composition>
+</apex:page>

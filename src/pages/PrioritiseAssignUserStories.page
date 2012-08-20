@@ -1,0 +1,65 @@
+<apex:page standardController="User_Story__c" extensions="PrioritisationAssignUserStory_VfExt" sidebar="false">
+    <apex:include pagename="VirtualWallCss" />
+
+    <apex:sectionHeader title="User Story Prioritisation and Assignment to Sprints" subtitle=""
+        description="Update the rank of User Story records or assign them to Sprints by dragging and dropping below."/>
+    <script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/lib/prototype.js')}"
+        type="text/javascript" />
+    <script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/src/scriptaculous.js')}"
+        type="text/javascript" />
+<!--
+    <apex:outputLink id="cancel" value="/{!Sprint__c.Id}" target="_parent" >Back to the Sprint</apex:outputLink>
+-->
+    <script type="text/javascript">
+        function updateRecords(container) {
+			var strSerialized = Sortable.serialize(container);
+			alert(strSerialized);
+			//PrioritisationAssignUserStory_VfExt.updateUserStories(strSerialized, function(result, event) {});
+        }
+    </script>
+
+    <div id="containerPrioritiseAssignUserStory" >
+        <div id="repeatUnassigned" class="cell dropArea dropAreaUserStory">
+            <apex:repeat id="repeatUserStoriesUnassigned" value="{!listStoriesUnassigned}" var="storyUnassigned">
+                <div id="userStory_{!storyUnassigned.Id}" class="draggable userStory">
+                    <apex:outputLink value="/{!storyUnassigned.Id}" target="_parent" >
+                		<h2>{!storyUnassigned.Name}</h2>
+            		</apex:outputLink>
+                </div>
+            </apex:repeat>
+        </div>
+        <div id="repeatSprints">
+	        <div id="userStory1" class="cell dropArea dropAreaUserStory">
+	        	userStory1
+	            <apex:repeat id="repeatUserStoriesAssigned" value="{!listStoriesUnassigned}" var="storyUnassigned">
+	                <div id="userStory_{!storyUnassigned.Id}A" class="draggable userStory">
+	                    <apex:outputLink value="/{!storyUnassigned.Id}" target="_parent" >
+	                		<h2>{!storyUnassigned.Name}</h2>
+	            		</apex:outputLink>
+	                </div>
+	            </apex:repeat>
+	        </div>
+	        <div id="userStory2" class="cell dropArea dropAreaUserStory">
+	        	userStory2
+	            <apex:repeat id="repeatUserStoriesAssignedB" value="{!listStoriesUnassigned}" var="storyUnassigned">
+	                <div id="userStory_{!storyUnassigned.Id}B" class="draggable userStory">
+	                    <apex:outputLink value="/{!storyUnassigned.Id}" target="_parent" >
+	                		<h2>{!storyUnassigned.Name}</h2>
+	            		</apex:outputLink>
+	                </div>
+	            </apex:repeat>
+	        </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // <![CDATA[
+            var UserStories = ['repeatUnassigned', 'repeatSprints'];
+            UserStories.each(function (id) {
+                Sortable.create(id, { tag: 'div', only: 'draggable', constraint: false, hoverclass: 'hoverActive',
+                                    dropOnEmpty: true, containment: UserStories, onUpdate: updateRecords}
+                );
+            });
+        // ]]>
+    </script>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:component controller="IdeaFeedController">
+    <apex:attribute name="feedName" description="The name of the feed." type="String" required="true" assignTo="{!conFeedName}"/>
+    <apex:attribute name="userId" description="The ID of the user." type="String" assignTo="{!conUserId}"/>                                               
+    <apex:attribute name="ideaId" description="The ID of the idea." type="String" assignTo="{!conIdeaId}"/>                                               
+    <apex:outputPanel styleClass="ibtFeedContainer" rendered="{!!ISNULL(feedPage)}">
+        <apex:outputLink value="{!addToGooglePage}" title="Add to Google" styleClass="ibtFeedGoogleIcon"/>        
+        <apex:outputLink value="{!feedPage}" title="{!feedName}" styleClass="ibtFeedIcon"/>        
+    </apex:outputPanel>
+</apex:component>

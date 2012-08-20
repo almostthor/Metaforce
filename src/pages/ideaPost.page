@@ -1,0 +1,70 @@
+<apex:page standardController="Idea" extensions="IdeaPostController" showHeader="false" action="{!redirectIfNotLoggedIn}">
+
+	<apex:composition template="ideaLayoutWrapper">
+		<apex:define name="content">
+
+			<apex:outputPanel layout="block" styleclass="ibtLargeContentContainer">
+				<apex:outputPanel layout="block" styleclass="ibtLargeContentTop" />
+
+                <apex:outputPanel layout="block" styleclass="ibtLargeContentInner" rendered="{!!$ObjectType.Idea.createable}">
+                    You do not have access to create an idea.
+                </apex:outputPanel>
+
+				<apex:outputPanel layout="block" styleclass="ibtLargeContentInner" rendered="{!$ObjectType.Idea.createable}">
+					<apex:form styleClass="ibtPostIdeaForm">
+						<h2>Post Idea</h2>
+
+						<!-- Idea Title -->
+						<apex:outputPanel styleClass="ibtFormRow">
+							<apex:outputPanel layout="block" styleClass="ibtTitleFieldContainer">
+								<apex:outputLabel for="ibtTitleField" value="Title" styleClass="ibtPseudoHidden" />
+								<apex:inputField styleClass="{!IF( OR(ISNULL(idea.Title), idea.Title == defaultTitle), 'ibtTitleFieldInitial','ibtTitleFieldFocus')}" value="{!idea.Title}" id="ibtTitleField" onfocus="focusTitle(this);" onblur="javascriptLoadSimilar()" />
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!ISNULL(idea.Title)}">
+								<script type="text/javascript">
+                                    $('{!$Component.ibtTitleField}').value = '{!defaultTitle}';
+                              </script>
+							</apex:outputPanel>
+						</apex:outputPanel>
+
+						<apex:actionFunction action="{!loadSimilar}" name="javascriptLoadSimilar" rerender="similarResults" />
+
+						<apex:outputPanel layout="block" id="similarResults" styleClass="ibtSimilarResults">
+							<apex:outputPanel layout="none" rendered="{!hasSimilarIdeas}">
+                            Possibly similar ideas:
+                            <apex:dataList value="{!similarIdeas}" var="similarIdea">
+									<ideas:detailOutputLink page="{!ideaViewPage}" ideaId="{!similarIdea.id}">{!similarIdea.title}</ideas:detailOutputLink>
+								</apex:dataList>
+							</apex:outputPanel>
+						</apex:outputPanel>
+
+						<!-- Idea Body -->
+						<apex:outputPanel styleClass="ibtFormRow">
+							<apex:outputLabel for="ibtBodyField" value="Describe your idea in detail." />
+							<apex:outputPanel layout="block" styleClass="ibtBodyFieldContainer">
+								<apex:inputField id="ibtBodyField" value="{!idea.Body}" />
+							</apex:outputPanel>
+						</apex:outputPanel>
+
+						<!-- Categories -->
+						<apex:outputPanel styleClass="ibtFormRow ibtPostIdeaCategoryListContainer">
+							<apex:outputLabel styleClass="ibtPostIdeaCategoryLabel" for="ibtCategories" value="Choose up to 3 categories." />
+							<apex:repeat value="{!categoryOptions}" var="o">
+								<apex:selectCheckboxes id="ibtCategories" layout="lineDirection" value="{!categoriesForIdea}">
+									<apex:selectOption itemValue="{!o.value}" itemLabel="{!o.label}" />
+								</apex:selectCheckboxes>
+							</apex:repeat>
+						</apex:outputPanel>
+
+						<!-- Submit Buttons -->
+						<apex:outputPanel layout="block" styleClass="ibtButtons">
+							<apex:commandButton action="{!save}" title="Post" styleClass="ibtButton"/>
+							<apex:commandLink action="{!cancel}" value="Cancel"/>
+						</apex:outputPanel>
+					</apex:form>
+				</apex:outputPanel>
+			</apex:outputPanel>
+		</apex:define>
+	</apex:composition>
+
+</apex:page>

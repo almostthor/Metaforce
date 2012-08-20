@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>15.0</apiVersion>
+    <description>Page that provides either the default layout or the overridden layout for all idea pages.</description>
+    <label>ideaLayoutWrapper</label>
+</ApexPage>

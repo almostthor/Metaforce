@@ -1,0 +1,68 @@
+<apex:page extensions="IdeaListController" standardController="Idea" recordSetVar="setIdeas" showHeader="false" action="{!redirectWithCommunityId}">
+
+	<apex:composition template="ideaLayoutWrapper">
+		<apex:define name="content">
+
+			<apex:outputPanel styleClass="ibtBanner" layout="block">
+				<apex:outputPanel styleClass="ibtBannerTop" layout="block" />
+				<apex:outputPanel styleClass="ibtBannerInner" layout="block">
+					<apex:outputLink value="{!ideaPostPage}" styleClass="ibtBannerPost" disabled="{!isLoggedIn && !$ObjectType.Idea.createable}">
+						<strong>Post</strong>
+						<p>Your Ideas</p>
+					</apex:outputLink>
+					<span class="ibtBannerArrow">&nbsp;</span>
+					<ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="recent" styleClass="ibtBannerVote">
+						<strong>Vote</strong>
+						<p>For Other Ideas</p>
+					</ideas:listOutputLink>
+					<span class="ibtBannerArrow">&nbsp;</span>
+					<ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="comments" styleClass="ibtBannerDiscuss">
+						<strong>Discuss</strong>
+						<p>With the Community</p>
+					</ideas:listOutputLink>
+					<span class="ibtBannerArrow">&nbsp;</span>
+					<ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="top" styleClass="ibtBannerSee">
+						<strong>See</strong>
+						<p>What We'll Deliver</p>
+					</ideas:listOutputLink>
+				</apex:outputPanel>
+			</apex:outputPanel>
+
+			<apex:outputPanel layout="block">
+				<c:ideaSortByBar />
+
+				<apex:outputPanel layout="block" styleclass="ibtLargeContentContainer">
+					<apex:outputPanel layout="block" styleclass="ibtLargeContentTop" />
+					<apex:outputPanel layout="block" styleclass="ibtLargeContentInner">
+						<h2><apex:outputText value="{!IF(categoryParam == '','All Categories',categoryParam)}" /></h2>
+						<apex:form rendered="{!sortParam != 'comments'}">
+							<apex:dataList value="{!ideasWithVotes}" var="ideaWithVote" styleClass="ibtIdeaList ibtIdeaListPadding">
+								<c:ideaDetails idea="{!ideaWithVote.idea}" howUserVoted="{!ideaWithVote.howUserVoted}" returnUrl="{!currentPageUrl}" />
+							</apex:dataList>
+						</apex:form>
+
+
+						<apex:outputPanel rendered="{!sortParam == 'comments'}" layout="block" styleclass="ibtCommentList">
+							<apex:dataList value="{!ideas}" var="i">
+								<c:ideaCommentDetails idea="{!i}" comment="{!i.lastComment}" showCategories="true" showCommunityNickName="true" returnUrl="{!currentPageUrl}" />
+							</apex:dataList>
+						</apex:outputPanel>
+
+
+						<apex:outputPanel styleClass="ibtIdeaListPaginationLinks" layout="block">
+							<ideas:listOutputLink communityId="{!communityId}" rendered="{!hasPreviousPage}" styleClass="ibtPagePrevious" page="{!pageName}" pageOffset="-1">Previous Page</ideas:listOutputLink>
+							<ideas:listOutputLink communityId="{!communityId}" rendered="{!hasNextPage}" styleClass="ibtPageNext" page="{!pageName}" pageOffset="1">Next Page</ideas:listOutputLink>
+						</apex:outputPanel>
+
+					</apex:outputPanel>
+
+				</apex:outputPanel>
+			</apex:outputPanel>
+
+
+			<c:ideaFeed feedName="{!feedName}" />
+
+		</apex:define>
+	</apex:composition>
+
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page Controller="sf4twitter.TwitterThumbsChangeController" action="{!ThumbsChange}" >
+
+<c:TwitterStyles />
+
+<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}"/>
+
+</apex:page>

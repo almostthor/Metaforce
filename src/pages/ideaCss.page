@@ -1,0 +1,1891 @@
+<apex:page cache="true" showHeader="false" contentType="text/css">
+
+/***** page-wide styles *****/
+body  {
+    -x-system-font: none;
+    background: #E3E3E3 none repeat scroll 0 0;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    text-align: center;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    line-height: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display:inline;
+}
+
+h1,h1 a {
+    color: #FF1100;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+ul li, ol li {
+    margin-left: 20px;
+}
+
+.ibtHeaderTabs li {
+    margin: 0;
+    padding: 0 0 0 7px;
+}
+
+ul.ibtHeaderTabs {
+    clear: both;
+    display: block;
+    float: none;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0;
+}
+
+.ibtHeaderTabs li a {
+    padding: 5px 15px 3px 6px;
+}
+
+a, a:hover {
+    color: #015BA7;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.clear {
+    clear: both;
+}
+
+.emphasize {
+    font-weight: bold;
+}
+
+.ibtUserContent {
+    overflow-x: hidden;
+    display: block;
+}
+
+.ibtUserContent ul {
+    list-style-type: disc;
+}
+
+.ibtUserContent ul ul {
+    list-style-type: circle;
+}
+
+.ibtUserContent ul ul ul {
+    list-style-type: square;
+}
+
+.ibtUserContent ol {
+    list-style-type: decimal;
+}
+
+.ibtUserContent li {
+    margin-left: 2.5em !important; 
+    padding-left: 0 !important;
+}
+
+/***** messages *****/
+
+.message {
+    border-style: solid;
+    margin-top: 10px;
+    border-color: #cccccc;
+    border-width: 1px 0px;
+    margin: 0 20px 20px 0;
+    padding: 6px 8px 6px 6px;
+    font-size: 13px;
+    background: none;    
+}
+
+.message h4 {
+    padding-right: 0.5em;
+    font-size: 18px;
+    color: #fca914;    
+}
+
+.confirmM3 .msgIcon {
+    background-image: url({!$Resource.image_confirmIcon});
+    background-position:0 0;
+    height:24px;
+    width:24px;
+}
+
+.errorM3 .msgIcon {
+    background-image: url({!$Resource.image_errorIcon});
+    width: 30px;
+    height: 30px;
+}
+
+.message .messageTable .messageCell {
+    vertical-align:middle;
+}
+
+.message .messageText {
+    margin-left:8px;
+}
+
+.message .messageText h4 {
+    font-weight:bold;
+}
+
+/***** forms *****/
+.ibtButtons {
+    display: block;
+}
+
+.ibtButton {
+	color:#FFFFFF;
+	cursor:pointer;
+	display:inline;
+    border: 0;
+    background: none;
+    padding: 0;
+}    
+
+.ibtFormRow {
+    padding: 12px 0;
+    display: block;
+}
+
+.ibtFormRow label {
+    color: #285ea4;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ibtFormRow label.ibtPseudoHidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+/***** layout *****/
+.ibtSecondary {
+    float: left;
+    width: 266px;
+    margin-left: 16px;
+    _margin-left: 8px; /* ie dm bug */
+    margin-top: 20px;
+}
+
+.ibtPrimary {
+    margin: 20px 0px 20px 282px;
+    width: 700px;
+}
+
+.ibtPrimary h2 {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    display: block;
+    align: left;
+}
+
+/***** sort by bar styles *****/
+.ibtSortTabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 25px;
+    font-size: 13px;
+}
+
+.ibtSortTabs a {
+    color: #000000;
+}
+
+.ibtSortTabs li {
+    background: url( {!$Resource.image_sortBarTabLeft} ) no-repeat left top;
+    float: left;
+    margin: 0;
+    padding: 0 0 0 6px;
+}
+
+.ibtSortTabs li.ibtSortTabSelected {
+    background: url( {!$Resource.image_sortBarTabSelectedLeft} ) no-repeat left top;
+}
+
+.ibtSortTabs li span a {
+    display: block;
+    background: url( {!$Resource.image_sortBarTabRight} ) no-repeat right top;
+    padding: 7px 10px 5px 7px;
+}
+
+.ibtSortTabs li.ibtSortTabSelected span a {
+    color: #FFF;
+    background: url( {!$Resource.image_sortBarTabSelectedRight} ) no-repeat right top;
+}
+
+/***** header *****/
+body.default {
+    background: #89817D none repeat scroll 0 0;
+    text-align: center;
+}
+
+body.default .ibtPage {
+    background: #89817D url( {!$Resource.image_bg} ) repeat-y scroll center top;
+    padding: 0 0 0 15px;
+    _padding: 0 0 0 7px;
+    width: 998px;
+}
+
+.ibtPage {
+    clear: both;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+}
+
+.ibtHeader {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    width: 982px;
+}
+
+body.default .ibtHeader {
+    margin-left: 0;
+}
+
+body.default .ibtHeader {
+    background: transparent url( {!$Resource.image_insertYourLogo} ) no-repeat scroll 0 0;
+    height: 114px;
+}
+
+body.default .ibtHeader h1 {
+    height: 82px;
+}
+
+body.default .ibtHeader h1 a {
+    background: transparent url( {!$Resource.image_companyLogo} ) no-repeat scroll 0 0;
+    display: block;
+    width: 300px;    
+    height: 82px;
+}
+
+body.default .ibtHeader .ibtHeaderLogin {
+    display: block;
+    margin-top: 50px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ibtHeader h1 {
+    float: left;
+    height: 75px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 345px;
+}
+
+body.default .ibtHeader .ibtHeaderTabs {
+    background: transparent url( {!$Resource.image_bgMenu} ) no-repeat scroll left top;
+    border-bottom: medium none;
+    color: #FFFFFF;
+    font-size: 13px;
+    height: 32px;
+    margin: 0;
+    padding-left: 24px;
+    text-align: left;
+}
+
+.ibtHeader h1 a {
+    display: block;
+    height: 95px;
+    padding-top: 200px;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li {
+    background: transparent none repeat scroll 0 0;
+    float: left;
+    line-height: 20px;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li.selected {
+    background: transparent url( {!$Resource.image_tab} ) no-repeat scroll left top;
+    height: 32px;
+    margin-left: 5px;
+    overflow: hidden;
+    padding: 0 0 0 12px !important;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li.selected a {
+    background: transparent url( {!$Resource.image_tab} ) no-repeat scroll right top;
+    border-right: medium none;
+    color: #333333;
+    display: block;
+    height: 32px;
+    margin-top: 0;
+    padding: 8px 24px 0 15px;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li a {
+    background: transparent none repeat scroll 0 0;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    height: 32px;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li.ibtHeaderTabsLogin {
+    float: right;
+}
+
+body.default .ibtHeader .ibtHeaderTabs li.ibtHeaderTabsLogin a {
+    padding-right: 10px;
+}
+
+/***** footer *****/
+.ibtPageBottom {
+    width: 998px;
+    background: #89817D url( {!$Resource.image_bgBottom} ) no-repeat scroll center top;
+    margin: 0px auto;
+}
+
+.ibtFooter {
+    width: 982px;
+    _width: 1014px;
+    padding: 16px;
+    margin: 0px auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-size-adjust: none;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+}
+
+.ibtFooter a {
+    color: #FFFFFF;
+}
+
+.ibtFooter .ibtPoweredBySFDC {
+    float: left;
+    width: 129px;
+    height: 36px;
+    text-align: left;
+    background: transparent url( {!$Resource.image_poweredBySfdc} ) no-repeat scroll top left;
+}
+
+.ibtPoweredBySFDC a {
+    width: 129px;
+    height: 36px;
+    position: absolute;
+}
+
+.ibtPoweredBySFDCText {
+    display: none;
+}
+
+.ibtFooter .ibtFooterNavigation {
+    text-align: center;
+}
+
+.ibtFooter .ibtFooterText {
+    float: right;
+    width: 200px;
+    text-align: right;
+}
+
+.ibtClearfloat {
+    clear: both;
+    font-size: 1px;
+    height: 0;
+    line-height: 0;
+}
+
+/***** search box *****/
+body.default #search {
+    background: #F8F8F8 url( {!$Resource.image_searchBox} ) no-repeat scroll left top;
+    color: #FFFFFF;
+    height: 96px;
+    margin: 0 17px 0 0px;
+    width: auto;
+    overflow: hidden;
+}
+
+body.default #search h2 {
+    font-size: 15px;
+    font-weight: normal;
+    padding: 13px 18px;
+    display: block;
+}
+
+body.default #search form {
+    background: transparent none repeat scroll 0 0;
+    padding: 10px 20px;
+    position: relative;
+    display: block;
+    width: 156px;
+}
+
+body.default #search input {
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+    font-size: 15px;
+    margin-right: 2px;
+    margin-top: 6px;
+    width: 184px;
+}
+
+body.default #search .ibtSearchGo {
+    margin-top: 0px;
+    border: medium none !important;
+    cursor: pointer;
+    left: 188px;
+    position: relative;
+    top: -22px;
+    width: 25px !important;
+    height: 26px;
+}
+
+/***** post idea button *****/
+.ibtPostIdeaButton {
+    margin: 12px 17px 0 0;
+    width: auto;
+    _text-align:center;
+}
+
+.ibtPostIdeaButton a {
+    display:block;
+    background: #F8F8F8 url( {!$Resource.image_postIdeaButton} ) no-repeat scroll center top;
+    height: 41px;
+    width: 118px;
+    margin: auto;
+}
+
+/***** banner *****/
+.ibtBanner {
+    background: transparent url( {!$Resource.image_bannerBg} ) no-repeat scroll left bottom;
+    margin-bottom: 20px;
+    padding: 0 0 10px;
+    width: 678px;
+}
+
+.ibtBanner a {
+    color: #000000;
+}
+
+.ibtBanner .ibtBannerTop {
+    background: transparent url( {!$Resource.image_bannerBg} ) no-repeat scroll left top;
+    padding: 7px 10px 3px;
+}
+
+.ibtBanner .ibtBannerInner {
+    background: #fdfdfd none repeat scroll 0 0;
+    border-color: #dbdbdb;
+    border-style: solid;
+    border-width: 0 1px;
+    padding: 0px 10px;
+    overflow: hidden;
+}
+
+.ibtBanner p {
+    font-size: 12px;
+    color: 666666;
+    margin: 8px 0px 0px 0px;
+}
+
+.ibtBannerPost,.ibtBannerVote,.ibtBannerDiscuss,.ibtBannerSee,.ibtBannerArrow {
+    height: 42px;
+    display: block;
+    float: left;
+    padding-top: 46px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.ibtBannerPost,.ibtBannerVote,.ibtBannerDiscuss,.ibtBannerSee {
+    width: 136px;
+}
+
+.ibtBannerArrow {
+    width: 30px;
+}
+
+.ibtBannerPost {
+    background: transparent url( {!$Resource.image_bannerPost} ) no-repeat scroll center top;
+}
+
+.ibtBannerVote {
+    background: transparent url( {!$Resource.image_bannerVote} ) no-repeat scroll center top;
+}
+
+.ibtBannerDiscuss {
+    background: transparent url( {!$Resource.image_bannerDiscuss} ) no-repeat scroll center top;
+}
+
+.ibtBannerSee {
+    background: transparent url( {!$Resource.image_bannerSee} ) no-repeat scroll center top;
+}
+
+.ibtBannerArrow {
+    background: transparent url( {!$Resource.image_bannerArrow} ) no-repeat scroll left 20px;
+}
+
+/***** filter panel (category/status) *****/
+.ibtFilterPanel {
+    background: transparent url( {!$Resource.image_filterPanelBg} ) no-repeat scroll left bottom;
+    margin: 12px 0px;
+    padding: 0 0 8px;
+    width: 248px;
+    position: relative;
+}
+
+.ibtFilterPanel .ibtFilterPanelTop {
+    background: transparent url( {!$Resource.image_filterPanelBg} ) no-repeat scroll left top;
+    padding: 132px 10px 0px;
+}
+
+.ibtFilterPanel .ibtFilterPanelInner {
+    background: #fdfdfd none repeat scroll 0 0;
+    border-color: #dbdbdb;
+    border-style: solid;
+    border-width: 0 6px 0 5px;
+    padding: 0px 10px;
+}
+
+.ibtFilterPanel .ibtFilterStatus {
+    position: absolute;
+    top: 18px;
+    left: 14px;
+}
+
+.ibtFilterPanel .ibtFilterCategory {
+    position: absolute;
+    top: 88px;
+    left: 14px;
+}
+
+.ibtFilterPanel .ibtFilterCategoryList a {
+    color: #666666;
+}
+
+.ibtFilterPanel .ibtFilterCategoryList a:hover {
+    color: #000000;
+}
+
+.ibtFilterPanel h2 {
+    display: block;
+    font-size: 15px;
+    height: 1em;
+}
+
+.ibtFilterPanelInner ul li {
+    font-size: 14px;
+    color: #727272;
+    margin: 0px 0px 12px 0px;
+}
+
+.ibtFilterPanelSelected {
+    font-weight: bold;
+}
+
+.ibtFilterStatus select {
+    margin-top: 6px;
+}
+
+.ibtFilterStatus input {
+    display:none;
+}
+
+.ibtFilterPanel a {
+    color: #000000;
+}
+
+/***** login/register/reset password *****/
+
+.ibtSiteLoginContainer, .ibtSiteRegisterContainer, .ibtSiteResetPasswordContainer {
+    font-size: 13px;
+}
+
+.ibtSiteLoginContainer p, .ibtSiteRegisterContainer p, .ibtSiteResetPasswordContainer p {
+    margin: 13px 0;
+}
+
+.ibtSiteLoginForm label, .ibtSiteRegisterForm label, .ibtSiteResetPasswordForm label {
+    float: left;
+    width: 120px;
+    margin-right: 10px; 
+    text-align: right;
+    line-height: 24px;
+    height: 24px;
+}
+
+.ibtSiteLoginForm input, .ibtSiteRegisterForm input, .ibtSiteResetPasswordForm input{
+    width: 200px;
+}
+
+.ibtSiteLoginForm div, .ibtSiteRegisterForm div {
+    padding-bottom: 10px;
+}
+
+.ibtSiteLoginForm .ibtButtons, .ibtSiteRegisterForm .ibtButtons, .ibtSiteResetPasswordForm .ibtButtons {
+    text-align: center;
+    margin-top: 14px;
+}
+
+.ibtLoginRedirect, .ibtRegisterRedirect {
+    margin: -4px 0 0 132px;
+}
+
+.ibtLoginRedirect a, .ibtRegisterRedirect a {
+    margin-right: 10px;
+}
+
+.ibtResetPasswordButton {
+    background: transparent url({!$Resource.image_resetPasswordButton}) no-repeat scroll center top;
+    height: 34px;
+    width: 148px;
+}
+
+.ibtLoginButton {
+    background: transparent url({!$Resource.image_loginButton}) no-repeat scroll center top;
+    height: 39px;
+    width: 116px;
+}
+
+.ibtRegisterButton {
+    background: transparent url({!$Resource.image_registerButton}) no-repeat scroll center top;
+    height: 39px;
+    width: 166px;
+}
+
+.ibtSiteResetPasswordConfirmContainer h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ibtSiteResetPasswordConfirmContainer a {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/***** account details *****/
+.ibtAccountDetailsForm {
+    font-size: 13px;
+    margin-top: 14px;
+}
+
+.ibtAccountDetailsForm label, .ibtAccountDetailsForm label {
+    float: left;
+    width: 160px;
+    margin-right: 10px; 
+    text-align: right;
+    line-height: 24px;
+    height: 24px;
+}
+
+.ibtAccountDetailsForm input {
+    width: 200px;
+}
+
+.ibtAccountDetailsForm div {
+    padding-bottom: 10px;
+}
+
+.ibtAccountDetailsForm .ibtButtons {
+    text-align: center;
+    margin-top: 14px;
+}
+
+.ibtAccountChangeEmail {
+    margin-top: 34px;
+}
+
+.ibtChangePassword {
+    background: transparent url({!$Resource.image_changePasswordButton}) no-repeat scroll center top;
+    height: 34px;
+    width: 155px;
+}
+
+.ibtChangeEmail {
+    background: transparent url({!$Resource.image_changeEmailButton}) no-repeat scroll center top;
+    height: 34px;
+    width: 136px;
+}
+
+/*** Added for profile page styling *****/
+.ibtProfileContainer {
+    margin: 20px 0px;
+    padding: 0 0 10px;
+    width: 678px;
+}
+
+.ibtProfileSidebar {
+    width: 131px;
+    float: left;
+}
+
+.ibtProfileIdeaList {
+    width: 500px;
+    vertical-align: top;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.ibtIdeaProfileSidebarItem {
+    padding: 7px 0px 7px 10px;
+    font-size: 14px;
+    color: #77A53B;
+    background: #ffffff url({!$Resource.image_profileNavSideBarItemTriangle}) 5px 50% no-repeat;
+}
+
+.ibtIdeaProfileSidebarItem a {
+    color: #000000;
+}
+
+.ibtIdeaProfileSidebarItemCurrent {
+    background-color: #77A53B;
+    color: white;
+    background-image: url({!$Resource.image_profileNavCurrentSideBarItemTriangle});
+    background-repeat: no-repeat;
+}
+
+.ibtIdeaProfileSidebarItem a, .ibtIdeaProfileSidebarItemCurrent span {
+    padding-left: 8px;
+}
+
+.ibtIdeaProfilePhoto {
+    border: 1px solid #6B8E23;
+    background-color: #DEE7D0;
+    padding: 5px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.ibtProfileIdeaList .ibtIdeaList li, .ibtIdeaList li {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.ibtProfileIdeaList .ibtIdeaList .ibtIdeaSection, .ibtCommentList .ibtIdeaSection{
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.ibtCommunityNicknameCaption {
+    padding: 0.5em 0;
+    text-align: center;
+    overflow: hidden;
+    width: 120px;
+    font-size: 16px;
+}
+
+/****** content - green top table - large ******/
+
+.ibtLargeContentContainer {
+    background: transparent url( {!$Resource.image_sectionLarge} ) no-repeat scroll left bottom;
+    padding: 0 0 8px 0;
+    width: 679px;
+    float: left;
+}
+
+.ibtLargeContentTop {
+    background: transparent url( {!$Resource.image_sectionLarge} ) no-repeat scroll left top;
+    padding: 8px 16px 0 16px;
+}
+
+.ibtLargeContentInner {
+    background: #fdfdfd none repeat scroll 0 0;
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 0 1px;
+    padding: 10px;
+    overflow: hidden;
+    width: 657px;
+}
+
+/***** content - green top table - medium *****/
+.ibtContentSplitPrimary {
+    background: transparent url( {!$Resource.image_sectionMedium} ) no-repeat scroll left bottom;
+    padding: 0 0 8px 0;
+    width: 451px;
+    float: left;
+}
+
+.ibtContentSplitPrimary .ibtContentSplitPrimaryTop {
+    background: transparent url( {!$Resource.image_sectionMedium} ) no-repeat scroll left top;
+    padding: 8px 16px 0 16px;
+}
+
+.ibtContentSplitPrimary .ibtContentSplitPrimaryInner {
+    background: #fdfdfd none repeat scroll 0 0;
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 0 1px;
+    padding: 10px;
+    overflow: hidden;
+    word-wrap: break-word; /* This is a IE hack to avoid overflowing containers */    
+}
+
+/***** content - gray top table - small *****/
+.ibtContentSplitSecondary {
+    background: transparent url( {!$Resource.image_sectionSmall} ) no-repeat scroll left bottom;
+    padding: 0 0 4px 0;
+    width: 220px;
+}
+
+.ibtContentSplitSecondary .ibtContentSplitSecondaryTop {
+    background: transparent url( {!$Resource.image_sectionSmall} ) no-repeat scroll left top;
+    padding: 8px 16px 0 16px;
+}
+
+.ibtContentSplitSecondary .ibtContentSplitSecondaryInner {
+    background: #fdfdfd none repeat scroll 0 0;
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 0 1px;
+    padding: 10px;
+    overflow: hidden;
+    word-wrap: break-word; /* This is a IE hack to avoid overflowing containers */    
+}
+
+.ibtContentSplitSecondary {
+    margin-left: 460px;
+}
+
+/***** content - shared *****/
+.ibtLargeContentContainer h2, .ibtContentSplitPrimary h2, .ibtContentSplitSecondary h2 {
+    width: 100%;
+    border-bottom: 1px dotted #999999;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+/***** home *****/
+
+.ibtHomeContainer .ibtContentSplitPrimary, .ibtHomeContainer .ibtContentSplitSecondary {
+    margin-bottom: 20px;
+}
+
+.ibtHomeContainer {
+    font-size: 13px;
+}
+
+.ibtHomeContainer .ibtHomeIdeaList {
+    background: transparent url( {!$Resource.image_sectionMediumPlain} ) no-repeat scroll left bottom;
+}
+
+.ibtHomeContainer .ibtHomeIdeaList .ibtHomeIdeaListTop {
+    background: transparent url( {!$Resource.image_sectionMediumPlain} ) no-repeat scroll left top;
+}
+
+.ibtHomeIdeaList li {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.ibtHomeIdeaList li span {
+    font-size: 12px;
+}
+
+.ibtHomeIdeaList li span a {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ibtHomeIdeaListFeedContainer .ibtFeedContainer {
+    clear: none;
+    padding-top: 0;
+}
+
+.ibtHomeIdeaListFeedContainer {
+    float: right;
+}
+
+.ibtHomePrimaryContainer, .ibtHomeSecondaryContainer {
+    float: left;
+}
+.ibtHomePrimaryContainer {
+    width: 451px;
+}
+
+.ibtHomeSecondaryContainer {
+    width: 220px;
+    padding-left: 10px;
+}
+
+.ibtHomeSecondaryContainer .ibtContentSplitSecondary {
+    margin-left: 0px;
+}
+
+.ibtHomeBanner {
+    margin-bottom: 20px;
+}
+
+/***** about *****/
+
+.ibtAboutContainer {
+    font-size: 13px;
+}
+
+.ibtAboutBanner {
+    margin-bottom: 20px;
+}
+
+/***** layout of the idea with subject, content and comments line *****/
+.ibtIdeaList {
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.ibtIdeaSection {
+    padding: 5px 0 20px 10px;
+    overflow-x: hidden;
+    word-wrap: break-word; /* This is a IE hack to avoid overflowing containers */
+    clear: left;
+    float: left;
+    width: 100%;
+}
+
+.ibtIdeaSide {
+    display: block;
+    float: left;
+    border-width: 0;
+    font-size: 75%;
+    width: 65px;
+}
+
+.ibtIdeaContent {
+    display: block;
+    float: left;
+}
+
+.ibtIdeaContentWidth {
+    width: 430px;
+}
+
+.ibtIdeaSubject {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    overflow-x: hidden;
+}
+
+h3.ibtIdeaSubject {
+    display: inline;
+}
+
+.ibtIdeaListRCColumn .ibtIdeaSubject {
+    font-size: 100%;
+}
+
+.ibtIdeaStatus {
+    background-color: #F7F7AB;
+    color: #333333;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 8px;
+    margin-left: 6px;
+}
+
+.ibtTopPadding {
+    padding-top: 10px;
+}
+
+.ibtIdeaBody {
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+    font-weight: normal;
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.ibtIdeaComment {
+    padding-top: 4px;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.ibtIdeaFooter {
+    font-size: 11px;
+    line-height: 150%;
+}
+
+a.ibtIdeaCategory {
+    font-weight: normal;
+}
+
+.ibtNoItemMessage {
+    color: #333333;
+    display: inline;
+    font-size: 16px;
+    font-weight: bold;
+    overflow-x: hidden;
+    padding: 5px 0 15px 10px;
+}
+
+/***** Voted On activity in Profile Page *****/
+.ibtProfileVoteContainer {
+    text-align: center;
+    margin: 0 auto;
+    width: 63px !important;
+    padding: 0 !important;    
+}
+
+.ibtProfileVotedUpButton .ibtProfileVoteUp, .ibtProfileVotedDownButton .ibtProfileVoteDown {
+    border-top: 1px #c4c9da;
+    border-right: 1px #878da4;
+    border-bottom: 1px #878da4;
+    border-left: 1px #c4c9da;
+    display: block;
+    margin: 0 0 2px 0;
+    padding-top: 18px;
+    padding-bottom: 0px;
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ibtProfileVotedUpButton .ibtProfileVoteUp {
+    background: #ffffff url( {!$Resource.image_profileVotePromoted} ) no-repeat scroll center top;
+}
+
+.ibtProfileVotedDownButton .ibtProfileVoteDown {
+    background: #ffffff url( {!$Resource.image_profileVoteDemoted} ) no-repeat scroll center top;
+}
+
+.ibtProfileVoteButtonText {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ibtProfileVoteStatusBlock {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.ibtProfileVoteTotalLabel {
+    font-size: 93%;
+}
+
+.ibtProfileVoteTotal {
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 108%;
+}
+
+/***** Profile User Activity *****/
+
+.ibtActivityFeed {
+    display: block;
+}
+
+.ibtProfileActivityBlock {
+    padding-top: 10px;
+}
+
+.ibtActivity {
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.ibtActivitySingleElement {
+    display: block;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+}
+
+.ibtActivityFeed li,.ibtActivityFeed ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ibtActivityBlock {
+    padding: 15px 0 20px 0;
+    clear: both;
+}
+
+.ibtActivitySection {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    background-color: #DEE7D0;
+    border-top: 1px solid #6B8E23;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: block;
+    align:left;
+    padding-left: 10px;
+}
+
+.ibtActivityFirstLine {
+    color: #444;
+    padding-bottom: 8px;
+    font-size: 14px;
+    background-position: left 8px;
+    padding-top:10px;
+}
+
+.ibtActivitySecondLine {
+    color: #000000;
+    padding-bottom: 3px;   
+}
+
+.ibtActivitySpacer {
+    height: 2em;
+}
+
+.ibtActivityFeed .ibtUserLink a,.ibtActivityFeed .ibtUserLink a:hover,.ibtActivityFeed .ibtUserLink a:visited {
+    font-weight: normal;
+}
+
+.ibtCommentActivity {
+    background-image: url(/img/ideas/icons/ideasCommented16.gif);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+
+.ibtActivityCommentSnippet blockquote {
+    background-image: url(/img/ideas/icons/openquotes16.gif);
+    padding-left: 40px;
+    padding-bottom: 5px;
+    background-repeat: no-repeat;
+    background-position: 20px top;
+    margin: 0;
+    font-size: 14px;
+}
+
+.ibtClosingQuote {
+    background-image: url(/img/ideas/icons/closequotes16.gif);
+    width: 20px;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 20px;
+    padding-left: 0px;
+}
+
+.ibtVoteActivity {
+    background-image: url(/img/ideas/icons/voted16.gif);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+
+.ibtPromotedActivity {
+    background-image: url(/img/ideas/icons/voted16.gif);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+
+.ibtDemotedActivity {
+    background-image: url(/img/ideas/icons/voted16.gif);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+
+.ibtSubmittedActivity {
+    background-image: url(/img/ideas/icons/posted16.gif);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+
+/***** idea details - comments *****/ /***** idea details - merged ideas section *****/
+.ibtMergedIdeasTitle {
+    background: transparent url({!$Resource.image_mergedArrow}) no-repeat scroll left center;
+    color: #015BA7;
+    display: block;
+    font-size: 16px;
+    line-height: 42px;
+    margin: 0 0 5px;
+    margin-bottom: 0;
+    padding: 0 0 0 45px;
+    padding-bottom: 0;
+}
+
+.ibtMergedIdeasList {
+    margin-left: 45px;
+    margin-top: 0;
+}
+
+.ibtMergedIdeasList dt a {
+    font-size: 14px;
+    color: #555;
+    line-height: 150%;
+    font-weight: bold;
+}
+
+.ibtMergedIdeaBlock {
+    clear:left;
+    margin: 0 0 0 82px;
+}
+
+/***** idea details - posted by line *****/
+.ibtByline {
+    color: #666;
+    font-size: 11px;
+}
+
+.ibtBylineCategories {
+    font-size: 11px;
+}
+
+/***** user link *****/
+
+.ibtUserLinkNormal {
+    background: url({!$Resource.image_user}) left no-repeat;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.ibtUserLinkExpert {
+    background: url({!$Resource.image_userExpert}) left no-repeat;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+/***** idea details - comment count and link *****/
+.ibtIdeaDetailCommentNumber {
+    background: url({!$Resource.image_comment_bubble}) left no-repeat;
+    padding-left: 20px;
+    margin: 0;
+    display: inline;
+}
+
+.ibtIdeaDetailCommentNumberLink {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/***** votes *****/
+.baseVoteButton a,.baseVoteButton a:hover,.baseVotedButton a,.baseVotedButton a:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+.baseVoteContainer {
+    text-align: center;
+    margin: 0 auto;
+    width: 63px !important;
+    padding: 0 !important;    
+}
+
+.baseVoteContainerLong {
+    padding: 0 12px;
+    text-align: center;
+    margin: 0 auto;
+    width: 9.5em;
+}
+
+.baseVoteStatusBlock {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.baseVoteStatusBlock .baseVoteTotalLabel {
+    font-size: 93%;
+}
+
+.baseVoteStatusBlock .baseVoteTotal {
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.baseVoteButton a.baseVoteUp,.baseVoteButton a.baseVoteDown {
+    border-top: 1px solid #c4c9da;
+    border-right: 1px solid #878da4;
+    border-bottom: 1px solid #878da4;
+    border-left: 1px solid #c4c9da;
+    display: block;
+    margin: 0 0 2px 0;
+    text-align: center;
+    zoom: 1;
+    /* IE 6 hack to enable 'hasLayout' so the entire box is clickable instead of just the text */
+}
+
+.baseVoteButton a.baseVoteUp {
+    background: transparent url({!$Resource.image_promoteDiv}) no-repeat scroll center top;
+    padding-top: 28px;
+    padding-bottom: 2px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.baseVoteButton a.baseVoteUp:hover {
+    background: transparent url({!$Resource.image_promoteDiv}) no-repeat scroll center top;
+    border-top: 1px solid #ffae00;
+    border-right: 1px solid #c38500;
+    border-bottom: 1px solid #c38500;
+    border-left: 1px solid #ffae00;
+}
+
+.baseVoteButton a.baseVoteUp:active {
+    background: transparent url({!$Resource.image_promoteDiv}) no-repeat scroll center top;
+    border: 1px solid #ffae00;
+}
+
+.baseVoteButton a.baseVoteDown {
+    background: transparent url({!$Resource.image_demoteDiv}) no-repeat scroll center center;
+    padding: 2px 8px;
+}
+
+.baseVoteButton a.baseVoteDown:hover {
+    background: transparent url({!$Resource.image_demoteDiv}) no-repeat scroll center center;
+    border-top: 1px solid #f55050;
+    border-right: 1px solid #ac0000;
+    border-bottom: 1px solid #ac0000;
+    border-left: 1px solid #f55050;
+}
+
+.baseVoteButton a.baseVoteDown:active {
+    background-color: #d4d7e1;
+    background-image: none;
+    border-top: 1px solid #f55050;
+    border-right: 1px solid #ac0000;
+    border-bottom: 1px solid #ac0000;
+    border-left: 1px solid #f55050;
+    color: #ac0000;
+}
+
+.baseInsideVote,.baseInsideVoted {
+    display: block;
+    text-align: center;
+}
+
+.baseInsideVoted {
+    font-weight: bold;
+}
+
+.baseVoteButton .baseInsideVoted {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+}
+
+.baseVotedButton .baseInsideVote {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+}
+
+.baseMergedIdeaVoteButton {
+    border: 1px solid #c4c9da;
+    display: block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.baseVoteScoreFloater {
+    position: relative;
+    left: 0px;
+    top: -40px;
+    z-index: 4;
+    font-weight: bold;
+    color: #cc0000;
+    line-height: 1em;
+}
+
+.voteTotal {
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+.voteTotal .value {
+    font-weight: bold;
+}
+
+a.voteButton {
+    display: block;
+    zoom: 1;
+    /* IE 6 hack to enable 'hasLayout' so the entire box is clickable instead of just the text */
+}
+
+.voteUpButton {
+    background: transparent url( {!$Resource.image_promoteDiv} ) no-repeat scroll center top;
+    width: 62px;
+    height: 40px;
+}
+
+.voteDownButton {
+    background: transparent url( {!$Resource.image_demoteDiv} ) no-repeat scroll center top;
+    width: 62px;
+    height: 16px;
+    margin-top: 4px;
+}
+
+.baseVotedButton .voteButton {
+    width: 62px;
+    height: 40px;
+}
+
+.baseVotedDownButton .votedUpButton, .baseVotedUpButton .votedDownButton {
+    display: none;
+}
+
+.votedUpButton {
+    background: transparent url( {!$Resource.image_promoteDivDisabled} ) no-repeat scroll center top;
+}
+
+.votedDownButton {
+    background: transparent url( {!$Resource.image_demoteDivDisabled} ) no-repeat scroll center top;
+}
+
+.baseVoteButtonText {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*This class is used to display the 'Merged' text for Voted On Page*/
+.ibtIdeaMerged {
+    background-color: #CCDCE9;
+    font-size: 93%;
+}
+
+/***** pagination *****/
+.basePaginationLinks {
+    display: block;
+}
+
+.basePaginationLinks a {
+    font-weight: bold;
+}
+
+.ibtIdeaListPaginationLinks {
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    line-height: 25px;
+    margin-right: 10px;
+    clear: both;    
+}
+
+.ibtIdeaListPaginationLinks a {
+    font-weight: bold;
+}
+
+.ibtPaginationLinks a {
+    color: #000000;
+}
+
+.ibtPagePrevious {
+    background: url({!$Resource.image_previous}) no-repeat left center;
+    padding: 5px 0 5px 25px;
+}
+
+.ibtPageNext {
+    background: url({!$Resource.image_next}) no-repeat right center;
+    padding: 5px 25px 5px 20px;
+}
+
+/***** feeds *****/
+
+.ibtFeedContainer {
+    padding-top: 10px;
+    clear: both;
+    display: block;
+}
+
+.ibtFeedIcon {
+    background:transparent url(/img/ideas/icons/rss.png) no-repeat scroll left bottom;
+    display: block;
+    height: 16px;
+    width: 16px;
+    margin-left: 70px;
+}
+
+.ibtFeedGoogleIcon {
+    background:transparent url(http://gmodules.com/ig/images/plus_google.gif) no-repeat scroll left bottom;
+    display: block;
+    height: 17px;
+    width: 62px;
+    float: left;
+}
+
+/***** comments *****/
+.ibtCommentRowContainer {
+    margin: 30px 0;
+}
+
+.ibtCommentRowContext {
+    float: left;
+    border-right: 1px dotted #999;
+    padding-right: 20px;
+    width: 132px;
+    overflow: hidden;
+}
+
+.ibtCommentRowDate {
+    margin: 5px 0 0 20px;
+}
+
+.ibtCommentRowDescription {
+    font-size: 12px;
+    color: #333;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 450px;
+    padding-left: 0;
+    margin-left: 165px;   
+    line-height: 125%; 
+}
+
+.ideaViewSection .ibtButtons {
+    text-align: center;   
+}
+
+.ibtButtonPostComment {
+    background: url({!$Resource.image_postCommentButton}) no-repeat scroll center top;
+    height: 36px;
+    width: 140px;
+}
+
+/***** view idea *****/
+.ideaViewSection {
+    background-color: #F2F6EB;
+    border-top: 1px solid #B4CD8E;
+    border-bottom: 1px solid #B4CD8E;
+    margin: 6px;
+    padding: 10px;
+    width: 624px;
+    clear: left;
+}
+
+.ideaViewSection h3 {
+    color: #015BA7;
+    font-size: 16px;
+    display: block;
+    line-height: 42px;
+    margin-bottom: 5px;
+    padding-left: 45px;
+}
+
+.ideaViewSection .btn {
+    border: 0;
+    padding: 0;
+}
+
+.flowingVoterNickname {
+    width: 120px;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    float: left;
+}
+
+.flowingVoterNickname .ibtUserLink {
+    display: block;
+}
+
+.returnToMasterIdea {
+    font-size: 12px;
+    background-color: #ffc;
+    border: 1px solid #ccc;
+    padding: 0.7em;
+    margin: 1em;
+    width: 634px;
+}
+
+ul.ibtIdeaViewMulticolumn {
+    padding: 2px 0;
+}
+
+ul.ibtIdeaViewMulticolumn li.ibtVote, ul.ibtIdeaViewMulticolumn li.ibtBody {
+    display: block;
+    float: left;
+    vertical-align: top;
+    margin: 0 0 10px;
+    list-style: none;
+    padding-top: 8px;
+}
+
+ul.ibtIdeaViewMulticolumn li.ibtVote {
+    width: 82px;
+}
+    
+ul.ibtIdeaViewMulticolumn li.ibtBody {
+    width: 500px;
+}
+
+ul.ibtIdeaViewMulticolumn li.ibtBody .ibtIdeaBody {
+    padding: 5px 0 10px;
+    border-bottom: none;
+}
+
+.ibtCommentCount {
+    background: #F2F6EB url( {!$Resource.image_commentBubbleLarge} ) no-repeat left center;
+    display: block;
+}
+
+.ibtPaginationLinks {
+    position: relative;
+    line-height: 16px;
+}
+
+.ibtPaginationLinks div {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ibtPaginationLinks img {
+    vertical-align: middle;
+}
+
+div.ibtIdeaViewVotes {
+    background: #F2F6EB url( {!$Resource.image_votesSection} ) no-repeat scroll left center;
+}
+
+.ibtIdeaViewVotesUp {
+}
+
+.ibtIdeaViewVotesDown {
+}
+
+ul.ibtIdeaViewVotes {
+    padding: 0 0 0 45px;
+    width: 580px;
+}
+
+ul.ibtIdeaViewVotes li.ibtIdeaViewVotesUp, ul.ibtIdeaViewVotes li.ibtIdeaViewVotesDown {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    list-style: none;
+}
+
+ul.ibtIdeaViewVotes li.ibtIdeaViewVotesUp {
+    width: 48%;
+    float: left;
+}
+
+.ibtVoteListContainer {
+    padding: 0 5px 0 5px;
+}
+
+.ibtVoteList {
+    padding: 5px 0;
+}
+
+.ibtVoteList .flowingVoterNickname {
+    line-height: 16px;
+}
+
+li.ibtIdeaViewVotesUp .ibtVoteListHeading {
+    background: transparent url( {!$Resource.image_promoteList} ) no-repeat scroll left center;
+}
+    
+ul.ibtIdeaViewVotes li.ibtIdeaViewVotesDown {
+    width: 48%;
+}
+
+li.ibtIdeaViewVotesDown .ibtVoteListHeading {
+    background: transparent url( {!$Resource.image_demoteList} ) no-repeat scroll left center;
+}
+
+ul.ibtIdeaViewVotes .ibtVoteListHeading {
+    padding: 5px 5px 7px 30px;
+    font-size: 14px;
+    border-bottom: 1px solid #adc984;
+    font-weight: bold;
+}
+
+.ibtIdeaViewRssFeed {
+    margin: 16px 0 0 16px;
+}
+.ibtIdeaViewRssFeed .ibtFeedIcon {
+    padding-bottom: 0;
+}
+
+.ibtBackToList {
+    font-size: 11px;
+    display: block;
+    margin: 0 0 5px;
+}
+
+/***** post idea *****/
+.ibtTitleFieldContainer {
+    border: 1px solid #cccccc;
+    padding: 4px;
+}
+
+.ibtTitleFieldInitial,.ibtTitleFieldFocus {
+    width: 100% !important;
+    font-size: 18px;
+    border: none;
+}
+
+.ibtTitleFieldInitial {
+    color: #666666;
+}
+
+.ibtTitleFieldFocus {
+    color: #000000;
+}
+
+.ibtBodyFieldContainer iframe {
+    border: 1px solid gray;
+}
+
+.ibtBodyFieldContainer {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.ibtPostIdeaCategoryLabel {
+    margin-bottom: 8px;
+    display: block;
+}
+
+.ibtPostIdeaCategoryListContainer {
+    overflow: hidden;
+}
+
+.ibtPostIdeaCategoryListContainer table {
+    float: left;
+    width: 32%;
+}
+
+.ibtPostIdeaCategoryListContainer table label {
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.ibtPostIdeaForm .ibtButtons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ibtPostIdeaForm .ibtButtons a {
+    height: 36px;
+    vertical-align: middle;
+    margin-left: 8px;
+    color: #285ea4; 
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ibtPostIdeaForm .ibtButtons input {
+    background: transparent url({!$Resource.image_postIdeaButtonSmall}) no-repeat scroll center top;
+    height: 36px;
+    width: 103px;
+}
+
+/***** idea list *****/
+ul.ibtIdeaList {
+    padding: 0;
+}
+
+ul.ibtIdeaListPadding {
+    padding-left: 8px;
+}
+
+.ibtIdeaDescription {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 559px;
+    display: block;
+    padding-left: 10px;
+    float: left;
+}
+
+.ibtInlineBlock {
+    display: inline-block;
+}
+
+/***** idea detail *****/
+.ideaBodyInner {
+    color: #333333;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 560px;
+}
+
+.ibtIdeaTitle {
+    color: #333333;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline;
+}
+
+.ibtIdeaTitle a, .ibtIdeaTitle a:hover {
+    color: #333333;
+}
+
+.ibtIdeaTitle {
+    width: 560px;
+}   
+
+.ibtCommentBody {
+    width: 450px;
+}
+
+.ideaDetails {
+    color: gray;
+    font-size: 12px;
+}
+
+.ibtIdeaList .ideaDetails,.baseSearchResults .ideaDetails {
+    margin-bottom: 20px;
+}
+
+.ideaDetails td {
+    vertical-align: top;
+    padding-top: 0;
+}
+
+/***** Comment List *****/
+.ibtCommentList {
+    margin: 0 10px 0 0;
+    font-size: 14px;
+}
+
+.ibtCommentListFirstLine {
+    padding-bottom: 8px;
+}
+
+.ibtCommentNumberLink {
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ibtActivityCommentSnippet blockquote .ibtDateByLine span {
+    color:#666666;
+    font-size:11px;
+    background-image:none;
+    padding-right: 0px;
+}
+
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:component controller="IdeaUserLinkController">
+    <apex:attribute name="userId" type="String" required="true" assignTo="{!userId}" description="userId"/>
+    <apex:attribute name="communityNickname" type="String" required="true" assignTo="{!conCommunityNickname}" description="communityNickname"/>
+    <apex:outputPanel layout="inline">
+        <ideas:profileListOutputLink communityId="{!communityId}" userId="{!userId}" page="{!userPage.url}" styleClass="{!userStyleClass} ibtUserLink" >
+            {!communityNickname}&nbsp;
+        </ideas:profileListOutputLink>
+    </apex:outputPanel>
+</apex:component>
