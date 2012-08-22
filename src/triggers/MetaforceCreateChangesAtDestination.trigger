@@ -2,6 +2,7 @@
  * God, this guy is awesome: 
  * http://techblog.appirio.com/2010/02/relationship-lookup-objects-in-triggers.html
  * Cound't have figured this out without this post.
+ * Updated: 2012-08-22
  */
 
 trigger MetaforceCreateChangesAtDestination on Change_Junction__c (after update) {
