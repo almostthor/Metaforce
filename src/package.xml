@@ -4,18 +4,15 @@
         <members>MetaforceChangeListCntrlr</members>
         <members>MetaforceChangeWrapperCls</members>
         <members>MetaforceTestTriggers</members>
-        <members>MyChangeListCntrlr</members>
-        <members>testApexWorkbook</members>
+        <members>MetaforceChangeListCntrlr</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>ChangeList</members>
         <members>MetaforceChangeList</members>
         <name>ApexPage</name>
     </types>
     <types>
         <members>MetaforceCreateChangesAtDestination</members>
-        <members>createChangesAtDestination</members>
         <name>ApexTrigger</name>
     </types>
     <types>
