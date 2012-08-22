@@ -1,3 +1,0 @@
-<apex:page standardcontroller="Position__c" >
-       This map shows the locations of candidates who have applied for the <b>{!Position__c.Name}</b> position.
-</apex:page>

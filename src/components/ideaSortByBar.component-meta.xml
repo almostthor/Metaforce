@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>15.0</apiVersion>
-    <description>A component for displaying the navigation bar on the idea list page. The navigation bar includes the Popular Ideas, Recent Ideas, Top Ideas, and Comments tabs.</description>
-    <label>ideaSortByBar</label>
-</ApexComponent>

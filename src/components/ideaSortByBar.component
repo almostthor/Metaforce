@@ -1,8 +1,0 @@
-<apex:component controller="IdeaLayoutController">
-  <ul class="ibtSortTabs">
-    <li class="{!IF(AND(isIdeaListPage, OR(sortParam='popular', sortParam='')), 'ibtSortTabSelected', '')}"><ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="popular">Popular Ideas</ideas:listOutputLink></li>
-    <li class="{!IF(AND(isIdeaListPage, sortParam='recent'), 'ibtSortTabSelected', '')}"><ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="recent">Recent Ideas</ideas:listOutputLink></li>                    
-    <li class="{!IF(AND(isIdeaListPage, sortParam='top'), 'ibtSortTabSelected', '')}"><ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="top">Top All-Time</ideas:listOutputLink></li>
-    <li class="{!IF(AND(isIdeaListPage, sortParam='comments'), 'ibtSortTabSelected', '')}"><ideas:listOutputLink communityId="{!communityId}" page="{!ideaListPage}" sort="comments">Comments</ideas:listOutputLink></li>
-  </ul>
-</apex:component>

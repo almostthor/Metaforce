@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>15.0</apiVersion>
-    <description>Page that lists the ideas. The controller associated with this page filters ideas by sort order, category, and status.</description>
-    <label>ideaList</label>
-</ApexPage>

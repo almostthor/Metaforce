@@ -1,6 +1,0 @@
-<apex:page controller="IdeaLayoutController" showHeader="false" cache="{!doCache}" expires="{!cacheMaxAge}"  action="{!redirectToOverride}">
-
-	<apex:include pageName="{!layoutOverride}" rendered="{!isLayoutOverridden}" />
-	<apex:include pageName="ideaLayout" rendered="{!!isLayoutOverridden}" />
-
-</apex:page>

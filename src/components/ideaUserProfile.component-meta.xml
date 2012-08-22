@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>15.0</apiVersion>
-    <description>A component for displaying a user&apos;s profile picture and community nickname on the page. By default, a generic placeholder image is used for the profile picture.</description>
-    <label>ideaUserProfile</label>
-</ApexComponent>

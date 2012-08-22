@@ -1,9 +1,0 @@
-<apex:component controller="IdeaDateFormatController">
-    <apex:attribute name="idea" type="Idea" required="false" assignTo="{!ideaParam}" description="The idea whose details are to be displayed (must include CreatedDate)."/>
-    <apex:attribute name="comment" type="IdeaComment" required="false" assignTo="{!commentParam}" description="The comment whose details are to be displayed (must include CreatedDate)."/>
-    <apex:attribute name="vote" type="Vote" required="false" assignTo="{!voteParam}" description="The vote whose details are to be displayed (must include CreatedDate)."/>
-    <apex:attribute name="useLastComment" type="Boolean" required="false" assignTo="{!lastCommentDateNeeded}" description="Set to true to get the last comment date for the idea."/>
-    <apex:attribute name="format" type="String" required="false" assignTo="{!dateFormatNeeded}" description="The format in which the date needs to be displayed. Must be a valid date format or an exception is thrown (defaults to Mon dd,yyyy)."/>
-  <apex:outputText value="{!dateDisplay}"/>
-
-</apex:component>

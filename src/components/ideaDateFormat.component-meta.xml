@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>15.0</apiVersion>
-    <description>A component that formats the created date of ideas and comments.</description>
-    <label>ideaDateFormat</label>
-</ApexComponent>

@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>AccountWrapperCls</members>
-        <members>MyAccountListCntrlr</members>
         <members>MyChangeListCntrlr</members>
-        <members>NewHelloWorld</members>
-        <members>apexWorkbook</members>
-        <members>metaforceChangeController</members>
+        <members>testApexWorkbook</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>AccountList</members>
         <members>ChangeList</members>
-        <members>MyAccountListCntrlr</members>
-        <members>metaforceChangesList</members>
-        <members>vf</members>
         <name>ApexPage</name>
     </types>
     <types>
