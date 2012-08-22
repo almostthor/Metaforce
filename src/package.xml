@@ -2,9 +2,9 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>MetaforceChangeListCntrlr</members>
+        <members>MetaforceChangeListCntrlr</members>
         <members>MetaforceChangeWrapperCls</members>
         <members>MetaforceTestTriggers</members>
-        <members>MetaforceChangeListCntrlr</members>
         <name>ApexClass</name>
     </types>
     <types>
