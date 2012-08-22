@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>MetaforceChangeListCntrlr</members>
+        <members>MetaforceChangeWrapperCls</members>
+        <members>MetaforceTestTriggers</members>
         <members>MyChangeListCntrlr</members>
         <members>testApexWorkbook</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>ChangeList</members>
+        <members>MetaforceChangeList</members>
         <name>ApexPage</name>
     </types>
     <types>
+        <members>MetaforceCreateChangesAtDestination</members>
         <members>createChangesAtDestination</members>
         <name>ApexTrigger</name>
     </types>

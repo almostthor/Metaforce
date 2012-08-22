@@ -1,8 +1,8 @@
-public class ChangeWrapperCls {
+public class MetaforceChangeWrapperCls {
      public Boolean isSelected {get;set;}
      public Change__c cChange {get;set;}
 
-     public ChangeWrapperCls(Change__c cChange){
+     public MetaforceChangeWrapperCls(Change__c cChange){
           this.cChange = cChange;
      }
 }

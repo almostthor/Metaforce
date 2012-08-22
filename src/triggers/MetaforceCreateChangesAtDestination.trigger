@@ -4,7 +4,7 @@
  * Cound't have figured this out without this post.
  */
 
-trigger createChangesAtDestination on Change_Junction__c (after update) {
+trigger MetaforceCreateChangesAtDestination on Change_Junction__c (after update) {
 
 // Create a set of change ids
 Set<id> changeIds = new Set<id>();

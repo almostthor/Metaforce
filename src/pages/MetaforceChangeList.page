@@ -1,4 +1,4 @@
-<apex:page controller="MyChangeListCntrlr" tabStyle="Change__c">
+<apex:page controller="MetaforceChangeListCntrlr" tabStyle="Change__c">
    <apex:form >
       <apex:pageBlock title="Change List">
          <apex:pageBlockButtons >
@@ -26,7 +26,7 @@
                <apex:outputText value="Below are the selected change"/>
                <br/>
                <apex:outputText value="{!selChangeNames}"/>
-             </apex:outputPanel>
+             </apex:outputPanel> 
              <apex:outputPanel layout="block" 
                rendered="{!NOT(hasSelChg)}">
                 <br/>

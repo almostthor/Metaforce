@@ -1,6 +1,6 @@
-public class MyChangeListCntrlr {
+public class MetaforceChangeListCntrlr {
      // PROPERTIES
-     public List<ChangeWrapperCls> chgList {get;set;}
+     public List<MetaforceChangeWrapperCls> chgList {get;set;}
      public Set<String> selChangeNames {get;set;}
      public Boolean hasSelChg {get;set;}
      public String chgSetId {set;get;}
@@ -9,8 +9,8 @@ public class MyChangeListCntrlr {
      private SObject<Change_Set__c> chgSetPr;
 
      // CONSTRUCTOR
-     public MyChangeListCntrlr(){
-          chgList = new List<ChangeWrapperCls>();
+     public MetaforceChangeListCntrlr(){
+          chgList = new List<MetaforceChangeWrapperCls>();
           selChangeNames = new Set<String>();
           chgSetId = apexpages.currentpage().getparameters().get('csId');
           chgSetEnv = apexpages.currentpage().getparameters().get('csEnv');
@@ -23,17 +23,17 @@ public class MyChangeListCntrlr {
                                                     FROM Change_Junction__c
                                                     WHERE Change_Set__c  = :chgSetId) 
                                 ORDER BY CreatedDate ASC LIMIT 5]){
-                                    chgList.add(new ChangeWrapperCls(c));
+                                    chgList.add(new MetaforceChangeWrapperCls(c));
           }
      }
 
      // METHODS
      public void displaySelectedChangeNames(){
           selChangeNames.clear();
-          hasSelChg = false;
-          for(ChangeWrapperCls cWrapper : chgList){
+//          hasSelChg = false;
+          for(MetaforceChangeWrapperCls cWrapper : chgList){
                if(cWrapper.isSelected){
-                    hasSelChg = true;
+//                  hasSelChg = true;
                     selChangeNames.add(cWrapper.cChange.Name__c);
                }
           }
@@ -41,11 +41,11 @@ public class MyChangeListCntrlr {
      
      public pageReference createChangeJunctions() {
         selChangeNames.clear();
-        hasSelChg = false;
+//        hasSelChg = false;
         // Iterate through the list of changes
-        for(ChangeWrapperCls cWrapper: chgList){
+        for(MetaforceChangeWrapperCls cWrapper: chgList){
             if(cWrapper.isSelected){
-                hasSelChg = true;
+//                hasSelChg = true;
                 // build a new change junction record and add to the change junction list
                 ncj.add(new Change_Junction__c(
                     Change__c = cWrapper.cChange.Id,
