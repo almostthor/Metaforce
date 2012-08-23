@@ -59,4 +59,70 @@ public class MetaforceChangeListCntrlr {
         changeSetPage.setRedirect(true);
         return changeSetPage;
      }
+     
+    static testMethod void testMetaforceChangeListCntrlr() {
+        
+        // Setup new origin Environment record
+        Environment__c eOrigin = new Environment__c (
+            Name = 'Source Org',
+            Organization_ID__c = '1239876',
+            Status__c = 'In Use',
+            Type__c = 'Integration');
+            
+        insert eOrigin;
+        
+        // Setup new destination Environment record
+        Environment__c eDestination = new Environment__c (
+            Name = 'Destination Org',
+            Organization_ID__c = '456976',
+            Status__c = 'In Use',
+            Type__c = 'Production');
+            
+        insert eDestination;
+                    
+        // Setup new Change record
+        Change__c c = new Change__c (
+            Environment__c = eOrigin.Id,
+            Metadata__c = 'Object',
+            Name__c = 'Change__c',
+            Type__c = 'Create');
+            
+        insert c;
+        
+        // Setup new Change Set record
+        Change_Set__c cs = new Change_Set__c (
+            Name = 'Test Change Set',
+            Destination__c = eDestination.Id,
+            Origin__c = eOrigin.Id);
+        
+        insert cs;                
+        
+        // Setup new Change Junction record
+        Change_Junction__c cj = new Change_Junction__c (
+            Change__c = c.Id,
+            Change_Set__c = cs.Id);
+        
+        insert cj;   
+                
+        ApexPages.currentPage().getParameters().put('csId', cs.Id);  
+        ApexPages.currentPage().getParameters().put('csEnv', eOrigin.Id); 
+
+        //////////////////////////////////////////////////////////////////                  
+        MetaforceChangeListCntrlr metaforceChangeListController = new MetaforceChangeListCntrlr();
+        
+        metaforceChangeListController.displaySelectedChangeNames();
+        metaforceChangeListController.createChangeJunctions();
+        
+        
+        //////////////////////////////////////////////////////////////////
+        //Test MetaforceChangeWrapperCls class with "isSelected" set to true.
+        MetaforceChangeListCntrlr metaforceChangeListWrapperSelected = new MetaforceChangeListCntrlr();
+        MetaforceChangeWrapperCls mWrapper = new MetaforceChangeWrapperCls(c);
+        mWrapper.isSelected = true;
+        metaforceChangeListWrapperSelected.chgList.add(mWrapper);        
+                
+        metaforceChangeListWrapperSelected.displaySelectedChangeNames();
+        metaforceChangeListWrapperSelected.createChangeJunctions();        
+        
+    }     
 }
