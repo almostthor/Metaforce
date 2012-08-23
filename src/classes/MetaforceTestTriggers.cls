@@ -36,15 +36,15 @@ private class MetaforceTestTriggers {
             Destination__c = eDestination.Id,
             Origin__c = eOrigin.Id);
         
-        insert cs;
+        insert cs;                
         
         // Setup new Change Junction record
         Change_Junction__c cj = new Change_Junction__c (
             Change__c = c.Id,
             Change_Set__c = cs.Id);
         
-        insert cj;
-        
+        insert cj;         
+               
         System.debug('debug: ' + cj.Deployed__c);   
         
         cj.Deployed__c = true;
@@ -66,10 +66,11 @@ private class MetaforceTestTriggers {
             LIMIT 1]);
         System.debug('debug: ' + csAttribs);
         String dId = csAttribs[0].Destination__r.Id;
-        System.debug('debug: ' + dId);
-                
+        System.debug('debug: ' + dId);                 
+
+
         // Query for the IDs of the changes that were inserted
-        List<Change__c> listOfChanges = new List<Change__c>([
+/*        List<Change__c> listOfChanges = new List<Change__c>([
             SELECT Id, Environment__c
             FROM Change__c
             WHERE Environment__c = :dId 
@@ -79,10 +80,29 @@ private class MetaforceTestTriggers {
                 WHERE Id = :cj.Id)
             LIMIT 1
                 ]);
+                */
+
+        List<Change__c> listOfChanges = new List<Change__c>([
+            SELECT Id, Environment__c, Metadata__c, Name__c, Type__c 
+            FROM Change__c
+            WHERE Environment__c = :dId                 
+            LIMIT 1
+                ]);                
         System.debug('debug: ' + listOfChanges);
         String csDestId = listOfChanges[0].Environment__c;
         
         // Assert that the Environment__c is the same as Parent__c on the interted change records
         System.assertEquals(dId, csDestId);
+        
+        //Verify if change__c row created/inserted for destination Environment has the same set of values as source Environment.
+        //Verify if value for "Metadata__c" is same for both Environments.
+        System.assertEquals(c.Metadata__c, listOfChanges[0].Metadata__c);
+        
+        //Verify if value for "Name__c" is same for both Environments.
+        System.assertEquals(c.Name__c, listOfChanges[0].Name__c);
+        
+        //Verify if value for "Type__c" is same for both Environments.
+        System.assertEquals(c.Type__c, listOfChanges[0].Type__c);                        
+        
     }
 }
