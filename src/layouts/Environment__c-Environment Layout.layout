@@ -74,7 +74,6 @@
         <relatedList>Change_Set__c.Destination__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>Deploy2</customButtons>
         <fields>NAME</fields>
         <fields>Type__c</fields>
         <fields>Name__c</fields>
