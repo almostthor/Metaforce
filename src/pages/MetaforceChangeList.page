@@ -2,8 +2,8 @@
    <apex:form >
       <apex:pageBlock title="Change List">
          <apex:pageBlockButtons >
-            <apex:commandButton value="Show Selected Changes" 
-               action="{!displaySelectedChangeNames}"/>
+            <!-- <apex:commandButton value="Show Selected Changes" 
+               action="{!displaySelectedChangeNames}"/> -->
              <apex:commandButton value="Create Change Junctions"
                 action="{!createChangeJunctions}"/>
          </apex:pageBlockButtons>
@@ -20,6 +20,7 @@
          </apex:pageBlockTable>
 
          <!-- SELECTED ACCOUNT INFO -->
+         <!-- 
          <apex:pageBlockSection >
             <apex:outputPanel layout="block" 
               rendered="{!hasSelChg}">
@@ -33,6 +34,7 @@
                 <apex:outputText value="No change selected."/>
              </apex:outputPanel>
          </apex:pageBlockSection>
+          -->
       </apex:pageBlock>
    </apex:form>
 </apex:page>
