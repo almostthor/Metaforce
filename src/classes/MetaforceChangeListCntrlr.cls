@@ -17,7 +17,7 @@ public class MetaforceChangeListCntrlr {
           ncj = new List<Change_Junction__c>{};
           chgSetPr = [SELECT Id FROM Change_Set__c Where Id = :chgSetId];
 
-          for(Change__c c : [SELECT Id, Name__c, CreatedDate, Metadata__c 
+          for(Change__c c : [SELECT Id, Name, Type__c, Metadata__c, Name__c, Description__c, Manual_Change__c, CreatedDate 
                                 FROM Change__c 
                                 WHERE Environment__c = :chgSetEnv AND Id NOT IN (SELECT Change__c 
                                                     FROM Change_Junction__c

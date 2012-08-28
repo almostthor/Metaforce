@@ -4,20 +4,28 @@
          <apex:pageBlockButtons >
             <!-- <apex:commandButton value="Show Selected Changes" 
                action="{!displaySelectedChangeNames}"/> -->
-             <apex:commandButton value="Create Change Junctions"
-                action="{!createChangeJunctions}"/>
+             <apex:commandButton value="Add to Change List"
+                action="{!createChangeJunctions}"
+                rendered="{! chgList.size>0 }"/>
          </apex:pageBlockButtons>
 
          <!-- ACCOUNT LIST -->
          <apex:pageBlockTable value="{!chgList}" 
-           var="chgWrapper">
-            <apex:column >
-               <apex:inputCheckbox value="{!chgWrapper.isSelected}"/>
-            </apex:column> 
+           var="chgWrapper" rendered="{! chgList.size>0 }">
+            "<apex:column >
+            	<apex:inputCheckbox value="{!chgWrapper.isSelected}"/>
+            </apex:column>
+            <apex:column headerValue="Change Number">
+            	<apex:outputLink value="/{!chgWrapper.cChange.Id}">{!chgWrapper.cChange.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!chgWrapper.cChange.Type__c}"/>
             <apex:column value="{!chgWrapper.cChange.Metadata__c}"/>
             <apex:column value="{!chgWrapper.cChange.Name__c}"/>
-            <apex:column value="{!chgWrapper.cChange.CreatedDate}"/>
+            <apex:column value="{!chgWrapper.cChange.Description__c}"/>
+            <apex:column value="{!chgWrapper.cChange.Manual_Change__c}"/>
+            <apex:column value="{!chgWrapper.cChange.CreatedDate}"/>"
          </apex:pageBlockTable>
+         <apex:outputText rendered="{! chgList.size=0 }">No records to display</apex:outputText>
 
          <!-- SELECTED ACCOUNT INFO -->
          <!-- 
