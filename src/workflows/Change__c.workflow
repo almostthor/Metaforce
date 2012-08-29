@@ -10,7 +10,7 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
-        <fullName>Set Manual Flag</fullName>
+        <fullName>Metadata is Manual Change</fullName>
         <actions>
             <name>Set_Manual_Change_to_TRUE</name>
             <type>FieldUpdate</type>
