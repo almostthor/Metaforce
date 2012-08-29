@@ -39,5 +39,9 @@
         <members>Environment__c-Environment Layout</members>
         <name>Layout</name>
     </types>
+    <types>
+        <members>Change__c</members>
+        <name>Workflow</name>
+    </types>
     <version>25.0</version>
 </Package>

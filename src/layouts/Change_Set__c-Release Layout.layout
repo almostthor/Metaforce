@@ -92,7 +92,6 @@
         <fields>Change__c.Type__c</fields>
         <fields>Change__c.Metadata__c</fields>
         <fields>Change__c.Name__c</fields>
-        <fields>Change__c.Description__c</fields>
         <fields>Change__c.Manual_Change__c</fields>
         <fields>Deployed__c</fields>
         <fields>UPDATEDBY_USER</fields>

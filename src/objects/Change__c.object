@@ -69,6 +69,10 @@
         <label>Metadata</label>
         <picklist>
             <picklistValues>
+                <fullName>Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Field</fullName>
                 <default>false</default>
             </picklistValues>
@@ -93,7 +97,19 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Trigger</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VF Page</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Workflow</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -171,4 +187,22 @@
     <pluralLabel>Changes</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>View_Story</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Story</masterLabel>
+        <openType>newWindow</openType>
+        <position>topLeft</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>https://umncrm.atlassian.net/browse/{!Change__c.Story_ID__c}</url>
+    </webLinks>
 </CustomObject>
