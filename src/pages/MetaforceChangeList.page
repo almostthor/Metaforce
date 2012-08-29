@@ -4,7 +4,7 @@
          <apex:pageBlockButtons >
             <!-- <apex:commandButton value="Show Selected Changes" 
                action="{!displaySelectedChangeNames}"/> -->
-             <apex:commandButton value="Add to Change List"
+             <apex:commandButton value="Add to Manifest"
                 action="{!createChangeJunctions}"
                 rendered="{! chgList.size>0 }"/>
          </apex:pageBlockButtons>

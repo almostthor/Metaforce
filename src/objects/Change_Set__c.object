@@ -43,7 +43,7 @@
         <externalId>false</externalId>
         <label>Destination</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Change Sets (Inbound)</relationshipLabel>
+        <relationshipLabel>Manifests (Inbound)</relationshipLabel>
         <relationshipName>Change_Sets1</relationshipName>
         <required>false</required>
         <type>Lookup</type>
@@ -97,7 +97,7 @@
         <externalId>false</externalId>
         <label>Origin</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Change Sets (Outbound)</relationshipLabel>
+        <relationshipLabel>Manifests (Outbound)</relationshipLabel>
         <relationshipName>Change_Sets</relationshipName>
         <required>true</required>
         <type>Lookup</type>
@@ -113,7 +113,7 @@
         <scale>0</scale>
         <type>Percent</type>
     </fields>
-    <label>Change Set</label>
+    <label>Manifest</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -127,7 +127,7 @@
         <label>Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Change Sets</pluralLabel>
+    <pluralLabel>Manifests</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Origin__c</customTabListAdditionalFields>
     </searchLayouts>
