@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexTrigger xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>25.0</apiVersion>
-    <packageVersions>
-        <majorNumber>2</majorNumber>
-        <minorNumber>37</minorNumber>
-        <namespace>sf4twitter</namespace>
-    </packageVersions>
     <status>Active</status>
 </ApexTrigger>
