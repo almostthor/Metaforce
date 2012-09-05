@@ -67,6 +67,10 @@
                 <fullName>Deleted</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Refreshed</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <type>Picklist</type>
