@@ -36,10 +36,6 @@
                 <behavior>Edit</behavior>
                 <field>Manual_Change__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>EnvInUse__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
