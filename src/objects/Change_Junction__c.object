@@ -14,10 +14,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <comment>Displays the edit page for the change listed in the related list.</comment>
-        <content>MetaforceChangeJunctionEditOverride</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>List</actionName>
@@ -65,11 +62,28 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>CodeChange__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>CodeChange</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Deployed__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Deployed</label>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsCodeChange__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case(  Change__r.Metadata__c , &quot;Class&quot;, &quot;True&quot;, &quot;Trigger&quot;, &quot;True&quot;, &quot;False&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IsCodeChange?</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>Change Junction</label>
     <nameField>
