@@ -46,6 +46,15 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>EnvInUse__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Environment__r.Status__c , &quot;In Use&quot;) , &quot;True&quot;, &quot;False&quot;)</formula>
+        <label>EnvInUse?</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Environment__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
@@ -187,6 +196,14 @@
     <pluralLabel>Changes</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Environment_must_be_In_Use</fullName>
+        <active>true</active>
+        <description>Environments that are no longer in use are not allowed to have new changes added to them.</description>
+        <errorConditionFormula>EnvInUse__c = &quot;False&quot;</errorConditionFormula>
+        <errorDisplayField>Environment__c</errorDisplayField>
+        <errorMessage>The selected environment is no longer in use and cannot accept new changes.</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>View_Story</fullName>
         <availability>online</availability>
