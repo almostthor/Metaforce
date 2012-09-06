@@ -41,6 +41,10 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>Metaforce_Reports</members>
+        <name>Report</name>
+    </types>
+    <types>
         <members>Change__c</members>
         <name>Workflow</name>
     </types>
