@@ -118,6 +118,42 @@
         <label>Environment Name</label>
         <type>Text</type>
     </nameField>
+    <namedFilters>
+        <fullName>nf_01IA0000002CGyhMAG_00NA000000A30FbMAJ</fullName>
+        <active>true</active>
+        <field>Change__c.Environment__c</field>
+        <filterItems>
+            <field>Environment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>In Use</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Change_Environment</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IA0000002CGyrMAG_00NA000000A30pZMAR</fullName>
+        <active>true</active>
+        <field>Change_Set__c.Origin__c</field>
+        <filterItems>
+            <field>Environment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>In Use</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Manifest_Origin</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IA0000002CGyrMAG_00NA000000A31YUMAZ</fullName>
+        <active>true</active>
+        <field>Change_Set__c.Destination__c</field>
+        <filterItems>
+            <field>Environment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>In Use</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Manifest_Destination</name>
+    </namedFilters>
     <pluralLabel>Environments</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
