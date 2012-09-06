@@ -1,0 +1,14 @@
+<apex:page standardController="Change_Junction__c" tabStyle="Change_Junction__c"
+			action="{!urlFor($Action.Change__c.Edit, Change_Junction__c.Change__r.Id, [retURL=Change_Junction__c.Change_Set__r.Id])}">
+	<!--
+         Displays the edit page for Change record related to the change junction and then returns the user back to the sending manifest view.
+	-->
+
+	<!--
+		"Query the fields we use in the if statement above, so we don't get SOQL query errors
+	-->
+	<apex:outputPanel rendered="false">
+		{!Change_Junction__c.Change__r.Id}
+		{!Change_Junction__c.Change_Set__r.Id}
+	</apex:outputPanel>
+</apex:page>

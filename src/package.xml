@@ -8,6 +8,7 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>MetaforceChangeJunctionEditOverride</members>
         <members>MetaforceChangeList</members>
         <name>ApexPage</name>
     </types>
