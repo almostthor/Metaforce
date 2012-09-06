@@ -61,7 +61,7 @@
         <picklist>
             <picklistValues>
                 <fullName>In Use</fullName>
-                <default>false</default>
+                <default>true</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Deleted</fullName>
@@ -121,4 +121,27 @@
     <pluralLabel>Environments</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Env_Org_ID_Cannot_Change</fullName>
+        <active>true</active>
+        <errorConditionFormula>PRIORVALUE(Organization_ID__c) &lt;&gt;Organization_ID__c</errorConditionFormula>
+        <errorDisplayField>Organization_ID__c</errorDisplayField>
+        <errorMessage>Organization IDs may not be changed once they are set.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prod_Env_Cannot_Change_Type</fullName>
+        <active>true</active>
+        <description>Once an environment has been typed as &quot;Production&quot;, you are prohibited from changing the type value.</description>
+        <errorConditionFormula>AND( ISPICKVAL( PRIORVALUE( Type__c ), &quot;Production&quot; ), NOT( ISPICKVAL( Type__c , &quot;Production&quot; )))</errorConditionFormula>
+        <errorDisplayField>Type__c</errorDisplayField>
+        <errorMessage>Production environments may not have their type changed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prod_Env_Status_Always_In_Use</fullName>
+        <active>true</active>
+        <description>Environments labeled as &quot;Production&quot; can only have a status of &quot;In Use&quot;.</description>
+        <errorConditionFormula>NOT( ISPICKVAL( Status__c , &quot;In Use&quot; ) )</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>Production environments must have status of &quot;In Use&quot;</errorMessage>
+    </validationRules>
 </CustomObject>
