@@ -13,15 +13,15 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Name__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Type__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Metadata__c</field>
             </layoutItems>
             <layoutItems>
@@ -35,6 +35,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Manual_Change__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sprint_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

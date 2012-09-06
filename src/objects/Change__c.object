@@ -130,7 +130,7 @@
         <externalId>false</externalId>
         <label>Name</label>
         <length>255</length>
-        <required>false</required>
+        <required>true</required>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -144,6 +144,16 @@
         <relationshipName>Deployments</relationshipName>
         <required>false</required>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sprint_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Sprint Number</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Story_ID__c</fullName>
