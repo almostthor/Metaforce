@@ -85,6 +85,8 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Destination__c</fields>
+        <fields>Num_Changes__c</fields>
+        <fields>Percent_Deployed__c</fields>
         <relatedList>Change_Set__c.Origin__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
