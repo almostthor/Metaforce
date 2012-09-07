@@ -107,7 +107,7 @@
         <fields>Change__c.Name__c</fields>
         <fields>Change__c.Manual_Change__c</fields>
         <fields>Deployed__c</fields>
-        <fields>UPDATEDBY_USER</fields>
+        <fields>CodeChange__c</fields>
         <relatedList>Change_Junction__c.Change_Set__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>

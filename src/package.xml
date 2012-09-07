@@ -53,6 +53,7 @@
         <name>Report</name>
     </types>
     <types>
+        <members>Change_Junction__c</members>
         <members>Change__c</members>
         <name>Workflow</name>
     </types>
