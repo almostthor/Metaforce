@@ -22,7 +22,7 @@ public class MetaforceChangeListCntrlr {
                                 WHERE Environment__c = :chgSetEnv AND Id NOT IN (SELECT Change__c 
                                                     FROM Change_Junction__c
                                                     WHERE Change_Set__c  = :chgSetId) 
-                                ORDER BY CreatedDate ASC LIMIT 5]){
+                                ORDER BY CreatedDate ASC]){
                                     chgList.add(new MetaforceChangeWrapperCls(c));
           }
      }
