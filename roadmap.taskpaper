@@ -1,2 +1,12 @@
+Manifest:
+- Fix lookup to only count code changes @hotfix @done(2012-09-07)
+- Fix validation rule to use 'numcodechanges' field @hotfix @done(2012-09-07)
+
 - prevent new manifests to env that are not 'in use
+- send email to users when a manifest is handed off to them
+- remove hard-coded field id in 'release to destination' button =
+	doesn't work when deploying to other orgs
+- Add limit on change lookups to those created in the past 10 days
+	Or similar so that we don't have endless pages of content
+- figure out a way to have the 'iscodechange' flag to be set on change junction when a user change the type of a change from something to a class or trigger
 
