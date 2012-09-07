@@ -14,7 +14,10 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <type>Default</type>
+        <comment>Directs the user to the Change edit page when they select the edit action on the Change_Junction__c related list.</comment>
+        <content>MetaforceChangeJunctionEditOverride</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>List</actionName>
