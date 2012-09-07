@@ -81,6 +81,8 @@
         <fields>Description__c</fields>
         <fields>Manual_Change__c</fields>
         <relatedList>Change__c.Environment__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
