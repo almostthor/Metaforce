@@ -230,6 +230,6 @@
         <protected>false</protected>
         <showsLocation>true</showsLocation>
         <showsStatus>true</showsStatus>
-        <url>https://{!$Setup.Metaforce__c.URL__c}{!Change__c.Story_ID__c}</url>
+        <url>https://umncrm.atlassian.net/browse/{!Change__c.Story_ID__c}</url>
     </webLinks>
 </CustomObject>

@@ -176,7 +176,7 @@
         <fullName>Prod_Env_Status_Always_In_Use</fullName>
         <active>true</active>
         <description>Environments labeled as &quot;Production&quot; can only have a status of &quot;In Use&quot;.</description>
-        <errorConditionFormula>NOT( ISPICKVAL( Status__c , &quot;In Use&quot; ) )</errorConditionFormula>
+        <errorConditionFormula>AND( ISPICkVAL(Type__c, &quot;Production&quot; ) , NOT( ISPICKVAL( Status__c , &quot;In Use&quot; ) ) )</errorConditionFormula>
         <errorDisplayField>Status__c</errorDisplayField>
         <errorMessage>Production environments must have status of &quot;In Use&quot;</errorMessage>
     </validationRules>
