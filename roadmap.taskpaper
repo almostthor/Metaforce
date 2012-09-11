@@ -2,6 +2,8 @@ Manifest:
 - Fix lookup to only count code changes @hotfix @done(2012-09-07)
 - Fix validation rule to use 'numcodechanges' field @hotfix @done(2012-09-07)
 
+- Enable reportin on Change Junction obj
+- Enable reporting on Manifest obj
 - prevent new manifests to env that are not 'in use
 - send email to users when a manifest is handed off to them
 - remove hard-coded field id in 'release to destination' button =
