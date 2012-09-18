@@ -2,6 +2,8 @@ Manifest:
 - Fix lookup to only count code changes @hotfix @done(2012-09-07)
 - Fix validation rule to use 'numcodechanges' field @hotfix @done(2012-09-07)
 
+- Give error if marking something deployed doesn't work (e.g. because the person doesn't own the manifeset after releasing for deploy).
+- Add workflow that sets Manifest Status to close when all changes are deployed.
 - Enable reportin on Change Junction obj
 - Enable reporting on Manifest obj
 - prevent new manifests to env that are not 'in use
