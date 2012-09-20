@@ -232,14 +232,4 @@ if (result[0].success==&apos;false&apos;) {
         window.location.href=window.location.href;
 }</url>
     </webLinks>
-    <webLinks>
-        <fullName>Release_to_Destination_URL</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <linkType>url</linkType>
-        <masterLabel>Release to Destination URL</masterLabel>
-        <openType>replace</openType>
-        <protected>false</protected>
-        <url>/{!Change_Set__c.Id}/e?00NA000000A3MU4=Pending+Deployment&amp;retURL={!Change_Set__c.Id}&amp;save=1&amp;saveURL=%2F{!Change_Set__c.Id}%2Fa?newOwn_lkid={!Change_Set__c.DestinationOwnerId__c}%26save=x%26retURL={!Change_Set__c.Id}</url>
-    </webLinks>
 </CustomObject>
