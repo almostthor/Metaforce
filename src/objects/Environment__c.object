@@ -133,6 +133,7 @@
     <namedFilters>
         <fullName>nf_01IA0000002CGyrMAG_00NA000000A30pZMAR</fullName>
         <active>true</active>
+        <errorMessage>The selected environment is no longer in use and cannot accept new manifests.</errorMessage>
         <field>Change_Set__c.Origin__c</field>
         <filterItems>
             <field>Environment__c.Status__c</field>
