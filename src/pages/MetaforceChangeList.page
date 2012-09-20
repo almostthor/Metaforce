@@ -15,6 +15,8 @@
             "<apex:column >
             	<apex:inputCheckbox value="{!chgWrapper.isSelected}"/>
             </apex:column>
+            <apex:column value="{!chgWrapper.cChange.Sprint_Number__c}"/>
+            <apex:column value="{!chgWrapper.cChange.Story_ID__c}"/>
             <apex:column headerValue="Change Number">
             	<apex:outputLink value="/{!chgWrapper.cChange.Id}">{!chgWrapper.cChange.Name}</apex:outputLink>
             </apex:column>
