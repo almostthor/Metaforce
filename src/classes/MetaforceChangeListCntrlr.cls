@@ -5,6 +5,7 @@ public class MetaforceChangeListCntrlr {
      public Boolean hasSelChg {get;set;}
      public String chgSetId {set;get;}
      public String chgSetEnv {set;get;}
+     public String retURL {set;get;}
      private List<Change_Junction__c> ncj;
      private SObject<Change_Set__c> chgSetPr;
 
@@ -12,6 +13,7 @@ public class MetaforceChangeListCntrlr {
      public MetaforceChangeListCntrlr(){
           chgList = new List<MetaforceChangeWrapperCls>();
           selChangeNames = new Set<String>();
+          retURL = apexpages.currentpage().getParameters().get('retURL');
           chgSetId = apexpages.currentpage().getparameters().get('csId');
           chgSetEnv = apexpages.currentpage().getparameters().get('csEnv');
           ncj = new List<Change_Junction__c>{};
@@ -58,6 +60,12 @@ public class MetaforceChangeListCntrlr {
         PageReference changeSetPage = new ApexPages.StandardController(chgSetPr).view();
         changeSetPage.setRedirect(true);
         return changeSetPage;
+     }
+     
+     public pageReference doCancel() {
+     	pageReference page = new PageReference(retURL);
+     	page.setRedirect(true);
+     	return page;
      }
      
     static testMethod void testMetaforceChangeListCntrlr() {

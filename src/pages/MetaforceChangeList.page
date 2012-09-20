@@ -7,6 +7,9 @@
              <apex:commandButton value="Add to Manifest"
                 action="{!createChangeJunctions}"
                 rendered="{! chgList.size>0 }"/>
+             <apex:commandButton value="Cancel"
+             	action="{!doCancel}"
+             	immediate="true"/>
          </apex:pageBlockButtons>
 
          <!-- ACCOUNT LIST -->
@@ -21,7 +24,7 @@
             	<apex:outputLink value="/{!chgWrapper.cChange.Id}">{!chgWrapper.cChange.Name}</apex:outputLink>
             </apex:column>
             <apex:column value="{!chgWrapper.cChange.Type__c}"/>
-            <apex:column value="{!chgWrapper.cChange.Metadata__c}"/>
+            <apex:column value="{!chgWrapper.cChange.Metadata__c}"/> 
             <apex:column value="{!chgWrapper.cChange.Name__c}"/>
             <apex:column value="{!chgWrapper.cChange.Description__c}"/>
             <apex:column value="{!chgWrapper.cChange.Manual_Change__c}"/>

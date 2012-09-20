@@ -106,7 +106,7 @@
         <openType>replace</openType>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-        <url>/apex/MetaforceChangeList?csId={!Change_Set__c.Id}&amp;csEnv={!Change_Set__c.OriginId__c }</url>
+        <url>/apex/MetaforceChangeList?csId={!Change_Set__c.Id}&amp;csEnv={!Change_Set__c.OriginId__c}&amp;retURL={!Change_Set__c.Id}</url>
     </webLinks>
     <webLinks>
         <fullName>Mark_Deployed</fullName>

@@ -1,12 +1,12 @@
 Manifest:
 
+- Add limit on change lookups to those created in the past 10 days
+	Or similar so that we don't have endless pages of content
 - Consider adding a custom setting (or custom management object) to indicate whether manafests should change owner when they are 'released for deployment (via the custom js button).
 - Give error if marking something deployed doesn't work (e.g. because the person doesn't own the manifeset after releasing for deploy).
 - Enable reporting on Change Junction obj
 - Enable reporting on Manifest obj
 - send email to users when a manifest is handed off to them
-- Add limit on change lookups to those created in the past 10 days
-	Or similar so that we don't have endless pages of content
 - figure out a way to have the 'iscodechange' flag to be set on change junction when a user change the type of a change from something to a class or trigger
 
 Archive:
