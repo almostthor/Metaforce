@@ -126,32 +126,34 @@ if ({!ISPICKVAL(Change_Set__c.Status__c,&apos;Open&apos;)}) {
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
-        <url>{!REQUIRESCRIPT 
-(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT (&quot;/soap/ajax/13.0/connection.js&quot;)} 
 
+var mStatus = &apos;{!Change_Set__c.Status__c}&apos;;
 var records = {!GETRECORDIDS($ObjectType.Change_Junction__c)}; 
 var newRecords = []; 
 
-if (records[0] == null) 
-{ 
-alert(&quot;Please select at least one row&quot;) 
-} 
-else 
-{ 
-for (var n=0; n&lt;records.length; n++) { 
-var cj = new sforce.SObject(&quot;Change_Junction__c&quot;); 
-cj.id = records[n]; 
-cj.Deployed__c = true; 
-newRecords.push(cj); 
-} 
+if (mStatus == &apos;Pending Deployment&apos;) {
 
-result = sforce.connection.update(newRecords); 
+    if (records[0] == null) { 
+        alert(&quot;Please select at least one row&quot;) 
+    } else { 
+        for (var n=0; n&lt;records.length; n++) { 
+            var cj = new sforce.SObject(&quot;Change_Junction__c&quot;); 
+            cj.id = records[n]; 
+            cj.Deployed__c = true; 
+            newRecords.push(cj); 
+        }
+    }
 
-if (result[0].success==&apos;false&apos;) { 
-alert(result[0].errors.message); 
+    result = sforce.connection.update(newRecords); 
+
+    if (result[0].success==&apos;false&apos;) { 
+        alert(result[0].errors.message); 
+    } else {
+        window.location.reload(); 
+    }
 } else {
-window.location.reload(); 
-}
+    alert(&apos;Changes cannot be deployed when the manifest is in &apos;+mStatus+&apos; status.&apos;);
 }</url>
     </webLinks>
 </CustomObject>

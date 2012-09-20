@@ -1,6 +1,5 @@
 Manifest:
 
-- Only allow changes to be be marked deployed when manifest is pending
 - Add limit on change lookups to those created in the past 10 days
 	Or similar so that we don't have endless pages of content
 - Consider adding a custom setting (or custom management object) to indicate whether manafests should change owner when they are 'released for deployment (via the custom js button).
@@ -10,6 +9,7 @@ Manifest:
 - figure out a way to have the 'iscodechange' flag to be set on change junction when a user change the type of a change from something to a class or trigger
 
 Archive:
+	- Only allow changes to be be marked deployed when manifest is pending @done(2012-09-20)
 	- Prevent adding changes to processing or closed manifests @done(2012-09-20)
 	- Give error if marking something deployed doesn't work (e.g. because the person doesn't own the manifeset after releasing for deploy). @done(2012-09-20)
 	- remove hard-coded field id in 'release to destination' button = @done(2012-09-20)
