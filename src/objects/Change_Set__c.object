@@ -214,18 +214,22 @@
         <masterLabel>Release to Destination</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)}
 
 var manifestObj = new sforce.SObject(&quot;Change_Set__c&quot;); 
+var destType = &apos;{!Change_Set__c.DestinationType__c}&apos;;
 manifestObj.Id = &apos;{!Change_Set__c.Id}&apos;; 
-manifestObj.OwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;;
-manifestObj.Status__c = &quot;Pending Deployment&quot;; 
+if (destType != &apos;Integration&apos;) {
+        manifestObj.OwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;;
+}
+
+manifestObj.Status__c = &quot;Pending Deployment&quot;;
 var result = sforce.connection.update([manifestObj]); 
 
-if (result[0].success==&apos;false&apos;) {
-     alert(result[0].errors.message);
-} else {
-     window.location.href=window.location.href;
+if (result[0].success==&apos;false&apos;) { 
+        alert(result[0].errors.message);
+} else { 
+        window.location.href=window.location.href;
 }</url>
     </webLinks>
     <webLinks>
