@@ -74,6 +74,13 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>NotifyNewOwner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>NotifyNewOwner</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>NumCodeChanges__c</fullName>
         <externalId>false</externalId>
         <label>NumCodeChanges</label>
@@ -216,14 +223,17 @@
         <protected>false</protected>
         <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
 
+var uId = &apos;{!$User.Id}&apos;;
+var destOwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;;
 var mStatus = &apos;{!Change_Set__c.Status__c}&apos;;
 var manifestObj = new sforce.SObject(&quot;Change_Set__c&quot;); 
 var destType = &apos;{!Change_Set__c.DestinationType__c}&apos;; 
 
 if (mStatus == &apos;Open&apos;) {
     manifestObj.Id = &apos;{!Change_Set__c.Id}&apos;; 
-    if (destType != &apos;Integration&apos;) { 
-        manifestObj.OwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;; 
+    if (destType != &apos;Integration&apos; &amp;&amp; destOwnerId != uId) { 
+        manifestObj.OwnerId = destOwnerId;
+        manifestObj.NotifyNewOwner__c = true;
     } 
 
     manifestObj.Status__c = &quot;Pending Deployment&quot;; 

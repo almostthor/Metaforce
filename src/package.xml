@@ -39,6 +39,11 @@
         <name>Dashboard</name>
     </types>
     <types>
+        <members>unfiled$public</members>
+        <members>unfiled$public/ManifestTransferNotice</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
         <members>Change_Junction__c-Change Junction Layout</members>
         <members>Change_Set__c-Release Layout</members>
         <members>Change__c-Change Layout</members>
