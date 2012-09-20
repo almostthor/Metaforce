@@ -101,12 +101,21 @@
         <fullName>Add_Change</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
-        <linkType>url</linkType>
+        <linkType>javascript</linkType>
         <masterLabel>Add Change</masterLabel>
-        <openType>replace</openType>
+        <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-        <url>/apex/MetaforceChangeList?csId={!Change_Set__c.Id}&amp;csEnv={!Change_Set__c.OriginId__c}&amp;retURL={!Change_Set__c.Id}</url>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+
+var csId = &apos;{!Change_Set__c.Id}&apos;;
+var originId = &apos;{!Change_Set__c.OriginId__c}&apos;;
+
+if ({!ISPICKVAL(Change_Set__c.Status__c,&apos;Open&apos;)}) {
+    window.location.href=&apos;/apex/MetaforceChangeList?csId=&apos;+csId+&apos;&amp;csEnv=&apos;+originId+&apos;&amp;retURL=&apos;+csId
+} else {
+    alert(&quot;You can only add changes to open manifests&quot;)
+}</url>
     </webLinks>
     <webLinks>
         <fullName>Mark_Deployed</fullName>
