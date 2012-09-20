@@ -138,7 +138,11 @@ newRecords.push(cj);
 
 result = sforce.connection.update(newRecords); 
 
+if (result[0].success==&apos;false&apos;) { 
+alert(result[0].errors.message); 
+} else {
 window.location.reload(); 
+}
 }</url>
     </webLinks>
 </CustomObject>
