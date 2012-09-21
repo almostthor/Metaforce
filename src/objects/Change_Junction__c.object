@@ -143,17 +143,20 @@ if (mStatus == &apos;Pending Deployment&apos;) {
             cj.Deployed__c = true; 
             newRecords.push(cj); 
         }
+ 
+        result = sforce.connection.update(newRecords); 
+
+        if (result[0].success==&apos;false&apos;) { 
+            alert(result[0].errors.message); 
+        } else {
+            window.location.reload(); 
+        }
     }
 
-    result = sforce.connection.update(newRecords); 
-
-    if (result[0].success==&apos;false&apos;) { 
-        alert(result[0].errors.message); 
-    } else {
-        window.location.reload(); 
-    }
 } else {
+
     alert(&apos;Changes cannot be deployed when the manifest is in &apos;+mStatus+&apos; status.&apos;);
+    
 }</url>
     </webLinks>
 </CustomObject>
