@@ -55,6 +55,7 @@
         <members>Metaforce_Reports/Changes_by_Env_this_Week</members>
         <members>Metaforce_Reports/Changes_by_User_this_Week</members>
         <members>Metaforce_Reports/Changes_this_Week</members>
+        <members>Metaforce_Reports/Yesterdays_Manual_Changes</members>
         <name>Report</name>
     </types>
     <types>
@@ -63,5 +64,5 @@
         <members>Change__c</members>
         <name>Workflow</name>
     </types>
-    <version>25.0</version>
+    <version>26.0</version>
 </Package>
