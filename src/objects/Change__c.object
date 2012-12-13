@@ -135,6 +135,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Parent_Manifest__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent Manifest</label>
+        <referenceTo>Change_Set__c</referenceTo>
+        <relationshipLabel>Cloned Changes</relationshipLabel>
+        <relationshipName>ClonedChanges</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Parent__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
