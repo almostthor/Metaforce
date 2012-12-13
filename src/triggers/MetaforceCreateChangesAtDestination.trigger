@@ -59,6 +59,7 @@ List<Change__c> nc = new List<Change__c>{};
                     Name__c          = changeMap.get(updatedChangeJunction.Change__c).Name__c,
 //                    Org_Id__c        = changeSetMap.get(updatedChangeJunction.Change_Set__c).Destination_Org_Id__c,
                     Parent__c        = updatedChangeJunction.Change__c,
+                    Parent_Manifest__c = updatedChangeJunction.Change_Set__c,
                     Story_Id__c      = changeMap.get(updatedChangeJunction.Change__c).Story_Id__c,
                     Type__c          = changeMap.get(updatedChangeJunction.Change__c).Type__c));
     }
