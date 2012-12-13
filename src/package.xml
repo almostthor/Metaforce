@@ -14,6 +14,7 @@
     </types>
     <types>
         <members>MetaforceCreateChangesAtDestination</members>
+        <members>Metaforce_CloneClosedManifest</members>
         <name>ApexTrigger</name>
     </types>
     <types>
