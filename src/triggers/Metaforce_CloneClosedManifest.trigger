@@ -1,16 +1,25 @@
 trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
 
-// Build a list of current dev orgs
-// Build a list of changes parented to the items in the trigger collection
-// For each item in the trigger collection
-// Evaluate if Status__c == 'Closed'
-// For each item in the dev org list
-// Create a new Change_Set__c object with the new values
-// Add the Change_Set__c object to a collection to be inserted
-// For each item in the change collection where the Manifest Id = trigger manifest Id
-// Create a new Change_Junction__c object linking the new manifest to the change
-// Add the Change_Junction__c object to a collection to be inserted
-// Insert Change_Set__c collection
-// Insert Change_Junction__c collection
-
+	// Create a map of Manifests that will be cloned.
+	List<Change_Set__c> manifestList = new List<Change_Set__c>();
+	
+    // Find all the records that meet the enterance criteria.
+    for (Change_Set__c updatedManifest : Trigger.New){
+        if (updatedManifest.Status__c != null && updatedManifest.Status__c == 'Closed'){
+        	// TODO - Remove hard-coded Id (Id points to Krang environment record)
+        	if (updatedManifest.Destination__c != null && updatedManifest.Destination__c == 'a0UA000000JMYHs'){
+        		// Add the change set to the list to process
+        		manifestList.add(updatedManifest);
+        	}
+        }
+    }
+    
+    // Clone the manifests
+    for (Change_Set__c mToClone : manifestList){
+    	Change_Set__c clonedManifest = new Change_Set__c();
+    	List<Change_Set__c> clonedManifestList = new List<Change_Set__c>();
+    	clonedManifest = mToClone.clone();
+    	clonedManifestList.add(clonedManifest);
+    	insert clonedManifestList;
+    }
 }
