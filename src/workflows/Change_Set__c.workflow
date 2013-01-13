@@ -54,6 +54,11 @@
             <operation>equals</operation>
             <value>Pending Deployment</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Change_Set__c.Num_Changes__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
