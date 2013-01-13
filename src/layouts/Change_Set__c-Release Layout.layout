@@ -24,6 +24,10 @@
                 <behavior>Edit</behavior>
                 <field>X80_Coverage__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Commit__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -105,10 +109,13 @@
         <fields>Change__c.Type__c</fields>
         <fields>Change__c.Metadata__c</fields>
         <fields>Change__c.Name__c</fields>
+        <fields>Change__c.Description__c</fields>
         <fields>Change__c.Manual_Change__c</fields>
         <fields>Deployed__c</fields>
         <fields>CodeChange__c</fields>
         <relatedList>Change_Junction__c.Change_Set__c</relatedList>
+        <sortField>Change__c.NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
