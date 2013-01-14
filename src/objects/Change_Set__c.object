@@ -38,6 +38,17 @@
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
     <fields>
+        <fullName>Commit__c</fullName>
+        <description>The commit ID from the CVS (e.g. Github)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The commit ID from the CVS (e.g. Github)</inlineHelpText>
+        <label>Commit</label>
+        <length>64</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Description__c</fullName>
         <externalId>false</externalId>
         <label>Description</label>
