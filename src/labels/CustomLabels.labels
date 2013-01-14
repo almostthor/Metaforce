@@ -5,7 +5,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Metaforce_Clone_Deployed</shortDescription>
-        <value>true</value>
+        <value>false</value>
     </labels>
     <labels>
         <fullName>Metaforce_Integration_Environment</fullName>
