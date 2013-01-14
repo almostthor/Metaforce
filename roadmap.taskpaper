@@ -1,12 +1,20 @@
-Manifest:
+Tasks:
+	- Add attribute for github commit # @done
+	- Link commit number to github
+	- Public group for developers -- why?
+	- Workflow for email 
+	- Update Environments object to only allow 1 environment to be considered the "Integration" environment. @done
+	- Add limit on change lookups to those created in the past 10 days
+		Or similar so that we don't have endless pages of content
+	- Consider adding a custom setting (or custom management object) to indicate whether manafests should change owner when they are 'released for deployment (via the custom js button).
+	- Enable reporting on Change Junction obj
+	- Enable reporting on Manifest obj
+	- send email to users when a manifest is handed off to them @done(2012-09-20)
+	- figure out a way to have the 'iscodechange' flag to be set on change junction when a user change the type of a change from something to a class or trigger
 
-- Add limit on change lookups to those created in the past 10 days
-	Or similar so that we don't have endless pages of content
-- Consider adding a custom setting (or custom management object) to indicate whether manafests should change owner when they are 'released for deployment (via the custom js button).
-- Enable reporting on Change Junction obj
-- Enable reporting on Manifest obj
-- send email to users when a manifest is handed off to them @done(2012-09-20)
-- figure out a way to have the 'iscodechange' flag to be set on change junction when a user change the type of a change from something to a class or trigger
+Auto-create dev org manifests:
+	- Write test coverage @done
+	- Make Clone Trigger Bulk Safe
 
 Archive:
 	- Only allow changes to be be marked deployed when manifest is pending @done(2012-09-20)
