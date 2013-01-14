@@ -105,4 +105,90 @@ private class MetaforceTestTriggers {
         System.assertEquals(c.Type__c, listOfChanges[0].Type__c);                        
         
     }
+    
+    static testMethod void testCloneClosedManifest()
+    {
+    	Environment__c intOrg = newEnvironment('Integration', 'In Use');
+    	insert intOrg;
+    	
+    	Environment__c devOrg1 = newEnvironment('Development', 'In Use');
+    	insert devOrg1;
+    	
+    	Environment__c devOrg2 = newEnvironment('Development', 'In Use');
+    	insert devOrg2;
+    	
+    	Change__c change1 = newChange(devOrg1.Id);
+    	insert change1;
+    	
+    	Change_Set__c changeSet1 = newChangeSet(devOrg1.Id, intOrg.Id);
+    	insert changeSet1;
+    	
+    	Change_Junction__c changeJunction1 = newChangeJunction(change1.Id, changeSet1.Id);
+    	insert changeJunction1;
+    	
+    	changeSet1.Status__c = 'Pending Deployment';
+    	update changeSet1;
+    	
+    	changeJunction1.Deployed__c = true;
+    	
+    	Test.startTest();
+    	update changeJunction1;
+    	Test.stopTest();
+    	
+    	// Change_Set__c clonedManifest = [SELECT Id FROM Change_Set__c WHERE Origin__c = :intOrg.Id];
+    }
+    
+    static Environment__c newEnvironment(String eType, String eStatus)
+    {
+    	// Setup new origin Environment record
+        Environment__c e = new Environment__c (
+        Name = 'Test Env',
+        Organization_ID__c = genOrgId(),
+        Status__c = eStatus,
+        Type__c = eType);
+    	
+    	return e;
+    }
+    
+    static private string genOrgId() {
+        String orgId = string.valueOf
+        (
+            math.abs(crypto.getRandomLong())
+        ).substring(0, 14);
+        
+        return orgId;
+    }
+    
+    static Change__c newChange(String envId)
+    {
+        // Setup new Change record
+        Change__c c = new Change__c (
+            Environment__c = envId,
+            Metadata__c = 'Object',
+            Name__c = 'Change__c',
+            Type__c = 'Create');
+            
+        return c;
+    }
+    
+    static Change_Set__c newChangeSet(String origId, String destId)
+    {
+        // Setup new Change Set record
+        Change_Set__c cs = new Change_Set__c (
+            Name = 'Test Change Set',
+            Origin__c = origId,
+            Destination__c = destId);
+        
+        return cs;                
+    }
+    
+    static Change_Junction__c newChangeJunction(String cId, String csId)
+    {
+        // Setup new Change Junction record
+        Change_Junction__c cj = new Change_Junction__c (
+            Change__c = cId,
+            Change_Set__c = csId);
+        
+        return cj;         
+    }
 }
