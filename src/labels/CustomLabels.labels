@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>Integration_Org</fullName>
+        <fullName>Metaforce_Clone_Deployed</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Integration Org</shortDescription>
+        <shortDescription>Metaforce_Clone_Deployed</shortDescription>
+        <value>true</value>
+    </labels>
+    <labels>
+        <fullName>Metaforce_Integration_Environment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Metaforce_Integration_Environment</shortDescription>
         <value>Krang</value>
     </labels>
 </CustomLabels>
