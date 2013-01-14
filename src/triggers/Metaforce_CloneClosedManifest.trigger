@@ -1,4 +1,5 @@
-/* Metaforce_CloneClosedManifest.trigger
+/**
+ * Metaforce_CloneClosedManifest.trigger
  *
  * Author:  Philip Nelson <philip.nelson@roundcorner.com>
  * Created: Jan 12, 2013
@@ -16,10 +17,24 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
 	
 	    // Find the environment that is considered the 'Integration' env.	
 	    
-		final ID INTEGRATION_ENVIRONMENT = [SELECT Id FROM Environment__c WHERE Name = :System.Label.Metaforce_Integration_Environment AND Type__c = 'Integration' AND Status__c = 'In Use' LIMIT 1].Id;
-	
-	    // Grab a list of all the 'dev' orgs   
-	    List<Environment__c> devEnvList = [SELECT Id, OwnerId FROM Environment__c WHERE Type__c = 'Development' AND Status__c = 'In Use'];
+        ID INTEGRATION_ENVIRONMENT;
+		try {
+		     INTEGRATION_ENVIRONMENT = [SELECT Id FROM Environment__c WHERE Name = :System.Label.Metaforce_Integration_Environment AND Type__c = 'Integration' AND Status__c = 'In Use' LIMIT 1].Id;
+		} catch (System.QueryException e ){
+	         for (Change_Set__c cs : Trigger.New) {
+                cs.addError('The integration environment "' + System.Label.Metaforce_Integration_Environment + '" is not currently in use. Please notify your System Administrator.');
+	         }
+		}
+		
+	    // Grab a list of all the 'dev' orgs
+        List<Environment__c> devEnvList = new List<Environment__c>();
+	    try {
+		    devEnvList = [SELECT Id, OwnerId FROM Environment__c WHERE Type__c = 'Development' AND Status__c = 'In Use'];
+	    } catch (System.QueryException e) {
+	    	for (Change_Set__c cs : Trigger.New) {
+	    		cs.addError('There are no development environments in use. Please notify your System Administrator.');
+	    	}
+	    }
 	
 	    Change_Set__c clonedManifest = new Change_Set__c();
 		
