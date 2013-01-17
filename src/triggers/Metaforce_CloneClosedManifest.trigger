@@ -37,7 +37,7 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
             }
         }
 
-        // Grab a list of all the 'dev' orgs
+        // Grab a list of all the 'in use' 'dev' orgs
         List<Environment__c> devEnvList = new List<Environment__c>();
         try {
             devEnvList = [SELECT Id, OwnerId 
@@ -51,7 +51,21 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
             }
         }
 
-        Change_Set__c clonedManifest = new Change_Set__c();
+        // Create a set of all the manifest Ids in the 
+        // trigger collection        
+        Set<ID> csIds = new Set<ID>();
+        for (Change_Set__c cs : Trigger.New) {
+            csIds.add(cs.Id);
+        }
+        
+        // Grab a list of all the change junctions associated
+        // with the the change sets in the Trigger collection
+        List<Change_Junction__c> oldCjList = [
+            SELECT Id, Change_Set__c, Change__c, IsCodeChange__c 
+            FROM Change_Junction__c 
+            WHERE Change_Set__c IN :csIds
+            ];
+
 
         // Find all the records that meet the enterance criteria.
         for (Change_Set__c updatedManifest : Trigger.New){
@@ -67,55 +81,50 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
 
         // Find the destionations that need to receive a clone of the
         // manifest
+        List<Change_Junction__c> clonedCjList 
+            = new List<Change_Junction__c>();
+            
+            
         for (Environment__c recepient : devEnvList){
             for (Change_Set__c manifest : manifestList){
                 // Check to make sure we don't clone the manifest back
                 // to the originating environment 
+
+		        Change_Set__c clonedManifest = new Change_Set__c();
                 if (recepient.Id != manifest.Origin__c){
                     // Clone the manifests
-                    List<Change_Set__c> clonedManifestList 
-                        = new List<Change_Set__c>();
-                    for (Change_Set__c mToClone : manifestList){
-                        clonedManifest = mToClone.clone();
+                    clonedManifest = manifest.clone();
 
-                        // Because it a clone, only change the fields
-                        // that need to be different.
-                        clonedManifest.Name = mToClone.Name + ' (Clone)';
-                        clonedManifest.Status__c = 'Pending Deployment';
-                        clonedManifest.Origin__c = INT_ENV;
-                        clonedManifest.Destination__c = recepient.Id;
-                        clonedManifest.OwnerId = recepient.OwnerId;
-
-                        // Add to the collection
-                        clonedManifestList.add(clonedManifest);
-                    }
-                    insert clonedManifestList;
-
-                    // Create change junctions to the changes that were
-                    // inserted.
-                    // Via the manifest clone the change junctions and then 
-                    // change set id and deployed flag to false
-                    List<Change_Junction__c> oldCjList = [SELECT Id, 
-                        Change_Set__c, Change__c, IsCodeChange__c 
-                            FROM Change_Junction__c 
-                            WHERE Change_Set__c = :manifest.Id];
-
-                    List<Change_Junction__c> clonedCjList 
-                        = new List<Change_Junction__c>();
-                    for (Change_Junction__c cjToClone : oldCjList){
-                        Change_Junction__c clonedCj = new Change_Junction__c();
-                        clonedCj = cjToClone.clone();
-
-                        // Because it is a clone, only change the fields
-                        // that need to be different. 
-                        clonedCj.Deployed__c = false;
-                        clonedCj.Change_Set__c = clonedManifest.Id;
-                        clonedCj.Change__c = cjToClone.Change__c;
-                        clonedCjList.add(clonedCj);
-                    } 
-                    insert clonedCjList; 
+                    // Because it a clone, only change the fields
+                    // that need to be different.
+                    clonedManifest.Name = manifest.Name + ' (Clone)';
+                    clonedManifest.Status__c = 'Pending Deployment';
+                    clonedManifest.Origin__c = INT_ENV;
+                    clonedManifest.Destination__c = recepient.Id;
+                    clonedManifest.OwnerId = recepient.OwnerId;
+			        insert clonedManifest;
                 }
+		        // Id ; <Id, Origin, Destination>
+		
+		
+		        //
+		        if (clonedManifest.Id != null) {
+			        for (Change_Junction__c cjToClone : oldCjList){
+			        	if (cjToClone.Change_Set__c == manifest.Id) {
+			                Change_Junction__c clonedCj = new Change_Junction__c();
+			                clonedCj = cjToClone.clone();
+			                
+			                // Because it is a clone, only change the fields
+			                // that need to be different. 
+			                clonedCj.Deployed__c = false;
+			                clonedCj.Change_Set__c = clonedManifest.Id;
+			                clonedCj.Change__c = cjToClone.Change__c;
+			                clonedCjList.add(clonedCj);
+				        }
+			        }
+		        }
             }
         }
+        insert clonedCjList; 
     }   
 }
