@@ -39,9 +39,9 @@
     <enableReports>false</enableReports>
     <fields>
         <fullName>Commit__c</fullName>
-        <description>The commit ID from the CVS (e.g. Github)</description>
+        <description>The commit reference from the CVS that is associated with this manifest</description>
         <externalId>false</externalId>
-        <inlineHelpText>The commit ID from the CVS (e.g. Github)</inlineHelpText>
+        <inlineHelpText>Commit reference ID associated with this manifest</inlineHelpText>
         <label>Commit</label>
         <length>64</length>
         <required>false</required>

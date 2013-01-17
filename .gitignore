@@ -1,2 +1,3 @@
 .project
 .settings/com.salesforce.ide.core.prefs
+*.swp
