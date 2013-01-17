@@ -73,9 +73,9 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
                 // to the originating environment 
                 if (recepient.Id != manifest.Origin__c){
                     // Clone the manifests
+                    List<Change_Set__c> clonedManifestList 
+                        = new List<Change_Set__c>();
                     for (Change_Set__c mToClone : manifestList){
-                        List<Change_Set__c> clonedManifestList 
-                            = new List<Change_Set__c>();
                         clonedManifest = mToClone.clone();
 
                         // Because it a clone, only change the fields
@@ -88,8 +88,8 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
 
                         // Add to the collection
                         clonedManifestList.add(clonedManifest);
-                        insert clonedManifestList;
                     }
+                    insert clonedManifestList;
 
                     // Create change junctions to the changes that were
                     // inserted.
@@ -100,10 +100,10 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
                             FROM Change_Junction__c 
                             WHERE Change_Set__c = :manifest.Id];
 
+                    List<Change_Junction__c> clonedCjList 
+                        = new List<Change_Junction__c>();
                     for (Change_Junction__c cjToClone : oldCjList){
                         Change_Junction__c clonedCj = new Change_Junction__c();
-                        List<Change_Junction__c> clonedCjList 
-                            = new List<Change_Junction__c>();
                         clonedCj = cjToClone.clone();
 
                         // Because it is a clone, only change the fields
@@ -112,8 +112,8 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
                         clonedCj.Change_Set__c = clonedManifest.Id;
                         clonedCj.Change__c = cjToClone.Change__c;
                         clonedCjList.add(clonedCj);
-                        insert clonedCjList; 
                     } 
+                    insert clonedCjList; 
                 }
             }
         }

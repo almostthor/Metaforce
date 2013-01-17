@@ -108,13 +108,13 @@ private class MetaforceTestTriggers {
     
     static testMethod void testCloneClosedManifest()
     {
-    	Environment__c intOrg = newEnvironment('Integration', 'In Use');
+    	Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
     	insert intOrg;
     	
-    	Environment__c devOrg1 = newEnvironment('Development', 'In Use');
+    	Environment__c devOrg1 = newEnvironment('devOrg', 'Development', 'In Use');
     	insert devOrg1;
     	
-    	Environment__c devOrg2 = newEnvironment('Development', 'In Use');
+    	Environment__c devOrg2 = newEnvironment('devOrg', 'Development', 'In Use');
     	insert devOrg2;
     	
     	Change__c change1 = newChange(devOrg1.Id);
@@ -138,11 +138,112 @@ private class MetaforceTestTriggers {
     	// Change_Set__c clonedManifest = [SELECT Id FROM Change_Set__c WHERE Origin__c = :intOrg.Id];
     }
     
-    static Environment__c newEnvironment(String eType, String eStatus)
+    static testMethod void testCloneClosedManifestBulkChanges()
+    {
+        Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
+        insert intOrg;
+        
+        Environment__c devOrg = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg;
+        
+        Environment__c devOrg2 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg2;
+        
+        Environment__c devOrg3 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg3;
+        
+        Environment__c devOrg4 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg4;
+        
+        Environment__c devOrg5 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg5;
+        
+        List<Change__c> cList = new List<Change__c>();
+        for (Integer x=0; x<200;x++) {
+            Change__c change = newChange(devOrg.Id);
+            cList.add(change);
+        }
+        insert cList;
+
+        Change_Set__c changeSet = newChangeSet(devOrg.Id, intOrg.Id);
+        insert changeSet;
+
+        List<Change_Junction__c> cjList = new List<Change_Junction__c>();
+        for (Change__c c : cList) {
+            Change_Junction__c changeJunction = newChangeJunction(c.Id, changeSet.Id);
+            cjList.add(changeJunction);
+        }
+        insert cjList;
+
+        changeSet.Status__c = 'Pending Deployment';
+        update changeSet;
+
+        for (Change_Junction__c cj : cjList) {
+            cj.Deployed__c = true;
+        }
+
+        Test.startTest();
+        update cjList;
+        Test.stopTest();
+
+    }
+    
+/*    static testMethod void testCloneClosedManifestBulkManifests()
+    {
+        Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
+        insert intOrg;
+        
+        Environment__c devOrg = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg;
+        
+        Environment__c devOrg2 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg2;
+        
+        Environment__c devOrg3 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg3;
+        
+        Environment__c devOrg4 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg4;
+        
+        Environment__c devOrg5 = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg5;
+        
+        Change__c change = newChange(devOrg.Id);
+        insert change;
+
+        List<Change_Set__c> csList = new List<Change_Set__c>();
+        for (Integer x=0; x<200; x++) {
+	        Change_Set__c changeSet = newChangeSet(devOrg.Id, intOrg.Id);
+        	csList.add(changeSet);
+        }
+        insert csList;
+
+        List<Change_Junction__c> cjList = new List<Change_Junction__c>();
+        for (Change_Set__c cs : csList) {
+            Change_Junction__c changeJunction = newChangeJunction(change.Id, cs.Id);
+            cjList.add(changeJunction);
+        }
+        insert cjList;
+
+        for (Change_Set__c cs : csList) {
+	        cs.Status__c = 'Pending Deployment';
+        }
+        update csList;
+
+        for (Change_Junction__c cj : cjList) {
+            cj.Deployed__c = true;
+        }
+
+        Test.startTest();
+        update cjList;
+        Test.stopTest();
+    } */
+
+    static Environment__c newEnvironment(String eName, String eType, String eStatus)
     {
     	// Setup new origin Environment record
         Environment__c e = new Environment__c (
-        Name = 'Test Env',
+        Name = eName,
         Organization_ID__c = genOrgId(),
         Status__c = eStatus,
         Type__c = eType);
