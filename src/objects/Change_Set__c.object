@@ -159,6 +159,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Parent__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent</label>
+        <referenceTo>Change_Set__c</referenceTo>
+        <relationshipLabel>Children</relationshipLabel>
+        <relationshipName>Manifests</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Percent_Deployed__c</fullName>
         <externalId>false</externalId>
         <formula>if( Num_Changes__c &gt; 0, Num_Deployed__c /  Num_Changes__c , 0 )</formula>

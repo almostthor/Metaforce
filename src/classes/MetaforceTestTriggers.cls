@@ -212,7 +212,7 @@ private class MetaforceTestTriggers {
         insert change;
 
         List<Change_Set__c> csList = new List<Change_Set__c>();
-        for (Integer x=0; x<100; x++) {
+        for (Integer x=0; x<200; x++) {
 	        Change_Set__c changeSet = newChangeSet(devOrg.Id, intOrg.Id);
         	csList.add(changeSet);
         }
