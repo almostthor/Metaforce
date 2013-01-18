@@ -79,12 +79,14 @@ public class MetaforceChangeListCntrlr {
             
         insert eOrigin;
         
+        String intLabel = System.Label.Metaforce_Integration_Environment;        
+        
         // Setup new destination Environment record
         Environment__c eDestination = new Environment__c (
-            Name = 'Destination Org',
+            Name = intLabel,
             Organization_ID__c = '456976',
             Status__c = 'In Use',
-            Type__c = 'Production');
+            Type__c = 'Integration');
             
         insert eDestination;
                     
