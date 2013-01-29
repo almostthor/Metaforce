@@ -2,10 +2,10 @@
 private class MetaforceTestTriggers {
 
     static testMethod void myUnitTest() {
-        
+        String strIntEnvName = System.Label.Metaforce_Integration_Environment;
         // Setup new origin Environment record
         Environment__c eOrigin = new Environment__c (
-            Name = 'Source Org',
+            Name = strIntEnvName,
             Organization_ID__c = '1239876',
             Status__c = 'In Use',
             Type__c = 'Integration');
@@ -108,7 +108,9 @@ private class MetaforceTestTriggers {
     
     static testMethod void testCloneClosedManifest()
     {
-    	Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
+    	String strIntEnvName = System.Label.Metaforce_Integration_Environment;
+    	
+    	Environment__c intOrg = newEnvironment(strIntEnvName, 'Integration', 'In Use');
     	insert intOrg;
     	
     	Environment__c devOrg1 = newEnvironment('devOrg', 'Development', 'In Use');
@@ -140,7 +142,9 @@ private class MetaforceTestTriggers {
     
     static testMethod void testCloneClosedManifestBulkChanges()
     {
-        Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
+    	String strIntEnvName = System.Label.Metaforce_Integration_Environment;
+    	
+        Environment__c intOrg = newEnvironment(strIntEnvName, 'Integration', 'In Use');
         insert intOrg;
         
         Environment__c devOrg = newEnvironment('devOrg', 'Development', 'In Use');
@@ -190,7 +194,9 @@ private class MetaforceTestTriggers {
     
     static testMethod void testCloneClosedManifestBulkManifests()
     {
-        Environment__c intOrg = newEnvironment('Krang', 'Integration', 'In Use');
+    	String strIntEnvName = System.Label.Metaforce_Integration_Environment;
+    	
+        Environment__c intOrg = newEnvironment(strIntEnvName, 'Integration', 'In Use');
         insert intOrg;
         
         Environment__c devOrg = newEnvironment('devOrg', 'Development', 'In Use');

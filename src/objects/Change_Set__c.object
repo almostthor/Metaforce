@@ -36,7 +36,7 @@
     <enableActivities>false</enableActivities>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <fields>
         <fullName>Commit__c</fullName>
         <description>The commit reference from the CVS that is associated with this manifest</description>
@@ -69,6 +69,16 @@
         <externalId>false</externalId>
         <label>DestinationType</label>
         <length>128</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Destination_Status__c</fullName>
+        <description>Returns the status of the manifest&apos;s destination. Created to use in filtering a report.</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Destination__r.Status__c )</formula>
+        <label>Destination Status</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

@@ -8,7 +8,7 @@
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/ManifestTransferNotice</template>
+        <template>Metaforce_Email_Templates/ManifestTransferNotice</template>
     </alerts>
     <fieldUpdates>
         <fullName>OIT_Can_Edit_all_Integration_Destination</fullName>
