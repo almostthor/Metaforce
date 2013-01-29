@@ -45,8 +45,6 @@
     <types>
         <members>Metaforce_Email_Templates</members>
         <members>Metaforce_Email_Templates/ManifestTransferNotice</members>
-        <members>unfiled$public</members>
-        <members>unfiled$public/ManifestTransferNotice</members>
         <name>EmailTemplate</name>
     </types>
     <types>
