@@ -80,7 +80,7 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
             
             // Map of all the Manifests associated with the set of Manifest IDs
             Map<ID, Change_Set__c> csMap = new Map<ID, Change_Set__c>([
-                select Id, Name, Status__c, Origin__c, Parent__c, Destination__c, OwnerId
+                select Id, Name, Description__c, Status__c, Origin__c, Parent__c, Destination__c, X80_Coverage__c, Commit__c, OwnerId
                 from Change_Set__c
                 where Status__c = 'Closed' 
                  and Destination__c = :INT_ENV 
@@ -90,7 +90,7 @@ trigger Metaforce_CloneClosedManifest on Change_Set__c (after update) {
                 for (Environment__c recepient : devEnvList) {  // Opportunity to refactor using sets & maps
                     if (recepient.Id != cs.Origin__c) {
                         Change_Set__c clonedCs = new Change_Set__c();
-                        clonedCs = cs.clone();
+                        clonedCs = cs.clone(false, true);
             
                         clonedCs.Name = cs.Name + ' (Clone)';
                         clonedCs.Status__c = 'Pending Deployment';
