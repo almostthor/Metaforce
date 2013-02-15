@@ -141,13 +141,18 @@ if (mStatus == &apos;Pending Deployment&apos;) {
             var cj = new sforce.SObject(&quot;Change_Junction__c&quot;); 
             cj.id = records[n]; 
             cj.Deployed__c = true; 
+
             newRecords.push(cj); 
         }
  
-        result = sforce.connection.update(newRecords); 
+            result = sforce.connection.update(newRecords); 
 
         if (result[0].success==&apos;false&apos;) { 
-            alert(result[0].errors.message); 
+            if (result[0].errors.statusCode == &apos;INSUFFICIENT_ACCESS_OR_READONLY&apos;) {
+                alert(&apos;You cannot deploy a manifest that you do not own&apos;);
+            } else {
+                alert(result[0].errors.message); 
+            }
         } else {
             window.location.reload(); 
         }
