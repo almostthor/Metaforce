@@ -1,4 +1,18 @@
 Tasks:
+	- Fix this error:
+		 Chad:  MetaforceCreateChangesAtDestination: execution of AfterUpdate
+
+caused by: System.DmlException: Insert failed. First exception on row 0; first error: FIELD_CUSTOM_VALIDATION_EXCEPTION, The selected environment is no longer in use and cannot accept new changes.: [Environment__c]
+
+Trigger.MetaforceCreateChangesAtDestination: line 67, column 1
+ me:  can you send me a link to the mainfest?
+ Chad:  https://na7.salesforce.com/a15A0000000nB6b
+ me:  you don't need to deploy this manifest because you sandbox has been refreshed.
+This manifest was targed to your old sbox
+
+here's what's outstanding in your current sbox:
+https://na7.salesforce.com/a17A0000002GtBY
+	- Create rule that prevents manifests from being 'Released to Destination' when there is no destination set.
 	- Add attribute for github commit # @done
 	- Link commit number to github
 	- Public group for developers -- why?
