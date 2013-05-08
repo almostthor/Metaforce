@@ -52,3 +52,36 @@ The typical workflow for using Metaforce after setup typically looks like the fo
 5. Replicate the changes in the desitination environment and mark each as deployed
 6. When all changes in the manifest are deployed the manifest is automatically marked deployed
 7. If the Clone Deployed Manifests feature is enabled and the destination environment is the defined integration environment, the system will create a clone of the deployed manifest for each active developer environment.
+
+Demo
+----
+
+### Part 1
+
+<!-- copy and paste. Modify height and width if desired. -->
+ <object id="scPlayer"  width="779" height="600" type="application/x-shockwave-flash" data="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/jingswfplayer.swf" >
+ <param name="movie" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/jingswfplayer.swf" />
+ <param name="quality" value="high" />
+ <param name="bgcolor" value="#FFFFFF" />
+ <param name="flashVars" value="thumb=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/FirstFrame.jpg&containerwidth=1024&containerheight=789&content=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/00000008.swf&blurover=false" />
+ <param name="allowFullScreen" value="true" />
+ <param name="scale" value="showall" />
+ <param name="allowScriptAccess" value="always" />
+ <param name="base" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/" />
+ Unable to display content. Adobe Flash is required.
+</object>
+
+### Part 2
+
+<!-- copy and paste. Modify height and width if desired. -->
+ <object id="scPlayer"  width="779" height="598" type="application/x-shockwave-flash" data="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/jingswfplayer.swf" >
+ <param name="movie" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/jingswfplayer.swf" />
+ <param name="quality" value="high" />
+ <param name="bgcolor" value="#FFFFFF" />
+ <param name="flashVars" value="thumb=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/FirstFrame.jpg&containerwidth=1024&containerheight=787&content=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/00000009.swf&blurover=false" />
+ <param name="allowFullScreen" value="true" />
+ <param name="scale" value="showall" />
+ <param name="allowScriptAccess" value="always" />
+ <param name="base" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/" />
+ Unable to display content. Adobe Flash is required.
+</object>
