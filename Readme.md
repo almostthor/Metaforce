@@ -56,4 +56,4 @@ The typical workflow for using Metaforce after setup typically looks like the fo
 Demo
 ----
 
-<object width="640" height="480"><param name="movie" value="http://www.youtube.com/v/X_yqusfyYBo?version=3&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/X_yqusfyYBo?version=3&amp;hl=en_US" type="application/x-shockwave-flash" width="640" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+ * http://www.youtube.com/watch?v=X_yqusfyYBo
