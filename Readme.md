@@ -56,32 +56,4 @@ The typical workflow for using Metaforce after setup typically looks like the fo
 Demo
 ----
 
-### Part 1
-
-<!-- copy and paste. Modify height and width if desired. -->
- <object id="scPlayer"  width="779" height="600" type="application/x-shockwave-flash" data="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/jingswfplayer.swf" >
- <param name="movie" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/jingswfplayer.swf" />
- <param name="quality" value="high" />
- <param name="bgcolor" value="#FFFFFF" />
- <param name="flashVars" value="thumb=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/FirstFrame.jpg&containerwidth=1024&containerheight=789&content=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/00000008.swf&blurover=false" />
- <param name="allowFullScreen" value="true" />
- <param name="scale" value="showall" />
- <param name="allowScriptAccess" value="always" />
- <param name="base" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/4443861b-d0b3-43af-aacf-7368f00ecb16/" />
- Unable to display content. Adobe Flash is required.
-</object>
-
-### Part 2
-
-<!-- copy and paste. Modify height and width if desired. -->
- <object id="scPlayer"  width="779" height="598" type="application/x-shockwave-flash" data="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/jingswfplayer.swf" >
- <param name="movie" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/jingswfplayer.swf" />
- <param name="quality" value="high" />
- <param name="bgcolor" value="#FFFFFF" />
- <param name="flashVars" value="thumb=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/FirstFrame.jpg&containerwidth=1024&containerheight=787&content=http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/00000009.swf&blurover=false" />
- <param name="allowFullScreen" value="true" />
- <param name="scale" value="showall" />
- <param name="allowScriptAccess" value="always" />
- <param name="base" value="http://content.screencast.com/users/pnelson_reside.biz/folders/Jing/media/a1c99297-956b-44a5-b588-14c8598f1635/" />
- Unable to display content. Adobe Flash is required.
-</object>
+<object width="640" height="480"><param name="movie" value="http://www.youtube.com/v/X_yqusfyYBo?version=3&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/X_yqusfyYBo?version=3&amp;hl=en_US" type="application/x-shockwave-flash" width="640" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
