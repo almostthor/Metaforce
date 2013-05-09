@@ -1,6 +1,8 @@
 Metaforce
 =========
 
+[![Build Status](http://ec2-54-244-204-234.us-west-2.compute.amazonaws.com/job/Metaforce/badge/icon)](http://ec2-54-244-204-234.us-west-2.compute.amazonaws.com/job/Metaforce/)
+
 This tool allows you to track and manage the propogation of manual Force.com metadata changes to the stack of development environments.
 
  * Create and manage active environments
