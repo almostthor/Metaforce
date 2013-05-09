@@ -108,7 +108,7 @@
         <summaryFilterItems>
             <field>Change_Junction__c.CodeChange__c</field>
             <operation>equals</operation>
-            <value>True</value>
+            <value>true</value>
         </summaryFilterItems>
         <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -129,7 +129,7 @@
         <summaryFilterItems>
             <field>Change_Junction__c.Deployed__c</field>
             <operation>equals</operation>
-            <value>True</value>
+            <value>true</value>
         </summaryFilterItems>
         <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>

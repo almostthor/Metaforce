@@ -1,7 +1,0 @@
-<apex:page controller="sf4twitter.TwitterReviewController" action="{!markAsReviewed}" title="Mark as reviewed Conversations" >
-
-<c:TwitterStyles />
-
-<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}"/>
-
-</apex:page>

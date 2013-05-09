@@ -68,5 +68,5 @@
         <members>Change__c</members>
         <name>Workflow</name>
     </types>
-    <version>26.0</version>
+    <version>27.0</version>
 </Package>

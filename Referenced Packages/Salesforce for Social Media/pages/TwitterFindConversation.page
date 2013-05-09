@@ -1,5 +1,0 @@
-<apex:page controller="sf4twitter.TwitterFindConversationController" action="{!findConversation}">
-
-<c:TwitterErrorMessage msgTitle="{!$Label.TWITTER_CONV_NOT_FOUND_TITLE}" msg="{!errorMsg}" />
-
-</apex:page>

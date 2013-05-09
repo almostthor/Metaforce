@@ -229,6 +229,7 @@
         <fullName>View_Story</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
         <hasMenubar>true</hasMenubar>
         <hasScrollbars>true</hasScrollbars>
         <hasToolbar>true</hasToolbar>

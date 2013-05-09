@@ -1,9 +1,0 @@
-<apex:page controller="sf4twitter.TwitterToCaseController" action="{!escalateToCases}" title="{!$Label.Create_Cases}" showHeader="{!!console}" sidebar="{!!console}" >
-
-<c:TwitterStyles />
-
-<c:TwitterErrorMessage msgTitle="{!msgTitle}" msg="{!msg}" retUrl="{!retUrl}" rendered="{!IF(msg != null && msg != '',true,false)}"/>
-
-<c:TwitterResultBlock title="{!$Label.Create_Case_Results}" resultList="{!resultsIteration}" retUrl="{!retUrl}" rendered="{!IF(msg != null && msg != '',false,true)}"/>
-
-</apex:page>
