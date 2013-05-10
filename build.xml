@@ -1,7 +1,8 @@
 <project name="Salesforce Ant tasks" default="deployCode" basedir="." xmlns:sf="antlib:com.salesforce">
 
-    <property file="build.properties"/>
+    <!-- <property file="build.properties"/> -->
     <property environment="env"/>
+    <property file="${env.MY_PROPERTIES}"/>
 	<!-- Deploy all code in the /src/ directory and run all tests -->
     <target name="deployCode">
 
