@@ -1,27 +1,21 @@
 <project name="Salesforce Ant tasks" default="deployCode" basedir="." xmlns:sf="antlib:com.salesforce">
 
     <property environment="env"/>
-	<!-- Deploy all code in the /src/ directory and run all tests -->
-	<if>
-		<equals arg1="${env.JENKINS}" arg2="True" />
-		<then>
-			<property file="${env.BUILD_PROPERTIES}"/>
-		</then>
-		<else>
-			<property file="build.properties"/>
-		</else>
-	</if>
-	<target name="deployCode">
+    <property file="${env.BUILD_PROPERTIES}"/>
+    <property file="build.properties"/>
 
-	<sf:deploy username="${sf.username}"
-	    password="${sf.password}"
-	    serverurl="${sf.serverurl}"
-	    deployRoot="src"
-	    runAllTests="${sf.runtests}"
-	    maxPoll="50"
-	    pollWaitMillis="60000">
-      </sf:deploy>
-    </target>
+	<!-- Deploy all code in the /src/ directory and run all tests -->
+
+	<target name="deployCode">
+		<sf:deploy username="${sf.username}"
+			password="${sf.password}"
+			serverurl="${sf.serverurl}"
+			deployRoot="src"
+			runAllTests="${sf.runtests}"
+			maxPoll="50"
+			pollWaitMillis="60000">
+		</sf:deploy>
+	</target>
 
 	<target name="removeWhitespace">
 		<replaceregexp match="[ \t]+$" replace="" flags="g" byline="true">
