@@ -1,10 +1,17 @@
 <project name="Salesforce Ant tasks" default="deployCode" basedir="." xmlns:sf="antlib:com.salesforce">
 
-    <!-- <property file="build.properties"/> -->
     <property environment="env"/>
-    <property file="${env.MY_PROPERTIES}"/>
 	<!-- Deploy all code in the /src/ directory and run all tests -->
-    <target name="deployCode">
+	<if>
+		<equals arg1="${env.JENKINS}" arg2="True" />
+		<then>
+			<property file="${env.BUILD_PROPERTIES}"/>
+		</then>
+		<else>
+			<property file="build.properties"/>
+		</else>
+	</if>
+	<target name="deployCode">
 
 	<sf:deploy username="${sf.username}"
 	    password="${sf.password}"
