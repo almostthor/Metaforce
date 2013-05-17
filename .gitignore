@@ -1,3 +1,5 @@
 .project
-.settings/com.salesforce.ide.core.prefs
+.settings
+salesforce.schema
+Referenced Packages
 *.swp
