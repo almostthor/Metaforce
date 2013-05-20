@@ -39,7 +39,7 @@ Setup
 -----
 
  * Enter environment records and assign ownership of the records accordingly
- 	* Mark the enviroments as In Use
+ 	* Mark the enviroments as 'In Use'
  	* Enter the sandbox's Salesforce.com Organization ID (from Setup > Administration Setup > Company Profile > Update your company information)
 
 Workflow
