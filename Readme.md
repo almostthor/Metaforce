@@ -1,7 +1,7 @@
 Metaforce
 =========
 
-[![Build Status](http://ec2-54-244-204-234.us-west-2.compute.amazonaws.com/job/Metaforce/badge/icon)](http://ec2-54-244-204-234.us-west-2.compute.amazonaws.com/job/Metaforce/)
+[![Build Status](http://ec2-75-101-201-23.compute-1.amazonaws.com/job/Metaforce_1_Production/badge/icon)](http://ec2-75-101-201-23.compute-1.amazonaws.com/job/Metaforce_1_Production/)
 
 This tool allows you to track and manage the propogation of manual Force.com metadata changes to the stack of development environments.
 
@@ -39,7 +39,7 @@ Setup
 -----
 
  * Enter environment records and assign ownership of the records accordingly
- 	* Mark the enviroments as In Use
+ 	* Mark the enviroments as 'In Use'
  	* Enter the sandbox's Salesforce.com Organization ID (from Setup > Administration Setup > Company Profile > Update your company information)
 
 Workflow
