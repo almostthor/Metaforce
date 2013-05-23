@@ -34,6 +34,7 @@
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -108,7 +109,7 @@
         <summaryFilterItems>
             <field>Change_Junction__c.CodeChange__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>True</value>
         </summaryFilterItems>
         <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -129,7 +130,7 @@
         <summaryFilterItems>
             <field>Change_Junction__c.Deployed__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>True</value>
         </summaryFilterItems>
         <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -258,23 +259,28 @@
 var uId = &apos;{!$User.Id}&apos;;
 var destOwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;;
 var mStatus = &apos;{!Change_Set__c.Status__c}&apos;;
+var mDest = &apos;{!Change_Set__c.Destination__c}&apos;;
 var manifestObj = new sforce.SObject(&quot;Change_Set__c&quot;); 
 var destType = &apos;{!Change_Set__c.DestinationType__c}&apos;; 
 
 if (mStatus == &apos;Open&apos;) {
-    manifestObj.Id = &apos;{!Change_Set__c.Id}&apos;; 
-    if (destType != &apos;Integration&apos; &amp;&amp; destOwnerId != uId) { 
-        manifestObj.OwnerId = destOwnerId;
-        manifestObj.NotifyNewOwner__c = true;
-    } 
+    if (mDest != &apos;&apos;) {
+        manifestObj.Id = &apos;{!Change_Set__c.Id}&apos;; 
+        if (destType != &apos;Integration&apos; &amp;&amp; destOwnerId != uId) { 
+            manifestObj.OwnerId = destOwnerId;
+            manifestObj.NotifyNewOwner__c = true;
+        } 
 
-    manifestObj.Status__c = &quot;Pending Deployment&quot;; 
-    var result = sforce.connection.update([manifestObj]); 
+        manifestObj.Status__c = &quot;Pending Deployment&quot;; 
+        var result = sforce.connection.update([manifestObj]); 
 
-    if (result[0].success==&apos;false&apos;) { 
-        alert(result[0].errors.message); 
-    } else { 
-        window.location.href=window.location.href; 
+        if (result[0].success==&apos;false&apos;) { 
+            alert(result[0].errors.message); 
+        } else { 
+            window.location.href=window.location.href; 
+        }
+    } else {
+        alert(&apos;Please enter a destination.&apos;)
     }
 } else {
     alert(&apos;Manifest has already been released.&apos;);
