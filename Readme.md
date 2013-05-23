@@ -1,7 +1,7 @@
 Metaforce
 =========
 
-[![Build Status](http://ec2-75-101-201-23.compute-1.amazonaws.com/job/Metaforce_1_Production/badge/icon)](http://ec2-75-101-201-23.compute-1.amazonaws.com/job/Metaforce_1_Production/)
+[![Build Status](http://jenkins.roundcorner.com/job/Metaforce_1_Production/badge/icon)](http://ec2-75-101-201-23.compute-1.amazonaws.com/job/Metaforce_1_Production/)
 
 This tool allows you to track and manage the propogation of manual Force.com metadata changes to the stack of development environments.
 
