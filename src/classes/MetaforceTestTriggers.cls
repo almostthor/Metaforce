@@ -245,6 +245,48 @@ private class MetaforceTestTriggers {
         Test.stopTest();
     }
 
+    static testMethod void testDeployToDeletedEnvironment()
+    {
+        String strIntEnvName = System.Label.Metaforce_Integration_Environment;
+
+        Environment__c intOrg = newEnvironment(strIntEnvName, 'Integration', 'In Use');
+        insert intOrg;
+
+        Environment__c devOrg = newEnvironment('devOrg', 'Development', 'In Use');
+        insert devOrg;
+
+        Change__c change = newChange(devOrg.Id);
+        insert change;
+
+        Manifest__c changeSet = newChangeSet(devOrg.Id, intOrg.Id);
+        insert changeSet;
+
+        Change_Junction__c changeJunction = newChangeJunction(change.Id, changeSet.Id);
+        insert changeJunction;
+
+        changeSet.Status__c = 'Pending Deployment';
+        update changeSet;
+
+        intOrg.Status__c = 'Deleted';
+        update intOrg;
+
+        changeJunction.Deployed__c = true;
+        Exception ex;
+
+        Test.startTest();
+        try
+        {
+            update changeJunction;
+        }
+        catch (Exception e)
+        {
+            ex = e;
+        }
+        Test.stopTest();
+
+        System.assertEquals(true, ex instanceOf System.DMLException, 'Did not throw a DML exception as expected');
+    }
+
     static Environment__c newEnvironment(String eName, String eType, String eStatus)
     {
     	// Setup new origin Environment record

@@ -77,11 +77,4 @@ List<Change__c> nc = new List<Change__c>{};
             }
         }
     }
-    catch (Exception e)
-    {
-        for (Change_Junction__c changeJunction : Trigger.New)
-        {
-            changeJunction.addError(e);
-        }
-    }
 }
