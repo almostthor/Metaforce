@@ -3,3 +3,5 @@
 salesforce.schema
 Referenced Packages
 *.swp
+config
+*.sublime-project
