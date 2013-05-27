@@ -6,3 +6,5 @@ Referenced Packages
 config
 *.sublime-project
 *.sublime-workspace
+build.*
+metaforce.properties
