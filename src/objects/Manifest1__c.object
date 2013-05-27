@@ -56,7 +56,7 @@
         <required>false</required>
         <type>TextArea</type>
     </fields>
-<!--     <fields>
+    <fields>
         <fullName>DestinationOwnerId__c</fullName>
         <externalId>false</externalId>
         <formula>Destination__r.OwnerId</formula>
@@ -65,7 +65,7 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
- -->    <fields>
+    <fields>
         <fullName>DestinationType__c</fullName>
         <externalId>false</externalId>
         <label>DestinationType</label>
@@ -74,7 +74,7 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-<!--     <fields>
+    <fields>
         <fullName>Destination_Status__c</fullName>
         <description>Returns the status of the manifest&apos;s destination. Created to use in filtering a report.</description>
         <externalId>false</externalId>
@@ -84,70 +84,23 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
- --><!--     <fields>
+    <fields>
         <fullName>Destination__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Destination</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Manifests (Inbound)</relationshipLabel>
-        <relationshipName>Change_Sets</relationshipName>
+        <relationshipName>Change_Sets2</relationshipName>
         <required>false</required>
         <type>Lookup</type>
     </fields>
- -->    <fields>
+    <fields>
         <fullName>NotifyNewOwner__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>NotifyNewOwner</label>
         <type>Checkbox</type>
     </fields>
-<!--     <fields>
-        <fullName>NumCodeChanges__c</fullName>
-        <externalId>false</externalId>
-        <label>NumCodeChanges</label>
-        <summaryFilterItems>
-            <field>Change_Junction__c.CodeChange__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <type>Summary</type>
-    </fields>
- --><!--     <fields>
-        <fullName>Num_Changes__c</fullName>
-        <externalId>false</externalId>
-        <label>Num Changes</label>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <type>Summary</type>
-    </fields> -->
-<!--     <fields>
-        <fullName>Num_Deployed__c</fullName>
-        <externalId>false</externalId>
-        <label>Num Deployed</label>
-        <summaryFilterItems>
-            <field>Change_Junction__c.Deployed__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <type>Summary</type>
-    </fields> -->
-<!--     <fields>
-        <fullName>Num_Outstanding__c</fullName>
-        <externalId>false</externalId>
-        <formula>Num_Changes__c - Num_Deployed__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Num Outstanding</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields> -->
     <fields>
         <fullName>OriginId__c</fullName>
         <externalId>false</externalId>
@@ -164,33 +117,20 @@
         <externalId>false</externalId>
         <label>Origin</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Manifests (Outbound)</relationshipLabel>
         <relationshipName>Change_Sets3</relationshipName>
         <required>true</required>
         <type>Lookup</type>
     </fields>
-<!--     <fields>
+    <fields>
         <fullName>Parent__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Parent</label>
         <referenceTo>Change_Set__c</referenceTo>
-        <relationshipLabel>Children</relationshipLabel>
-        <relationshipName>Manifests</relationshipName>
+        <relationshipName>Manifests1</relationshipName>
         <required>false</required>
         <type>Lookup</type>
-    </fields> -->
-    <!-- <fields>
-        <fullName>Percent_Deployed__c</fullName>
-        <externalId>false</externalId>
-        <formula>if( Num_Changes__c &gt; 0, Num_Deployed__c /  Num_Changes__c , 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>% Deployed</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Percent</type>
-    </fields> -->
+    </fields>
     <fields>
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
@@ -220,13 +160,11 @@
         <label>80% Coverage</label>
         <type>Checkbox</type>
     </fields>
-    <label>Manifest</label>
+    <label>Manifest1</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Origin__c</columns>
-        <!-- <columns>Destination__c</columns> -->
-        <!-- <columns>Num_Changes__c</columns> -->
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -234,19 +172,12 @@
         <label>Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Manifests</pluralLabel>
+    <pluralLabel>Manifests1</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Origin__c</customTabListAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
-<!--     <validationRules>
-        <fullName>Code_changes_must_assert_80_coverage</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(   NumCodeChanges__c  &gt; 0 ,  X80_Coverage__c = FALSE ,  ISPICKVAL( Status__c , &quot;Pending Deployment&quot;  ) )</errorConditionFormula>
-        <errorDisplayField>X80_Coverage__c</errorDisplayField>
-        <errorMessage>Please check and confirm that all associated code changes have at least 80% code coverage.</errorMessage>
-    </validationRules>
- -->    <webLinks>
+    <webLinks>
         <fullName>Release_to_Destination</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
