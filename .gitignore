@@ -5,3 +5,4 @@ Referenced Packages
 *.swp
 config
 *.sublime-project
+*.sublime-workspace
