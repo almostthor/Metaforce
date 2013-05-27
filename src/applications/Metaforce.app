@@ -5,7 +5,7 @@
     <label>Metaforce</label>
     <tab>Environment__c</tab>
     <tab>Change__c</tab>
-    <tab>Change_Set__c</tab>
+    <tab>Manifest__c</tab>
     <tab>standard-Dashboard</tab>
     <tab>standard-report</tab>
 </CustomApplication>

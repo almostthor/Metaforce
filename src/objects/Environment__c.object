@@ -34,6 +34,7 @@
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
@@ -134,7 +135,7 @@
         <fullName>nf_01IA0000002CGyrMAG_00NA000000A30pZMAR</fullName>
         <active>true</active>
         <errorMessage>The selected environment is no longer in use and cannot accept new manifests.</errorMessage>
-        <field>Change_Set__c.Origin__c</field>
+        <field>Manifest__c.Origin__c</field>
         <filterItems>
             <field>Environment__c.Status__c</field>
             <operation>equals</operation>
@@ -146,7 +147,7 @@
     <namedFilters>
         <fullName>nf_01IA0000002CGyrMAG_00NA000000A31YUMAZ</fullName>
         <active>true</active>
-        <field>Change_Set__c.Destination__c</field>
+        <field>Manifest__c.Destination__c</field>
         <filterItems>
             <field>Environment__c.Status__c</field>
             <operation>equals</operation>

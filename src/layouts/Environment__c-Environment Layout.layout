@@ -72,7 +72,7 @@
         <fields>CREATED_DATE</fields>
         <fields>Num_Changes__c</fields>
         <fields>Percent_Deployed__c</fields>
-        <relatedList>Change_Set__c.Destination__c</relatedList>
+        <relatedList>Manifest__c.Destination__c</relatedList>
         <sortField>Percent_Deployed__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
@@ -93,7 +93,7 @@
         <fields>CREATED_DATE</fields>
         <fields>Num_Changes__c</fields>
         <fields>Percent_Deployed__c</fields>
-        <relatedList>Change_Set__c.Origin__c</relatedList>
+        <relatedList>Manifest__c.Origin__c</relatedList>
         <sortField>CREATED_DATE</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>

@@ -98,8 +98,8 @@
     </layoutSections>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
-        <fields>Change_Set__c.NAME</fields>
-        <fields>Change_Set__c.Destination__c</fields>
+        <fields>Manifest__c.NAME</fields>
+        <fields>Manifest__c.Destination__c</fields>
         <fields>Owner.CUSTENT_OWNER_NAME</fields>
         <fields>NAME</fields>
         <relatedList>Change_Junction__c.Change__c</relatedList>

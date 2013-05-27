@@ -23,7 +23,7 @@ List<Change__c> nc = new List<Change__c>{};
         changeIds.add(updatedChangeJunction.Change__c);
 
         // Add the environment ids to the environment set
-        changeSetIds.add(updatedChangeJunction.Change_Set__c);
+        changeSetIds.add(updatedChangeJunction.Manifest__c);
     }
 
     // create a map so that Changes are locatable by their Id (key)
@@ -38,10 +38,10 @@ List<Change__c> nc = new List<Change__c>{};
      WHERE Id IN :changeIds]);
 
     // create a map so that Change Sets are locatable by their Id (key)
-    Map<id, Change_Set__c> changeSetMap = new Map<id, Change_Set__c>(
+    Map<id, Manifest__c> changeSetMap = new Map<id, Manifest__c>(
     [SELECT Destination__c
 //            Destination_Org_Id__c
-     FROM Change_Set__c
+     FROM Manifest__c
      WHERE Id IN :changeSetIds]);
 
     // Loop (again) through all records in the Trigger.new collection
@@ -53,13 +53,13 @@ List<Change__c> nc = new List<Change__c>{};
                 // Create new Change records and add them to the list
                 nc.add (new Change__c(
                     Description__c   = changeMap.get(updatedChangeJunction.Change__c).Description__c,
-                    Environment__c   = changeSetMap.get(updatedChangeJunction.Change_Set__c).Destination__c,
+                    Environment__c   = changeSetMap.get(updatedChangeJunction.Manifest__c).Destination__c,
                     Manual_Change__c = changeMap.get(updatedChangeJunction.Change__c).Manual_Change__c,
                     Metadata__c      = changeMap.get(updatedChangeJunction.Change__c).Metadata__c,
                     Name__c          = changeMap.get(updatedChangeJunction.Change__c).Name__c,
-//                    Org_Id__c        = changeSetMap.get(updatedChangeJunction.Change_Set__c).Destination_Org_Id__c,
+//                    Org_Id__c        = changeSetMap.get(updatedChangeJunction.Manifest__c).Destination_Org_Id__c,
                     Parent__c        = updatedChangeJunction.Change__c,
-                    Parent_Manifest__c = updatedChangeJunction.Change_Set__c,
+                    Parent_Manifest__c = updatedChangeJunction.Manifest__c,
                     Story_Id__c      = changeMap.get(updatedChangeJunction.Change__c).Story_Id__c,
                     Type__c          = changeMap.get(updatedChangeJunction.Change__c).Type__c));
     }

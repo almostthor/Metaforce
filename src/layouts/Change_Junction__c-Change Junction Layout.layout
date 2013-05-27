@@ -12,7 +12,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Change_Set__c</field>
+                <field>Manifest__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
