@@ -37,21 +37,10 @@
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
-    <fields>
-        <fullName>Change_Set__c</fullName>
-        <externalId>false</externalId>
-        <label>Change Set</label>
-        <referenceTo>Change_Set__c</referenceTo>
-        <relationshipLabel>Changes</relationshipLabel>
-        <relationshipName>Change_Junctions</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
     <fields>
         <fullName>Change__c</fullName>
         <externalId>false</externalId>
@@ -88,6 +77,18 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Manifest__c</fullName>
+        <externalId>false</externalId>
+        <label>Manifest</label>
+        <referenceTo>Manifest__c</referenceTo>
+        <relationshipLabel>Changes</relationshipLabel>
+        <relationshipName>Manifests1</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <label>Change Junction</label>
     <nameField>
         <displayFormat>MCJ-{00000}</displayFormat>
@@ -108,10 +109,10 @@
         <requireRowSelection>false</requireRowSelection>
         <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
 
-var csId = &apos;{!Change_Set__c.Id}&apos;;
-var originId = &apos;{!Change_Set__c.OriginId__c}&apos;;
+var csId = &apos;{!Manifest__c.Id}&apos;;
+var originId = &apos;{!Manifest__c.OriginId__c}&apos;;
 
-if ({!ISPICKVAL(Change_Set__c.Status__c,&apos;Open&apos;)}) {
+if ({!ISPICKVAL(Manifest__c.Status__c,&apos;Open&apos;)}) {
     window.location.href=&apos;/apex/MetaforceChangeList?csId=&apos;+csId+&apos;&amp;csEnv=&apos;+originId+&apos;&amp;retURL=&apos;+csId
 } else {
     alert(&quot;You can only add changes to open manifests&quot;)
@@ -128,7 +129,7 @@ if ({!ISPICKVAL(Change_Set__c.Status__c,&apos;Open&apos;)}) {
         <requireRowSelection>true</requireRowSelection>
         <url>{!REQUIRESCRIPT (&quot;/soap/ajax/13.0/connection.js&quot;)} 
 
-var mStatus = &apos;{!Change_Set__c.Status__c}&apos;;
+var mStatus = &apos;{!Manifest__c.Status__c}&apos;;
 var records = {!GETRECORDIDS($ObjectType.Change_Junction__c)}; 
 var newRecords = []; 
 

@@ -7,7 +7,7 @@ public class MetaforceChangeListCntrlr {
      public String chgSetEnv {set;get;}
      public String retURL {set;get;}
      private List<Change_Junction__c> ncj;
-     private SObject<Change_Set__c> chgSetPr;
+     private SObject<Manifest__c> chgSetPr;
 
      // CONSTRUCTOR
      public MetaforceChangeListCntrlr(){
@@ -17,13 +17,13 @@ public class MetaforceChangeListCntrlr {
           chgSetId = apexpages.currentpage().getparameters().get('csId');
           chgSetEnv = apexpages.currentpage().getparameters().get('csEnv');
           ncj = new List<Change_Junction__c>{};
-          chgSetPr = [SELECT Id FROM Change_Set__c Where Id = :chgSetId];
+          chgSetPr = [SELECT Id FROM Manifest__c Where Id = :chgSetId];
 
-          for(Change__c c : [SELECT Id, Name, Type__c, Metadata__c, Name__c, Description__c, Manual_Change__c, Sprint_Number__c, Story_ID__c, CreatedDate 
-                                FROM Change__c 
-                                WHERE Environment__c = :chgSetEnv AND Id NOT IN (SELECT Change__c 
+          for(Change__c c : [SELECT Id, Name, Type__c, Metadata__c, Name__c, Description__c, Manual_Change__c, Sprint_Number__c, Story_ID__c, CreatedDate
+                                FROM Change__c
+                                WHERE Environment__c = :chgSetEnv AND Id NOT IN (SELECT Change__c
                                                     FROM Change_Junction__c
-                                                    WHERE Change_Set__c  = :chgSetId) 
+                                                    WHERE Manifest__c  = :chgSetId)
                                 ORDER BY CreatedDate DESC]){
                                     chgList.add(new MetaforceChangeWrapperCls(c));
           }
@@ -40,7 +40,7 @@ public class MetaforceChangeListCntrlr {
                }
           }
      }
-     
+
      public pageReference createChangeJunctions() {
         selChangeNames.clear();
 //        hasSelChg = false;
@@ -51,7 +51,7 @@ public class MetaforceChangeListCntrlr {
                 // build a new change junction record and add to the change junction list
                 ncj.add(new Change_Junction__c(
                     Change__c = cWrapper.cChange.Id,
-                    Change_Set__c = chgSetId));
+                    Manifest__c = chgSetId));
             }
         }
         // Insert new change junction records
@@ -61,78 +61,78 @@ public class MetaforceChangeListCntrlr {
         changeSetPage.setRedirect(true);
         return changeSetPage;
      }
-     
+
      public pageReference doCancel() {
      	pageReference page = new PageReference(retURL);
      	page.setRedirect(true);
      	return page;
      }
-     
+
     static testMethod void testMetaforceChangeListCntrlr() {
-        
+
         // Setup new origin Environment record
         Environment__c eOrigin = new Environment__c (
             Name = 'Source Org',
             Organization_ID__c = '1239876',
             Status__c = 'In Use',
             Type__c = 'Integration');
-            
+
         insert eOrigin;
-        
-        String intLabel = System.Label.Metaforce_Integration_Environment;        
-        
+
+        String intLabel = System.Label.Metaforce_Integration_Environment;
+
         // Setup new destination Environment record
         Environment__c eDestination = new Environment__c (
             Name = intLabel,
             Organization_ID__c = '456976',
             Status__c = 'In Use',
             Type__c = 'Integration');
-            
+
         insert eDestination;
-                    
+
         // Setup new Change record
         Change__c c = new Change__c (
             Environment__c = eOrigin.Id,
             Metadata__c = 'Object',
             Name__c = 'Change__c',
             Type__c = 'Create');
-            
+
         insert c;
-        
+
         // Setup new Change Set record
-        Change_Set__c cs = new Change_Set__c (
+        Manifest__c cs = new Manifest__c (
             Name = 'Test Change Set',
             Destination__c = eDestination.Id,
             Origin__c = eOrigin.Id);
-        
-        insert cs;                
-        
+
+        insert cs;
+
         // Setup new Change Junction record
         Change_Junction__c cj = new Change_Junction__c (
             Change__c = c.Id,
-            Change_Set__c = cs.Id);
-        
-        insert cj;   
-                
-        ApexPages.currentPage().getParameters().put('csId', cs.Id);  
-        ApexPages.currentPage().getParameters().put('csEnv', eOrigin.Id); 
+            Manifest__c = cs.Id);
 
-        //////////////////////////////////////////////////////////////////                  
+        insert cj;
+
+        ApexPages.currentPage().getParameters().put('csId', cs.Id);
+        ApexPages.currentPage().getParameters().put('csEnv', eOrigin.Id);
+
+        //////////////////////////////////////////////////////////////////
         MetaforceChangeListCntrlr metaforceChangeListController = new MetaforceChangeListCntrlr();
-        
+
         metaforceChangeListController.displaySelectedChangeNames();
         metaforceChangeListController.createChangeJunctions();
-        
-        
+
+
         //////////////////////////////////////////////////////////////////
         //Test MetaforceChangeWrapperCls class with "isSelected" set to true.
         MetaforceChangeListCntrlr metaforceChangeListWrapperSelected = new MetaforceChangeListCntrlr();
         MetaforceChangeWrapperCls mWrapper = new MetaforceChangeWrapperCls(c);
         mWrapper.isSelected = true;
-        metaforceChangeListWrapperSelected.chgList.add(mWrapper);        
-                
+        metaforceChangeListWrapperSelected.chgList.add(mWrapper);
+
         metaforceChangeListWrapperSelected.displaySelectedChangeNames();
-        metaforceChangeListWrapperSelected.createChangeJunctions();        
-        
-    }     
+        metaforceChangeListWrapperSelected.createChangeJunctions();
+
+    }
 }
