@@ -90,7 +90,6 @@
         <externalId>false</externalId>
         <label>Destination</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Manifests (Inbound)</relationshipLabel>
         <relationshipName>Change_Sets1</relationshipName>
         <required>false</required>
         <type>Lookup</type>
@@ -111,7 +110,7 @@
             <operation>equals</operation>
             <value>True</value>
         </summaryFilterItems>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
+        <summaryForeignKey>Change_Junction__c.Manifest__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
         <type>Summary</type>
     </fields>
@@ -119,7 +118,7 @@
         <fullName>Num_Changes__c</fullName>
         <externalId>false</externalId>
         <label>Num Changes</label>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
+        <summaryForeignKey>Change_Junction__c.Manifest__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
         <type>Summary</type>
     </fields>
@@ -132,7 +131,7 @@
             <operation>equals</operation>
             <value>True</value>
         </summaryFilterItems>
-        <summaryForeignKey>Change_Junction__c.Change_Set__c</summaryForeignKey>
+        <summaryForeignKey>Change_Junction__c.Manifest__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
         <type>Summary</type>
     </fields>
@@ -164,7 +163,6 @@
         <externalId>false</externalId>
         <label>Origin</label>
         <referenceTo>Environment__c</referenceTo>
-        <relationshipLabel>Manifests (Outbound)</relationshipLabel>
         <relationshipName>Change_Sets</relationshipName>
         <required>true</required>
         <type>Lookup</type>
@@ -174,8 +172,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Parent</label>
-        <referenceTo>Change_Set__c</referenceTo>
-        <relationshipLabel>Children</relationshipLabel>
+        <referenceTo>Manifest__c</referenceTo>
         <relationshipName>Manifests</relationshipName>
         <required>false</required>
         <type>Lookup</type>
@@ -254,30 +251,30 @@
         <masterLabel>Release to Destination</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)}
 
 var uId = &apos;{!$User.Id}&apos;;
-var destOwnerId = &apos;{!Change_Set__c.DestinationOwnerId__c}&apos;;
-var mStatus = &apos;{!Change_Set__c.Status__c}&apos;;
-var mDest = &apos;{!Change_Set__c.Destination__c}&apos;;
-var manifestObj = new sforce.SObject(&quot;Change_Set__c&quot;); 
-var destType = &apos;{!Change_Set__c.DestinationType__c}&apos;; 
+var destOwnerId = &apos;{!Manifest__c.DestinationOwnerId__c}&apos;;
+var mStatus = &apos;{!Manifest__c.Status__c}&apos;;
+var mDest = &apos;{!Manifest__c.Destination__c}&apos;;
+var manifestObj = new sforce.SObject(&quot;Manifest__c&quot;);
+var destType = &apos;{!Manifest__c.DestinationType__c}&apos;;
 
 if (mStatus == &apos;Open&apos;) {
     if (mDest != &apos;&apos;) {
-        manifestObj.Id = &apos;{!Change_Set__c.Id}&apos;; 
-        if (destType != &apos;Integration&apos; &amp;&amp; destOwnerId != uId) { 
+        manifestObj.Id = &apos;{!Manifest__c.Id}&apos;;
+        if (destType != &apos;Integration&apos; &amp;&amp; destOwnerId != uId) {
             manifestObj.OwnerId = destOwnerId;
             manifestObj.NotifyNewOwner__c = true;
-        } 
+        }
 
-        manifestObj.Status__c = &quot;Pending Deployment&quot;; 
-        var result = sforce.connection.update([manifestObj]); 
+        manifestObj.Status__c = &quot;Pending Deployment&quot;;
+        var result = sforce.connection.update([manifestObj]);
 
-        if (result[0].success==&apos;false&apos;) { 
-            alert(result[0].errors.message); 
-        } else { 
-            window.location.href=window.location.href; 
+        if (result[0].success==&apos;false&apos;) {
+            alert(result[0].errors.message);
+        } else {
+            window.location.href=window.location.href;
         }
     } else {
         alert(&apos;Please enter a destination.&apos;)

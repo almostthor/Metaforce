@@ -26,15 +26,15 @@
     </types>
     <types>
         <members>Change_Junction__c</members>
-        <members>Change_Set__c</members>
         <members>Change__c</members>
         <members>Environment__c</members>
+        <members>Manifest__c</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Change_Set__c</members>
         <members>Change__c</members>
         <members>Environment__c</members>
+        <members>Manifest__c</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -49,9 +49,9 @@
     </types>
     <types>
         <members>Change_Junction__c-Change Junction Layout</members>
-        <members>Change_Set__c-Release Layout</members>
         <members>Change__c-Change Layout</members>
         <members>Environment__c-Environment Layout</members>
+        <members>Manifest__c-Release Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -64,8 +64,8 @@
     </types>
     <types>
         <members>Change_Junction__c</members>
-        <members>Change_Set__c</members>
         <members>Change__c</members>
+        <members>Manifest__c</members>
         <name>Workflow</name>
     </types>
     <version>27.0</version>

@@ -34,6 +34,7 @@
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -139,7 +140,7 @@
         <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>Parent Manifest</label>
-        <referenceTo>Change_Set__c</referenceTo>
+        <referenceTo>Manifest__c</referenceTo>
         <relationshipLabel>Cloned Changes</relationshipLabel>
         <relationshipName>ClonedChanges</relationshipName>
         <required>false</required>

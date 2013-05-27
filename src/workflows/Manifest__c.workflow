@@ -45,17 +45,17 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Change_Set__c.Num_Outstanding__c</field>
+            <field>Manifest__c.Num_Outstanding__c</field>
             <operation>equals</operation>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Change_Set__c.Status__c</field>
+            <field>Manifest__c.Status__c</field>
             <operation>equals</operation>
             <value>Pending Deployment</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Change_Set__c.Num_Changes__c</field>
+            <field>Manifest__c.Num_Changes__c</field>
             <operation>greaterThan</operation>
             <value>0</value>
         </criteriaItems>
@@ -73,7 +73,7 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Change_Set__c.NotifyNewOwner__c</field>
+            <field>Manifest__c.NotifyNewOwner__c</field>
             <operation>equals</operation>
             <value>True</value>
         </criteriaItems>
@@ -87,7 +87,7 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Change_Set__c.Status__c</field>
+            <field>Manifest__c.Status__c</field>
             <operation>equals</operation>
             <value>Open</value>
         </criteriaItems>

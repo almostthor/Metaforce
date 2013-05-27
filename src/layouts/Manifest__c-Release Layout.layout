@@ -117,7 +117,7 @@
         <fields>Change__c.Manual_Change__c</fields>
         <fields>Deployed__c</fields>
         <fields>CodeChange__c</fields>
-        <relatedList>Change_Junction__c.Change_Set__c</relatedList>
+        <relatedList>Change_Junction__c.Manifest__c</relatedList>
         <sortField>Change__c.NAME</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
