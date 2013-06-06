@@ -1,4 +1,4 @@
-@isTest(seeAllData=true)
+@isTest(seeAllData=false)
 private class MetaforceTestTriggers {
 
     static testMethod void myUnitTest() {

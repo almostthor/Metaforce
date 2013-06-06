@@ -43,8 +43,10 @@ trigger Metaforce_CloneClosedManifest on Manifest__c (after update) {
             }
         }
 
+
         // Check to see if there are any records to process
         for (Manifest__c cs : Trigger.New) {
+            // System.assertEquals(true,false,cs.Destination__c + '|' + INT_ENV);
             if (cs.Destination__c == INT_ENV
                && cs.Status__c == 'Closed') {
                 recordsToProcess = true;
